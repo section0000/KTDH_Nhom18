@@ -580,7 +580,7 @@ public class Project extends javax.swing.JFrame{
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setColor(Color.RED);
         
-        // Dua ve tam toa do roi tu do moi tinh toan de put pixel
+        // Dua ve tam toa do roi tu do dua vao cac tinh toan phia sau de put pixel
         double newX = x*step + width/2;
         double newY = height/2 - y*step;
                 
