@@ -8,6 +8,8 @@ package Project;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -42,14 +44,39 @@ public class Project extends javax.swing.JFrame{
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         panel3D = new javax.swing.JPanel();
-        dai_Lbl = new javax.swing.JLabel();
-        rong_Lbl = new javax.swing.JLabel();
-        veHHCN_Btn = new javax.swing.JButton();
-        dai_TF = new javax.swing.JTextField();
+        xoaManHinh_Btn = new javax.swing.JButton();
+        tuyChon_LPn = new javax.swing.JLayeredPane();
+        tuyChon_Pn = new javax.swing.JPanel();
+        HLP_Btn = new javax.swing.JButton();
+        HHCN_Btn = new javax.swing.JButton();
+        HLP_Pn = new javax.swing.JPanel();
+        doDaiCanhHLP_Lbl = new javax.swing.JLabel();
+        veHLP_Btn = new javax.swing.JButton();
+        doDaiCanhHLP_TF = new javax.swing.JTextField();
+        quayLai_Btn1 = new javax.swing.JButton();
+        diemGocHLP_Lbl = new javax.swing.JLabel();
+        xOHLP_TF = new javax.swing.JTextField();
+        xOHLP_Lbl = new javax.swing.JLabel();
+        yOHLP_Lbl = new javax.swing.JLabel();
+        yOHLP_TF = new javax.swing.JTextField();
+        zOHLP_Lbl = new javax.swing.JLabel();
+        zOHLP_TF = new javax.swing.JTextField();
+        HHCN_Pn = new javax.swing.JPanel();
         rong_TF = new javax.swing.JTextField();
         cao_Lbl = new javax.swing.JLabel();
+        dai_TF = new javax.swing.JTextField();
+        dai_Lbl = new javax.swing.JLabel();
         cao_TF = new javax.swing.JTextField();
-        xoaManHinh_Btn = new javax.swing.JButton();
+        rong_Lbl = new javax.swing.JLabel();
+        veHHCN_Btn = new javax.swing.JButton();
+        quayLai_Btn = new javax.swing.JButton();
+        diemGocHHCN_Lbl = new javax.swing.JLabel();
+        xOHHCN_Lbl = new javax.swing.JLabel();
+        xOHHCN_TF = new javax.swing.JTextField();
+        yOHHCN_Lbl = new javax.swing.JLabel();
+        yOHHCN_TF = new javax.swing.JTextField();
+        zOHHCN_Lbl = new javax.swing.JLabel();
+        zOHHCN_TF = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,26 +97,14 @@ public class Project extends javax.swing.JFrame{
         panel3D.setLayout(panel3DLayout);
         panel3DLayout.setHorizontalGroup(
             panel3DLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
         panel3DLayout.setVerticalGroup(
             panel3DLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        dai_Lbl.setText("Dài");
-
-        rong_Lbl.setText("Rộng");
-
-        veHHCN_Btn.setText("Vẽ hình hộp chữ nhật");
-        veHHCN_Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                veHHCN_BtnActionPerformed(evt);
-            }
-        });
-
-        cao_Lbl.setText("Cao");
-
+        xoaManHinh_Btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         xoaManHinh_Btn.setText("Xóa màn hình");
         xoaManHinh_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,49 +112,301 @@ public class Project extends javax.swing.JFrame{
             }
         });
 
+        tuyChon_LPn.setLayout(new java.awt.CardLayout());
+
+        HLP_Btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        HLP_Btn.setText("Hình lập phương");
+        HLP_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HLP_BtnActionPerformed(evt);
+            }
+        });
+
+        HHCN_Btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        HHCN_Btn.setText("Hình hộp chữ nhật");
+        HHCN_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HHCN_BtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout tuyChon_PnLayout = new javax.swing.GroupLayout(tuyChon_Pn);
+        tuyChon_Pn.setLayout(tuyChon_PnLayout);
+        tuyChon_PnLayout.setHorizontalGroup(
+            tuyChon_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tuyChon_PnLayout.createSequentialGroup()
+                .addGroup(tuyChon_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(HHCN_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(HLP_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        tuyChon_PnLayout.setVerticalGroup(
+            tuyChon_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tuyChon_PnLayout.createSequentialGroup()
+                .addContainerGap(155, Short.MAX_VALUE)
+                .addComponent(HHCN_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(HLP_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
+        );
+
+        tuyChon_LPn.add(tuyChon_Pn, "card4");
+
+        doDaiCanhHLP_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        doDaiCanhHLP_Lbl.setText("Độ dài cạnh HLP");
+
+        veHLP_Btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        veHLP_Btn.setText("Vẽ hình lập phương");
+        veHLP_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                veHLP_BtnActionPerformed(evt);
+            }
+        });
+
+        doDaiCanhHLP_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        quayLai_Btn1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        quayLai_Btn1.setText("Quay lại");
+        quayLai_Btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quayLai_Btn1ActionPerformed(evt);
+            }
+        });
+
+        diemGocHLP_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        diemGocHLP_Lbl.setText("Điểm gốc");
+
+        xOHLP_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        xOHLP_TF.setText("0");
+
+        xOHLP_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        xOHLP_Lbl.setText("xO");
+
+        yOHLP_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        yOHLP_Lbl.setText("yO");
+
+        yOHLP_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        yOHLP_TF.setText("0");
+
+        zOHLP_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        zOHLP_Lbl.setText("zO");
+
+        zOHLP_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        zOHLP_TF.setText("0");
+
+        javax.swing.GroupLayout HLP_PnLayout = new javax.swing.GroupLayout(HLP_Pn);
+        HLP_Pn.setLayout(HLP_PnLayout);
+        HLP_PnLayout.setHorizontalGroup(
+            HLP_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HLP_PnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(HLP_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(doDaiCanhHLP_TF)
+                    .addComponent(veHLP_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(HLP_PnLayout.createSequentialGroup()
+                        .addGroup(HLP_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(doDaiCanhHLP_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(diemGocHLP_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(HLP_PnLayout.createSequentialGroup()
+                                .addGroup(HLP_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(xOHLP_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                                    .addComponent(xOHLP_TF, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(HLP_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(yOHLP_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(yOHLP_TF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(HLP_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(zOHLP_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(zOHLP_TF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 11, Short.MAX_VALUE))
+                    .addComponent(quayLai_Btn1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        HLP_PnLayout.setVerticalGroup(
+            HLP_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HLP_PnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(diemGocHLP_Lbl)
+                .addGap(7, 7, 7)
+                .addGroup(HLP_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(HLP_PnLayout.createSequentialGroup()
+                        .addComponent(xOHLP_Lbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(xOHLP_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(HLP_PnLayout.createSequentialGroup()
+                        .addComponent(yOHLP_Lbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(yOHLP_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(HLP_PnLayout.createSequentialGroup()
+                        .addComponent(zOHLP_Lbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(zOHLP_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(doDaiCanhHLP_Lbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(doDaiCanhHLP_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(veHLP_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(quayLai_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
+
+        tuyChon_LPn.add(HLP_Pn, "card2");
+
+        rong_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        cao_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cao_Lbl.setText("Cao");
+
+        dai_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        dai_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        dai_Lbl.setText("Dài");
+
+        cao_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        rong_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        rong_Lbl.setText("Rộng");
+
+        veHHCN_Btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        veHHCN_Btn.setText("Vẽ hình hộp chữ nhật");
+        veHHCN_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                veHHCN_BtnActionPerformed(evt);
+            }
+        });
+
+        quayLai_Btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        quayLai_Btn.setText("Quay lại");
+        quayLai_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quayLai_BtnActionPerformed(evt);
+            }
+        });
+
+        diemGocHHCN_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        diemGocHHCN_Lbl.setText("Điểm gốc");
+
+        xOHHCN_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        xOHHCN_Lbl.setText("xO");
+
+        xOHHCN_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        xOHHCN_TF.setText("0");
+
+        yOHHCN_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        yOHHCN_Lbl.setText("yO");
+
+        yOHHCN_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        yOHHCN_TF.setText("0");
+
+        zOHHCN_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        zOHHCN_Lbl.setText("zO");
+
+        zOHHCN_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        zOHHCN_TF.setText("0");
+
+        javax.swing.GroupLayout HHCN_PnLayout = new javax.swing.GroupLayout(HHCN_Pn);
+        HHCN_Pn.setLayout(HHCN_PnLayout);
+        HHCN_PnLayout.setHorizontalGroup(
+            HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HHCN_PnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(veHHCN_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quayLai_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cao_Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rong_TF)
+                    .addComponent(cao_TF)
+                    .addComponent(dai_TF)
+                    .addGroup(HHCN_PnLayout.createSequentialGroup()
+                        .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(diemGocHHCN_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(dai_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rong_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(HHCN_PnLayout.createSequentialGroup()
+                                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(xOHHCN_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                                    .addComponent(xOHHCN_TF, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(yOHHCN_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(yOHHCN_TF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(zOHHCN_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(zOHHCN_TF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        HHCN_PnLayout.setVerticalGroup(
+            HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HHCN_PnLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(diemGocHHCN_Lbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(HHCN_PnLayout.createSequentialGroup()
+                            .addComponent(xOHHCN_Lbl)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(xOHHCN_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(HHCN_PnLayout.createSequentialGroup()
+                            .addComponent(yOHHCN_Lbl)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(yOHHCN_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(HHCN_PnLayout.createSequentialGroup()
+                        .addComponent(zOHHCN_Lbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(zOHHCN_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(dai_Lbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dai_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rong_Lbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rong_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cao_Lbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cao_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(veHHCN_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(quayLai_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+
+        tuyChon_LPn.add(HHCN_Pn, "card3");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(dai_Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rong_Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(veHHCN_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(dai_TF))
-                    .addComponent(rong_TF)
-                    .addComponent(cao_Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cao_TF)
-                    .addComponent(xoaManHinh_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(xoaManHinh_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tuyChon_LPn, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panel3D, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(dai_Lbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dai_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rong_Lbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rong_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cao_Lbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cao_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(veHHCN_Btn)
-                        .addGap(356, 356, 356)
-                        .addComponent(xoaManHinh_Btn))
-                    .addComponent(panel3D, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(tuyChon_LPn, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(99, 99, 99)
+                        .addComponent(xoaManHinh_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panel3D, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("3D", jPanel1);
@@ -183,6 +450,26 @@ public class Project extends javax.swing.JFrame{
     private void xoaManHinh_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaManHinh_BtnActionPerformed
         clear();
     }//GEN-LAST:event_xoaManHinh_BtnActionPerformed
+
+    private void veHLP_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veHLP_BtnActionPerformed
+        drawCube();
+    }//GEN-LAST:event_veHLP_BtnActionPerformed
+
+    private void HHCN_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HHCN_BtnActionPerformed
+        changePanel(tuyChon_LPn, HHCN_Pn);
+    }//GEN-LAST:event_HHCN_BtnActionPerformed
+
+    private void HLP_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HLP_BtnActionPerformed
+        changePanel(tuyChon_LPn, HLP_Pn);
+    }//GEN-LAST:event_HLP_BtnActionPerformed
+
+    private void quayLai_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quayLai_BtnActionPerformed
+        changePanel(tuyChon_LPn, tuyChon_Pn);
+    }//GEN-LAST:event_quayLai_BtnActionPerformed
+
+    private void quayLai_Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quayLai_Btn1ActionPerformed
+        changePanel(tuyChon_LPn, tuyChon_Pn);
+    }//GEN-LAST:event_quayLai_Btn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -475,20 +762,52 @@ public class Project extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton HHCN_Btn;
+    private javax.swing.JPanel HHCN_Pn;
+    private javax.swing.JButton HLP_Btn;
+    private javax.swing.JPanel HLP_Pn;
     private javax.swing.JLabel cao_Lbl;
     private javax.swing.JTextField cao_TF;
     private javax.swing.JLabel dai_Lbl;
     private javax.swing.JTextField dai_TF;
+    private javax.swing.JLabel diemGocHHCN_Lbl;
+    private javax.swing.JLabel diemGocHLP_Lbl;
+    private javax.swing.JLabel doDaiCanhHLP_Lbl;
+    private javax.swing.JTextField doDaiCanhHLP_TF;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel panel3D;
+    private javax.swing.JButton quayLai_Btn;
+    private javax.swing.JButton quayLai_Btn1;
     private javax.swing.JLabel rong_Lbl;
     private javax.swing.JTextField rong_TF;
+    private javax.swing.JLayeredPane tuyChon_LPn;
+    private javax.swing.JPanel tuyChon_Pn;
     private javax.swing.JButton veHHCN_Btn;
+    private javax.swing.JButton veHLP_Btn;
+    private javax.swing.JLabel xOHHCN_Lbl;
+    private javax.swing.JTextField xOHHCN_TF;
+    private javax.swing.JLabel xOHLP_Lbl;
+    private javax.swing.JTextField xOHLP_TF;
     private javax.swing.JButton xoaManHinh_Btn;
+    private javax.swing.JLabel yOHHCN_Lbl;
+    private javax.swing.JTextField yOHHCN_TF;
+    private javax.swing.JLabel yOHLP_Lbl;
+    private javax.swing.JTextField yOHLP_TF;
+    private javax.swing.JLabel zOHHCN_Lbl;
+    private javax.swing.JTextField zOHHCN_TF;
+    private javax.swing.JLabel zOHLP_Lbl;
+    private javax.swing.JTextField zOHLP_TF;
     // End of variables declaration//GEN-END:variables
 
+    public void changePanel(JLayeredPane jLayeredPane,JPanel panel){
+        jLayeredPane.removeAll();
+        jLayeredPane.add(panel);
+        jLayeredPane.repaint();
+        jLayeredPane.revalidate();
+    }    
+    
     public void clear()
     {
         g3D.clearRect(0, 0, width, height);
@@ -733,62 +1052,71 @@ public class Project extends javax.swing.JFrame{
     
     public void drawRectangular()
     {
+        // Diem goc O
+        double xO = Double.valueOf(xOHHCN_TF.getText());
+        double yO = Double.valueOf(yOHHCN_TF.getText());
+        double zO = Double.valueOf(zOHHCN_TF.getText());      
+        
+        double xO1 = cavalierProjection(xO, yO);
+        double yO1 = cavalierProjection(zO, yO);
+        
         // A
-        double xA = Double.valueOf(dai_TF.getText());
-        double yA = 0;
-        double zA = 0;
+        double xA = Double.valueOf(dai_TF.getText()) + xO;
+        double yA = 0 + yO;
+        double zA = 0 + zO;
         
         double xA1 = cavalierProjection(xA, yA);
         double yA1 = cavalierProjection(zA, yA);
         
         // B
-        double xB = Double.valueOf(dai_TF.getText());
-        double yB = Double.valueOf(rong_TF.getText());
-        double zB = 0;
+        double xB = Double.valueOf(dai_TF.getText()) + xO;
+        double yB = Double.valueOf(rong_TF.getText()) + yO;
+        double zB = 0 + zO;
         
         double xB1 = cavalierProjection(xB, yB);
         double yB1 = cavalierProjection(zB, yB);
         
         // C
-        double xC = 0;
-        double yC = Double.valueOf(rong_TF.getText());
-        double zC = 0;
+        double xC = 0 + xO;
+        double yC = Double.valueOf(rong_TF.getText()) + yO;
+        double zC = 0 + zO;
         
         double xC1 = cavalierProjection(xC, yC);
         double yC1 = cavalierProjection(zC, yC);
         
         // D
-        double xD = Double.valueOf(dai_TF.getText());
-        double yD = 0;
-        double zD = Double.valueOf(cao_TF.getText());
+        double xD = Double.valueOf(dai_TF.getText()) + xO;
+        double yD = 0 + yO;
+        double zD = Double.valueOf(cao_TF.getText()) + zO;
         
         double xD1 = cavalierProjection(xD, yD);
         double yD1 = cavalierProjection(zD, yD);    
         
         // E 
-        double xE = 0;
-        double yE = 0;
-        double zE = Double.valueOf(cao_TF.getText());
+        double xE = 0 + xO;
+        double yE = 0 + yO;
+        double zE = Double.valueOf(cao_TF.getText()) + zO;
         
         double xE1 = cavalierProjection(xE, yE);
         double yE1 = cavalierProjection(zE, yE);    
         
         // F
-        double xF = 0;
-        double yF = Double.valueOf(rong_TF.getText());
-        double zF = Double.valueOf(cao_TF.getText());
+        double xF = 0 + xO;
+        double yF = Double.valueOf(rong_TF.getText()) + yO;
+        double zF = Double.valueOf(cao_TF.getText()) + zO;
         
         double xF1 = cavalierProjection(xF, yF);
         double yF1 = cavalierProjection(zF, yF);      
         
         // G
-        double xG = Double.valueOf(dai_TF.getText());
-        double yG = Double.valueOf(rong_TF.getText());
-        double zG = Double.valueOf(cao_TF.getText());
+        double xG = Double.valueOf(dai_TF.getText()) + xO;
+        double yG = Double.valueOf(rong_TF.getText()) + yO;
+        double zG = Double.valueOf(cao_TF.getText()) + zO;
         
         double xG1 = cavalierProjection(xG, yG);
         double yG1 = cavalierProjection(zG, yG);        
            
+        putPixel3D(xO1, yO1);
         putPixel3D(xA1, yA1);
         putPixel3D(xB1, yB1);
         putPixel3D(xC1, yC1);
@@ -797,6 +1125,7 @@ public class Project extends javax.swing.JFrame{
         putPixel3D(xF1, yF1);
         putPixel3D(xG1, yG1);
         
+        putText3D("O", (int)xO, (int)yO, (int)zO); 
         putText3D("A", (int)xA, (int)yA, (int)zA);        
         putText3D("B", (int)xB, (int)yB, (int)zB);   
         putText3D("C", (int)xC, (int)yC, (int)zC); 
@@ -815,8 +1144,107 @@ public class Project extends javax.swing.JFrame{
         drawDDAWithCondition(xE1, yE1, xD1, yD1, "Straight"); // ED        
         drawDDAWithCondition(xF1, yF1, xG1, yG1, "Straight"); // FG
         
-        drawDDAWithCondition(0, 0, xC1, yC1, "Dashed"); // OC
-        drawDDAWithCondition(0, 0, xA1, yA1, "Dashed"); // OA
-        drawDDAWithCondition(0, 0, xE1, yE1, "Dashed"); // EO
+        drawDDAWithCondition(xO1, yO1, xC1, yC1, "Dashed"); // OC
+        drawDDAWithCondition(xO1, yO1, xA1, yA1, "Dashed"); // OA
+        drawDDAWithCondition(xO1, yO1, xE1, yE1, "Dashed"); // EO
     }  
+    
+    public void drawCube()
+    {
+        // Diem goc O
+        double xO = Double.valueOf(xOHLP_TF.getText());
+        double yO = Double.valueOf(yOHLP_TF.getText());
+        double zO = Double.valueOf(zOHLP_TF.getText());              
+  
+        double xO1 = cavalierProjection(xO, yO);
+        double yO1 = cavalierProjection(zO, yO);        
+        
+        // A
+        double xA = Double.valueOf(doDaiCanhHLP_TF.getText()) + xO;
+        double yA = 0 + yO;
+        double zA = 0 + zO;
+        
+        double xA1 = cavalierProjection(xA, yA);
+        double yA1 = cavalierProjection(zA, yA);
+        
+        // B
+        double xB = Double.valueOf(doDaiCanhHLP_TF.getText()) + xO;
+        double yB = Double.valueOf(doDaiCanhHLP_TF.getText()) + yO;
+        double zB = 0 + zO;
+        
+        double xB1 = cavalierProjection(xB, yB);
+        double yB1 = cavalierProjection(zB, yB);
+        
+        // C
+        double xC = 0 + xO;
+        double yC = Double.valueOf(doDaiCanhHLP_TF.getText()) + yO;
+        double zC = 0 + zO;
+        
+        double xC1 = cavalierProjection(xC, yC);
+        double yC1 = cavalierProjection(zC, yC);
+        
+        // D
+        double xD = Double.valueOf(doDaiCanhHLP_TF.getText()) + xO;
+        double yD = 0 + yO;
+        double zD = Double.valueOf(doDaiCanhHLP_TF.getText()) + zO;
+        
+        double xD1 = cavalierProjection(xD, yD);
+        double yD1 = cavalierProjection(zD, yD);    
+        
+        // E 
+        double xE = 0 + xO;
+        double yE = 0 + yO;
+        double zE = Double.valueOf(doDaiCanhHLP_TF.getText()) + zO;
+        
+        double xE1 = cavalierProjection(xE, yE);
+        double yE1 = cavalierProjection(zE, yE);    
+        
+        // F
+        double xF = 0 + xO;
+        double yF = Double.valueOf(doDaiCanhHLP_TF.getText()) + yO;
+        double zF = Double.valueOf(doDaiCanhHLP_TF.getText()) + zO;
+        
+        double xF1 = cavalierProjection(xF, yF);
+        double yF1 = cavalierProjection(zF, yF);      
+        
+        // G
+        double xG = Double.valueOf(doDaiCanhHLP_TF.getText()) + xO;
+        double yG = Double.valueOf(doDaiCanhHLP_TF.getText()) + yO;
+        double zG = Double.valueOf(doDaiCanhHLP_TF.getText()) + zO;
+        
+        double xG1 = cavalierProjection(xG, yG);
+        double yG1 = cavalierProjection(zG, yG);        
+           
+        putPixel3D(xO1, yO1);
+        putPixel3D(xA1, yA1);
+        putPixel3D(xB1, yB1);
+        putPixel3D(xC1, yC1);
+        putPixel3D(xD1, yD1);
+        putPixel3D(xE1, yE1);
+        putPixel3D(xF1, yF1);
+        putPixel3D(xG1, yG1);
+        
+        putText3D("O", (int)xO, (int)yO, (int)zO); 
+        putText3D("A", (int)xA, (int)yA, (int)zA);        
+        putText3D("B", (int)xB, (int)yB, (int)zB);   
+        putText3D("C", (int)xC, (int)yC, (int)zC); 
+        putText3D("D", (int)xD, (int)yD, (int)zD);
+        putText3D("E", (int)xE, (int)yE, (int)zE);
+        putText3D("F", (int)xF, (int)yF, (int)zF);
+        putText3D("G", (int)xG, (int)yG, (int)zG); 
+        
+        drawDDAWithCondition(xA1, yA1, xB1, yB1, "Straight"); // AB
+        drawDDAWithCondition(xA1, yA1, xD1, yD1, "Straight"); // AD
+        drawDDAWithCondition(xB1, yB1, xC1, yC1, "Straight"); // BC
+        drawDDAWithCondition(xB1, yB1, xG1, yG1, "Straight"); // BG       
+        drawDDAWithCondition(xC1, yC1, xF1, yF1, "Straight"); // CF
+        drawDDAWithCondition(xD1, yD1, xG1, yG1, "Straight"); // DG
+        drawDDAWithCondition(xE1, yE1, xF1, yF1, "Straight"); // EF        
+        drawDDAWithCondition(xE1, yE1, xD1, yD1, "Straight"); // ED        
+        drawDDAWithCondition(xF1, yF1, xG1, yG1, "Straight"); // FG
+        
+        drawDDAWithCondition(xO1, yO1, xC1, yC1, "Dashed"); // OC
+        drawDDAWithCondition(xO1, yO1, xA1, yA1, "Dashed"); // OA
+        drawDDAWithCondition(xO1, yO1, xE1, yE1, "Dashed"); // EO        
+    }
 }
