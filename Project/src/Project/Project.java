@@ -5,7 +5,9 @@
  */
 package Project;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JLayeredPane;
@@ -49,6 +51,7 @@ public class Project extends javax.swing.JFrame{
         tuyChon_Pn = new javax.swing.JPanel();
         HLP_Btn = new javax.swing.JButton();
         HHCN_Btn = new javax.swing.JButton();
+        HLP_Btn1 = new javax.swing.JButton();
         HLP_Pn = new javax.swing.JPanel();
         doDaiCanhHLP_Lbl = new javax.swing.JLabel();
         veHLP_Btn = new javax.swing.JButton();
@@ -77,6 +80,18 @@ public class Project extends javax.swing.JFrame{
         yOHHCN_TF = new javax.swing.JTextField();
         zOHHCN_Lbl = new javax.swing.JLabel();
         zOHHCN_TF = new javax.swing.JTextField();
+        HC_Pn = new javax.swing.JPanel();
+        tam_Lbl = new javax.swing.JLabel();
+        xOHC_TF = new javax.swing.JTextField();
+        xOHC_Lbl = new javax.swing.JLabel();
+        yOHC_TF = new javax.swing.JTextField();
+        yOHC_Lbl = new javax.swing.JLabel();
+        zOHC_TF = new javax.swing.JTextField();
+        zOHC_Lbl = new javax.swing.JLabel();
+        r_Lbl = new javax.swing.JLabel();
+        r_TF = new javax.swing.JTextField();
+        quayLaiHC_Btn = new javax.swing.JButton();
+        veHC_Btn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,11 +112,11 @@ public class Project extends javax.swing.JFrame{
         panel3D.setLayout(panel3DLayout);
         panel3DLayout.setHorizontalGroup(
             panel3DLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         panel3DLayout.setVerticalGroup(
             panel3DLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         xoaManHinh_Btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -130,24 +145,35 @@ public class Project extends javax.swing.JFrame{
             }
         });
 
+        HLP_Btn1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        HLP_Btn1.setText("Hình cầu");
+        HLP_Btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HLP_Btn1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tuyChon_PnLayout = new javax.swing.GroupLayout(tuyChon_Pn);
         tuyChon_Pn.setLayout(tuyChon_PnLayout);
         tuyChon_PnLayout.setHorizontalGroup(
             tuyChon_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tuyChon_PnLayout.createSequentialGroup()
                 .addGroup(tuyChon_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HHCN_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                    .addComponent(HLP_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(HHCN_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                    .addComponent(HLP_Btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                    .addComponent(HLP_Btn1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tuyChon_PnLayout.setVerticalGroup(
             tuyChon_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tuyChon_PnLayout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
                 .addComponent(HHCN_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addComponent(HLP_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+                .addGap(18, 18, 18)
+                .addComponent(HLP_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         tuyChon_LPn.add(tuyChon_Pn, "card4");
@@ -219,7 +245,7 @@ public class Project extends javax.swing.JFrame{
                                 .addGroup(HLP_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(zOHLP_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(zOHLP_TF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 11, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(quayLai_Btn1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -250,7 +276,7 @@ public class Project extends javax.swing.JFrame{
                 .addComponent(veHLP_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(quayLai_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         tuyChon_LPn.add(HLP_Pn, "card2");
@@ -361,7 +387,7 @@ public class Project extends javax.swing.JFrame{
                         .addComponent(zOHHCN_Lbl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(zOHHCN_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(dai_Lbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dai_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -382,6 +408,106 @@ public class Project extends javax.swing.JFrame{
 
         tuyChon_LPn.add(HHCN_Pn, "card3");
 
+        tam_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        tam_Lbl.setText("Tâm");
+
+        xOHC_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        xOHC_TF.setText("0");
+
+        xOHC_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        xOHC_Lbl.setText("xO");
+
+        yOHC_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        yOHC_TF.setText("0");
+
+        yOHC_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        yOHC_Lbl.setText("yO");
+
+        zOHC_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        zOHC_TF.setText("0");
+
+        zOHC_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        zOHC_Lbl.setText("zO");
+
+        r_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        r_Lbl.setText("Bán kính r");
+
+        r_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        quayLaiHC_Btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        quayLaiHC_Btn.setText("Quay lại");
+        quayLaiHC_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quayLaiHC_BtnActionPerformed(evt);
+            }
+        });
+
+        veHC_Btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        veHC_Btn.setText("Vẽ hình cầu");
+        veHC_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                veHC_BtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout HC_PnLayout = new javax.swing.GroupLayout(HC_Pn);
+        HC_Pn.setLayout(HC_PnLayout);
+        HC_PnLayout.setHorizontalGroup(
+            HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HC_PnLayout.createSequentialGroup()
+                .addGroup(HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(veHC_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                    .addGroup(HC_PnLayout.createSequentialGroup()
+                        .addGroup(HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(HC_PnLayout.createSequentialGroup()
+                                .addGroup(HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(xOHC_Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                                    .addComponent(xOHC_TF))
+                                .addGap(18, 18, 18)
+                                .addGroup(HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(yOHC_Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                                    .addComponent(yOHC_TF))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(zOHC_Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(zOHC_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tam_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(r_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(r_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(quayLaiHC_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        HC_PnLayout.setVerticalGroup(
+            HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HC_PnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tam_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(xOHC_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(yOHC_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(HC_PnLayout.createSequentialGroup()
+                        .addComponent(zOHC_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addGroup(HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(zOHC_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(yOHC_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(xOHC_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(r_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(r_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(veHC_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(quayLaiHC_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+
+        tuyChon_LPn.add(HC_Pn, "card5");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -392,20 +518,21 @@ public class Project extends javax.swing.JFrame{
                         .addContainerGap()
                         .addComponent(xoaManHinh_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tuyChon_LPn, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panel3D, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panel3D, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panel3D, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 85, Short.MAX_VALUE)
                         .addComponent(tuyChon_LPn, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(99, 99, 99)
-                        .addComponent(xoaManHinh_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panel3D, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(xoaManHinh_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -415,7 +542,7 @@ public class Project extends javax.swing.JFrame{
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1138, Short.MAX_VALUE)
+            .addGap(0, 1191, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,7 +555,9 @@ public class Project extends javax.swing.JFrame{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,6 +599,18 @@ public class Project extends javax.swing.JFrame{
     private void quayLai_Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quayLai_Btn1ActionPerformed
         changePanel(tuyChon_LPn, tuyChon_Pn);
     }//GEN-LAST:event_quayLai_Btn1ActionPerformed
+
+    private void HLP_Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HLP_Btn1ActionPerformed
+        changePanel(tuyChon_LPn, HC_Pn);
+    }//GEN-LAST:event_HLP_Btn1ActionPerformed
+
+    private void veHC_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veHC_BtnActionPerformed
+        drawGlobular();
+    }//GEN-LAST:event_veHC_BtnActionPerformed
+
+    private void quayLaiHC_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quayLaiHC_BtnActionPerformed
+        changePanel(tuyChon_LPn, tuyChon_Pn);
+    }//GEN-LAST:event_quayLaiHC_BtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -762,9 +903,11 @@ public class Project extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel HC_Pn;
     private javax.swing.JButton HHCN_Btn;
     private javax.swing.JPanel HHCN_Pn;
     private javax.swing.JButton HLP_Btn;
+    private javax.swing.JButton HLP_Btn1;
     private javax.swing.JPanel HLP_Pn;
     private javax.swing.JLabel cao_Lbl;
     private javax.swing.JTextField cao_TF;
@@ -778,23 +921,34 @@ public class Project extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel panel3D;
+    private javax.swing.JButton quayLaiHC_Btn;
     private javax.swing.JButton quayLai_Btn;
     private javax.swing.JButton quayLai_Btn1;
+    private javax.swing.JLabel r_Lbl;
+    private javax.swing.JTextField r_TF;
     private javax.swing.JLabel rong_Lbl;
     private javax.swing.JTextField rong_TF;
+    private javax.swing.JLabel tam_Lbl;
     private javax.swing.JLayeredPane tuyChon_LPn;
     private javax.swing.JPanel tuyChon_Pn;
+    private javax.swing.JButton veHC_Btn;
     private javax.swing.JButton veHHCN_Btn;
     private javax.swing.JButton veHLP_Btn;
+    private javax.swing.JLabel xOHC_Lbl;
+    private javax.swing.JTextField xOHC_TF;
     private javax.swing.JLabel xOHHCN_Lbl;
     private javax.swing.JTextField xOHHCN_TF;
     private javax.swing.JLabel xOHLP_Lbl;
     private javax.swing.JTextField xOHLP_TF;
     private javax.swing.JButton xoaManHinh_Btn;
+    private javax.swing.JLabel yOHC_Lbl;
+    private javax.swing.JTextField yOHC_TF;
     private javax.swing.JLabel yOHHCN_Lbl;
     private javax.swing.JTextField yOHHCN_TF;
     private javax.swing.JLabel yOHLP_Lbl;
     private javax.swing.JTextField yOHLP_TF;
+    private javax.swing.JLabel zOHC_Lbl;
+    private javax.swing.JTextField zOHC_TF;
     private javax.swing.JLabel zOHHCN_Lbl;
     private javax.swing.JTextField zOHHCN_TF;
     private javax.swing.JLabel zOHLP_Lbl;
@@ -810,10 +964,12 @@ public class Project extends javax.swing.JFrame{
     
     public void clear()
     {
-        g3D.clearRect(0, 0, width, height);
+        Graphics2D g1 = (Graphics2D)g3D.create();
+        g1.clearRect(0, 0, width, height);
 //        panel3D.setBackground(Color.white);
         g3D = panel3D.getGraphics();       
         draw3DCoordinate();
+        //drawGrid();
     }
     
     public void draw3DCoordinate()
@@ -821,17 +977,19 @@ public class Project extends javax.swing.JFrame{
         height = panel3D.getBounds().height; // Lay chieu cao cua Panel
         width = panel3D.getBounds().width; // Lay chieu dai cua Panel
         
-        g3D.setColor(Color.BLACK);
-        g3D.drawLine(width/2, height/2, width, height/2); // Ve truc Ox
-        g3D.drawLine(width/2, 0, width/2, height/2); // Ve truc Oz       
-        g3D.drawLine(width/2, height/2, 0, width/2 + height/2); // Ve truc Oy
+        Graphics2D g1 = (Graphics2D)g3D.create();
+        g1.setStroke(new BasicStroke(3));
+        g1.setColor(Color.BLACK);
+        g1.drawLine(width/2, height/2, width, height/2); // Ve truc Ox
+        g1.drawLine(width/2, 0, width/2, height/2); // Ve truc Oz       
+        g1.drawLine(width/2, height/2, 0, width/2 + height/2); // Ve truc Oy
 
         int x1 = 4;
         for (int i = 0 ; i <= width/2; i++)
         {
             if (i % (3*x1) == 2*x1)
             {
-                g3D.drawLine(i, height/2, i - 2*x1, height/2); // Ox'
+                g1.drawLine(i, height/2, i - 2*x1, height/2); // Ox'
             }
         }
         for (int i = height + 1 ; i >= height/2; i--)
@@ -839,7 +997,7 @@ public class Project extends javax.swing.JFrame{
             int x = height - i;
             if (x % (3*x1) == 2*x1)
             {
-                g3D.drawLine(width/2, i, width/2, i - 2*x1); // Oy'
+                g1.drawLine(width/2, i, width/2, i - 2*x1); // Oy'
             }
         }        
         for (int i = width/2 ; i <= width; i++)
@@ -847,7 +1005,7 @@ public class Project extends javax.swing.JFrame{
             int x = i - width/2;
             if (x % (3*x1) == 2*x1)
             {
-                g3D.drawLine(i, height/2 - x, i - 2*x1, height/2 - (x - 2*x1)); // Oz'
+                g1.drawLine(i, height/2 - x, i - 2*x1, height/2 - (x - 2*x1)); // Oz'
             }
         }        
         
@@ -871,11 +1029,12 @@ public class Project extends javax.swing.JFrame{
 //            inc++;
 //            desc--;         
 //        }    
-        g3D.setColor(Color.blue);
-        g3D.drawString("x", width - 20, height/2 - 10);
-        g3D.drawString("z", width/2 + 10, 0 + 10);
-        g3D.drawString("O", width/2 - 15, height/2 + 15);      
-        g3D.drawString("y", width/4 - 25, height - 5);
+        g1.setColor(Color.blue);
+        g1.setFont(new Font("Arial", Font.BOLD, 18));
+        g1.drawString("x", width - 20, height/2 - 10);
+        g1.drawString("z", width/2 + 10, 0 + 10);
+        g1.drawString("O", width/2 - 18, height/2 - 4);      
+        g1.drawString("y", width/4 - 10, height - 5);
     }
     
     
@@ -885,6 +1044,7 @@ public class Project extends javax.swing.JFrame{
     {
         super.paint(g);
         draw3DCoordinate();
+        //drawGrid();
     }
         
     public void putPixel(double x, double y)
@@ -893,6 +1053,26 @@ public class Project extends javax.swing.JFrame{
         g1.setColor(Color.BLACK);
         g1.fillRect((int)x, (int)y, 3,3);       
     }    
+    
+    public void put4Pixel(double xO, double yO, double x, double y) // Ve ellipse
+    {
+        putPixel(xO + x, yO + y);
+        putPixel(xO - x, yO + y);
+        putPixel(xO + x, yO - y);
+        putPixel(xO - x, yO - y);
+    }
+    
+    public void put8Pixel(double xO, double yO, double x, double y) // Ve duong tron
+    {
+        putPixel(xO + x, yO + y); // (x,y)
+        putPixel(xO - x, yO + y); // (-x, y)
+        putPixel(xO + x, yO - y); // (x, -y)
+        putPixel(xO - x, yO - y); // (-x , -y)
+        putPixel(xO + y, yO + x); // (y, x)
+        putPixel(xO - y, yO + x); // (-y, x)
+        putPixel(xO + y, yO - x); // (y, -x)
+        putPixel(xO - y, yO - x); // (-y -x)
+    }      
     
     public void putPixel3D(double x, double y)
     {       
@@ -906,7 +1086,7 @@ public class Project extends javax.swing.JFrame{
         g1.fillRect((int)newX, (int)newY, 4, 4);       
     }  
     
-    public void putText3D(String tenDiem, int x, int y, int z)
+    public void putText3D(String pointName, int x, int y, int z)
     {
         Graphics2D g1 = (Graphics2D) g3D.create();
         
@@ -914,30 +1094,32 @@ public class Project extends javax.swing.JFrame{
         newX =  cavalierProjection(x, y)*step + width/2; 
         newY = height/2 - cavalierProjection(z, y)*step; 
                
-        g1.setColor(Color.black);
-        g1.drawString(tenDiem + "(" + x + "," + y + "," + z + ")",(int)newX + 5,(int)newY + 10);
+        g1.setColor(Color.red);
+        g1.setFont(new Font("Arial", Font.BOLD, 18));
+        g1.drawString(pointName + "(" + x + "," + y + "," + z + ")",(int)newX + 5,(int)newY + 10);
     }        
     
     public double cavalierProjection(double a, double b)
     {
         // Chieu len truc Oxz
-        return a - b*(1 - Math.sqrt(2)/2);
+        return a - b*(Math.sqrt(2)/2);
     }      
     
     public void drawGrid()
     {
-        g3D.setColor(Color.black);
+        Graphics2D g1 = (Graphics2D)g3D.create();
+        g1.setColor(Color.black);
         
         // Luoi doc
         for (int x = 0; x < width; x += step)
         {
-            g3D.drawLine(x, 0, x, height);
+            g1.drawLine(x, 0, x, height);
         }
 
         // Luoi ngang
         for (int y = 0; y < height; y += step)
         {
-            g3D.drawLine(0, y, width, y);
+            g1.drawLine(0, y, width, y);
         }
     }
 
@@ -1247,4 +1429,157 @@ public class Project extends javax.swing.JFrame{
         drawDDAWithCondition(xO1, yO1, xA1, yA1, "Dashed"); // OA
         drawDDAWithCondition(xO1, yO1, xE1, yE1, "Dashed"); // EO        
     }
+    
+    public void drawCircleMidPoint(double xO, double yO, double r)
+    {
+        xO = xO*step + width/2;
+        yO = height/2 - yO*step;
+        r = r*step;
+        
+        double x = 0;
+        double y = r;
+        double p = 1 - r;
+
+        put8Pixel(xO, yO, x, y);
+
+        while (x < y)
+        {           
+            if (p < 0)
+            {
+                p += 2*x + 3;
+            }
+            else
+            {
+                p += 2*(x-y) + 5;
+                y--;
+            }
+            x++;
+            put8Pixel(xO, yO, x, y);              
+        }        
+    }
+    
+    public void drawEllipseMidPoint(double xO, double yO, double a, double b)
+    {
+        xO = xO*step + width/2;
+        yO = height/2 - yO*step;
+        a = a*step;
+        b = b*step;
+        
+        double x, y, fx, fy, a2, b2, p, q;
+        x = 0;
+        y = b;
+        a2 = a*a;
+        b2 = b*b;
+        fx = 0;
+        fy = 2*a2*y;
+        put4Pixel(xO, yO, x, y);
+        p = Math.round(b2 - a2*b + a2/4);
+        
+        int count = 0;
+        while (fx < fy)
+        {
+            count++;
+            x++;
+            fx = fx + 2*b2;
+            if (p < 0)
+            {
+                p = p + b2*(2*x + 3);
+            }
+            else
+            {
+                y--;
+                p = p + b2*(2*x + 3) + a2*(2 - 2*y);
+                fy = fy - 2*a2;
+            }
+            if (count <= 10)
+            {
+                put4Pixel(xO, yO, x, y);
+            }
+            else if (count >= 11 && count <= 15)
+            {
+                x++;
+                fx = fx + 2*b2;
+                if (p < 0)
+                {
+                    p = p + b2*(2*x + 3);
+                }
+                else
+                {
+                    y--;
+                    p = p + b2*(2*x + 3) + a2*(2 - 2*y);
+                    fy = fy - 2*a2;
+                }         
+                
+                if (count == 15)
+                {
+                    count = 0;
+                }
+            }
+        }
+        
+        int count1 = 0;
+        q = Math.round(b2*(x + 0.5)*(x + 0.5) + a2*(y-1)*(y-1) - a2*b2);
+        while (y > 0)
+        {
+            count1++;
+            y--;
+            fy = fy - 2*a2;
+            if (q < 0)
+            {
+                x++;
+                q = q + b2*(2*x + 2) + a2*(3 - 2*y);
+                fx = fx + 2*b2;
+            }
+            else
+            {
+                q = q + a2*(3 - 2*y);
+            }
+            if (count1 <= 10)
+            {
+                put4Pixel(xO, yO, x, y);
+            }
+            else if (count1 >= 11 && count1 <= 15)
+            {
+                y--;
+                fy = fy - 2*a2;
+                if (q < 0)
+                {
+                    x++;
+                    q = q + b2*(2*x + 2) + a2*(3 - 2*y);
+                    fx = fx + 2*b2;
+                }
+                else
+                {
+                    q = q + a2*(3 - 2*y);
+                }                
+                
+                if (count == 15)
+                {
+                    count = 0;
+                }
+            }   
+        }
+    }    
+    
+    public void drawGlobular()
+    {
+        double xO = Double.valueOf(xOHC_TF.getText());
+        double yO = Double.valueOf(yOHC_TF.getText());
+        double zO = Double.valueOf(zOHC_TF.getText());
+        
+        double xO1 = cavalierProjection(xO, yO);
+        double yO1 = cavalierProjection(zO, yO);
+        
+        double r = Double.valueOf(r_TF.getText());
+
+        putPixel3D(xO1, yO1);
+        putText3D("O", (int)xO, (int)yO, (int)zO);
+        
+        drawCircleMidPoint(xO1, yO1, r);
+        
+        double a = r;
+        double b = r*(1-Math.sqrt(2)/2);
+        
+        drawEllipseMidPoint(xO1, yO1, a, b);
+    }    
 }
