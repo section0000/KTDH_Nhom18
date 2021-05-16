@@ -1102,7 +1102,7 @@ public class Project extends javax.swing.JFrame{
     public double cavalierProjection(double a, double b)
     {
         // Chieu len truc Oxz
-        return a - b*(Math.sqrt(2)/2);
+        return a - b*(1-Math.sqrt(2)/2);
     }      
     
     public void drawGrid()
@@ -1188,21 +1188,17 @@ public class Project extends javax.swing.JFrame{
         for (int i = 0; i <= step; i++)
         {
             count++;
-            if (count <= 10) // put 10 pixel
+            x = x + x_inc;
+            y = y + y_inc;
+            if (count >= 11 && count <= 15) // Neu da put du 10 pixel thi 5 pixel tiep theo khong put (x, y van tiep tuc tang)
             {
-                putPixel(Math.round(x), Math.round(y));
-                x = x + x_inc;
-                y = y + y_inc;
-            }
-            else if (count >= 11 && count <= 15) // 5 pixel tiep theo khong put
-            {
-                x = x + x_inc;
-                y = y + y_inc;
                 if (count == 15)
                 {
                     count = 0; // Lap lai viec put pixel
                 }
-            }
+                continue;
+            }            
+            putPixel(Math.round(x), Math.round(y));
         }
     }
     
@@ -1491,30 +1487,15 @@ public class Project extends javax.swing.JFrame{
                 p = p + b2*(2*x + 3) + a2*(2 - 2*y);
                 fy = fy - 2*a2;
             }
-            if (count <= 10)
+            if (count >= 11 && count <= 15)
             {
-                put4Pixel(xO, yO, x, y);
-            }
-            else if (count >= 11 && count <= 15)
-            {
-                x++;
-                fx = fx + 2*b2;
-                if (p < 0)
-                {
-                    p = p + b2*(2*x + 3);
-                }
-                else
-                {
-                    y--;
-                    p = p + b2*(2*x + 3) + a2*(2 - 2*y);
-                    fy = fy - 2*a2;
-                }         
-                
                 if (count == 15)
                 {
                     count = 0;
                 }
+                continue;
             }
+            put4Pixel(xO, yO, x, y);
         }
         
         int count1 = 0;
@@ -1534,30 +1515,15 @@ public class Project extends javax.swing.JFrame{
             {
                 q = q + a2*(3 - 2*y);
             }
-            if (count1 <= 10)
+            if (count1 >= 11 && count1 <= 15)
             {
-                put4Pixel(xO, yO, x, y);
+                if (count1 == 15)
+                {
+                    count1 = 0;
+                }
+                continue;
             }
-            else if (count1 >= 11 && count1 <= 15)
-            {
-                y--;
-                fy = fy - 2*a2;
-                if (q < 0)
-                {
-                    x++;
-                    q = q + b2*(2*x + 2) + a2*(3 - 2*y);
-                    fx = fx + 2*b2;
-                }
-                else
-                {
-                    q = q + a2*(3 - 2*y);
-                }                
-                
-                if (count == 15)
-                {
-                    count = 0;
-                }
-            }   
+            put4Pixel(xO, yO, x, y);
         }
     }    
     
