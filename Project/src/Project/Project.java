@@ -1600,12 +1600,7 @@ public class Project extends javax.swing.JFrame{
     }
     
     public void translate(Point pt, Point displacement)
-    {
-//        pt.setX(pt.getX()*buocNhay + chieuDai/2);
-//        pt.setY(chieuRong/2 - pt.getY()*buocNhay);         
-//        replacement.setX(replacement.getX()*buocNhay + chieuDai/2);
-//        replacement.setY(chieuRong/2 - replacement.getY()*buocNhay);  
-        
+    {        
         double[] array = new double[3];
         double[][] matrix2D = new double[3][3];
         
@@ -1650,6 +1645,40 @@ public class Project extends javax.swing.JFrame{
         
         putPixel(newPoint.getX(), newPoint.getY());
                
+        Graphics2D g1 = (Graphics2D) g2D.create();
+        g1.setColor(Color.black);
+        g1.drawString("A1 (" + (double)Math.round((newPoint.getX() - width/2)/step *100)/100 
+                + "," 
+                +(double)Math.round((newPoint.getY() - height/2)/-step * 100)/100 + ")",
+                (int)newPoint.getX(),(int)newPoint.getY() + 20);           
+    }    
+    
+    public void symmetricWithRespectTo(Point pt, String circumstance)
+    {        
+        double[] array = new double[3];
+        double[][] matrix2D = new double[3][3];
+
+        array = Matrix.convertPointToMatrix(pt);
+        if (circumstance.equals("Ox"))
+        {
+            matrix2D = Matrix.initializeSymmetricWithRespectToOxMatrix(matrix2D);
+        }
+        else if (circumstance.equals("Oy"))
+        {
+            matrix2D = Matrix.initializeSymmetricWithRespectToOyMatrix(matrix2D);
+        }
+        else if (circumstance.equals("O"))
+        {
+            matrix2D = Matrix.initializeSymmetricWithRespectToOMatrix(matrix2D);
+        }
+        
+        Point newPoint = Matrix.multiplyMatrix(array, matrix2D);
+               
+        newPoint.setX(newPoint.getX()*step + width/2);
+        newPoint.setY(height/2 - newPoint.getY()*step); 
+        
+        putPixel(newPoint.getX(), newPoint.getY());
+              
         Graphics2D g1 = (Graphics2D) g2D.create();
         g1.setColor(Color.black);
         g1.drawString("A1 (" + (double)Math.round((newPoint.getX() - width/2)/step *100)/100 

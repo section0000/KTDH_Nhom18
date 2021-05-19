@@ -126,6 +126,7 @@ public class Matrix {
         return matrix2D;        
     }    
 
+    // Ma tran bien doi ti le
     public static double[][] initializeScalingMatrix(double[][] matrix2D, Point ratio)
     {        
         if (matrix2D.length == 0 || matrix2D == null)
@@ -144,5 +145,53 @@ public class Matrix {
         matrix2D[2][0] = 0;            matrix2D[2][1] = 0;            matrix2D[2][2] = 1;  
         return matrix2D;        
     }        
-    
+  
+    // Cac ma tran cua phep doi xung qua Ox, Oy, O
+    public static double[][] initializeSymmetricWithRespectToOxMatrix(double[][] matrix2D)
+    {        
+        if (matrix2D.length == 0 || matrix2D == null)
+        {
+            matrix2D = new double[3][3];
+            matrix2D[0][0] = 1; matrix2D[0][1] = 0;  matrix2D[0][2] = 0;
+            matrix2D[1][0] = 0; matrix2D[1][1] = -1; matrix2D[1][2] = 0;
+            matrix2D[2][0] = 0; matrix2D[2][1] = 0;  matrix2D[2][2] = 1;
+            return matrix2D;
+        }
+        matrix2D[0][0] = 1; matrix2D[0][1] = 0;  matrix2D[0][2] = 0;
+        matrix2D[1][0] = 0; matrix2D[1][1] = -1; matrix2D[1][2] = 0;
+        matrix2D[2][0] = 0; matrix2D[2][1] = 0;  matrix2D[2][2] = 1;
+        return matrix2D;        
+    }       
+
+    public static double[][] initializeSymmetricWithRespectToOyMatrix(double[][] matrix2D)
+    {        
+        if (matrix2D.length == 0 || matrix2D == null)
+        {
+            matrix2D = new double[3][3];
+            matrix2D[0][0] = -1; matrix2D[0][1] = 0;  matrix2D[0][2] = 0;
+            matrix2D[1][0] = 0; matrix2D[1][1] = 1; matrix2D[1][2] = 0;
+            matrix2D[2][0] = 0; matrix2D[2][1] = 0;  matrix2D[2][2] = 1;
+            return matrix2D;
+        }
+        matrix2D[0][0] = -1; matrix2D[0][1] = 0;  matrix2D[0][2] = 0;
+        matrix2D[1][0] = 0; matrix2D[1][1] = 1; matrix2D[1][2] = 0;
+        matrix2D[2][0] = 0; matrix2D[2][1] = 0;  matrix2D[2][2] = 1;
+        return matrix2D;        
+    }       
+
+    public static double[][] initializeSymmetricWithRespectToOMatrix(double[][] matrix2D)
+    {        
+        if (matrix2D.length == 0 || matrix2D == null)
+        {
+            matrix2D = new double[3][3];
+            matrix2D[0][0] = -1; matrix2D[0][1] = 0;  matrix2D[0][2] = 0;
+            matrix2D[1][0] = 0; matrix2D[1][1] = -1; matrix2D[1][2] = 0;
+            matrix2D[2][0] = 0; matrix2D[2][1] = 0;  matrix2D[2][2] = 1;
+            return matrix2D;
+        }
+        matrix2D[0][0] = -1; matrix2D[0][1] = 0;  matrix2D[0][2] = 0;
+        matrix2D[1][0] = 0; matrix2D[1][1] = -1; matrix2D[1][2] = 0;
+        matrix2D[2][0] = 0; matrix2D[2][1] = 0;  matrix2D[2][2] = 1;
+        return matrix2D;        
+    }         
 }
