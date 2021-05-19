@@ -60,20 +60,44 @@ public class Matrix {
     //   ( 1, 0,0)
     //   ( 0, 1,0)
     //   (-x,-y,1)
-    public static double[][] initializeTranslateToOMatrix(double[][] matrix2D, Point pt)
+    public static double[][] initializeTranslateToOMatrix(double[][] matrix2D, Point displacement)
     {        
         if (matrix2D.length == 0 || matrix2D == null)
         {
             matrix2D = new double[3][3];
-            matrix2D[0][0] = 1; matrix2D[0][1] = 0; matrix2D[0][2] = 0;
-            matrix2D[1][0] = 0; matrix2D[1][1] = 1; matrix2D[1][2] = 0;
-            matrix2D[2][0] = -pt.getX(); matrix2D[2][1] = -pt.getY(); matrix2D[2][2] = 1;  
+            matrix2D[0][0] = 1;                    matrix2D[0][1] = 0;                    matrix2D[0][2] = 0;
+            matrix2D[1][0] = 0;                    matrix2D[1][1] = 1;                    matrix2D[1][2] = 0;
+            matrix2D[2][0] = -displacement.getX(); matrix2D[2][1] = -displacement.getY(); matrix2D[2][2] = 1;  
             return matrix2D;
         }
-        matrix2D = new double[3][3];
-        matrix2D[0][0] = 1; matrix2D[0][1] = 0; matrix2D[0][2] = 0;
-        matrix2D[1][0] = 0; matrix2D[1][1] = 1; matrix2D[1][2] = 0;
-        matrix2D[2][0] = -pt.getX(); matrix2D[2][1] = -pt.getY(); matrix2D[2][2] = 1;  
+        matrix2D[0][0] = 1;                     matrix2D[0][1] = 0;                    matrix2D[0][2] = 0;
+        matrix2D[1][0] = 0;                     matrix2D[1][1] = 1;                    matrix2D[1][2] = 0;
+        matrix2D[2][0] = -displacement.getX();  matrix2D[2][1] = -displacement.getY(); matrix2D[2][2] = 1;  
+        return matrix2D;        
+    }
+
+    // Ma tran tinh tien
+    //   (1,0,0)
+    //   (0,1,0)
+    //   (x,y,1)
+    public static double[][] initializeTranslationMatrix(double[][] matrix2D, Point displacement)
+    {        
+        if (matrix2D.length == 0 || matrix2D == null)
+        {
+//            matrix2D = new double[3][3];
+//            matrix2D[0][0] = 1; matrix2D[0][1] = 0; matrix2D[0][2] = pt.getX();
+//            matrix2D[1][0] = 0; matrix2D[1][1] = 1; matrix2D[1][2] = pt.getY();
+//            matrix2D[2][0] = 0; matrix2D[2][1] = 0; matrix2D[2][2] = 1;  
+//            return matrix2D;
+            matrix2D = new double[3][3];
+            matrix2D[0][0] = 1;                   matrix2D[0][1] = 0;                   matrix2D[0][2] = 0;
+            matrix2D[1][0] = 0;                   matrix2D[1][1] = 1;                   matrix2D[1][2] = 0;
+            matrix2D[2][0] = displacement.getX(); matrix2D[2][1] = displacement.getY(); matrix2D[2][2] = 1;  
+            return matrix2D;
+        }
+        matrix2D[0][0] = 1;                   matrix2D[0][1] = 0;                   matrix2D[0][2] = 0;
+        matrix2D[1][0] = 0;                   matrix2D[1][1] = 1;                   matrix2D[1][2] = 0;
+        matrix2D[2][0] = displacement.getX(); matrix2D[2][1] = displacement.getY(); matrix2D[2][2] = 1;  
         return matrix2D;        
     }
     
@@ -92,15 +116,33 @@ public class Matrix {
         {
             matrix2D = new double[3][3];
             matrix2D[0][0] = cos; matrix2D[0][1] = -sin; matrix2D[0][2] = 0;
-            matrix2D[1][0] = sin; matrix2D[1][1] = cos; matrix2D[1][2] = 0;
-            matrix2D[2][0] = 0; matrix2D[2][1] = 0; matrix2D[2][2] = 1;  
+            matrix2D[1][0] = sin; matrix2D[1][1] = cos;  matrix2D[1][2] = 0;
+            matrix2D[2][0] = 0;   matrix2D[2][1] = 0;    matrix2D[2][2] = 1;  
             return matrix2D;
         }
-        matrix2D = new double[3][3];
         matrix2D[0][0] = cos; matrix2D[0][1] = -sin; matrix2D[0][2] = 0;
-        matrix2D[1][0] = sin; matrix2D[1][1] = cos; matrix2D[1][2] = 0;
-        matrix2D[2][0] = 0; matrix2D[2][1] = 0; matrix2D[2][2] = 1;  
+        matrix2D[1][0] = sin; matrix2D[1][1] = cos;  matrix2D[1][2] = 0;
+        matrix2D[2][0] = 0;   matrix2D[2][1] = 0;    matrix2D[2][2] = 1;  
         return matrix2D;        
     }    
+
+    public static double[][] initializeScalingMatrix(double[][] matrix2D, Point ratio)
+    {        
+        if (matrix2D.length == 0 || matrix2D == null)
+        {
+            matrix2D = new double[3][3];
+//            matrix2D[0][0] = 1; matrix2D[0][1] = 0; matrix2D[0][2] = 0;
+//            matrix2D[1][0] = 0; matrix2D[1][1] = 1; matrix2D[1][2] = 0;
+//            matrix2D[2][0] = 0; matrix2D[2][1] = 0; matrix2D[2][2] = 1; 
+            matrix2D[0][0] = ratio.getX(); matrix2D[0][1] = 0;            matrix2D[0][2] = 0;
+            matrix2D[1][0] = 0;            matrix2D[1][1] = ratio.getY(); matrix2D[1][2] = 0;
+            matrix2D[2][0] = 0;            matrix2D[2][1] = 0;            matrix2D[2][2] = 1;
+            return matrix2D;
+        }
+        matrix2D[0][0] = ratio.getX(); matrix2D[0][1] = 0;            matrix2D[0][2] = 0;
+        matrix2D[1][0] = 0;            matrix2D[1][1] = ratio.getY(); matrix2D[1][2] = 0;
+        matrix2D[2][0] = 0;            matrix2D[2][1] = 0;            matrix2D[2][2] = 1;  
+        return matrix2D;        
+    }        
     
 }

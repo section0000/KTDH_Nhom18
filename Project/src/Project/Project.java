@@ -1087,7 +1087,7 @@ public class Project extends javax.swing.JFrame{
         g1.fillRect((int)newX, (int)newY, 4, 4);       
     }  
     
-    public void putText3D(String pointName, int x, int y, int z)
+    public void putText3D(String pointName, double x, double y, double z)
     {
         Graphics2D g1 = (Graphics2D) g3D.create();
         
@@ -1097,7 +1097,7 @@ public class Project extends javax.swing.JFrame{
                
         g1.setColor(Color.red);
         g1.setFont(new Font("Arial", Font.BOLD, 18));
-        g1.drawString(pointName + "(" + x + "," + y + "," + z + ")",(int)newX + 5,(int)newY + 10);
+        g1.drawString(pointName + "(" + x + "," + y + "," + z + ")",(float)newX + 5,(float)newY + 10);
     }        
     
     public double cavalierProjection(double a, double b)
@@ -1304,14 +1304,14 @@ public class Project extends javax.swing.JFrame{
         putPixel3D(xF1, yF1);
         putPixel3D(xG1, yG1);
         
-        putText3D("O", (int)xO, (int)yO, (int)zO); 
-        putText3D("A", (int)xA, (int)yA, (int)zA);        
-        putText3D("B", (int)xB, (int)yB, (int)zB);   
-        putText3D("C", (int)xC, (int)yC, (int)zC); 
-        putText3D("D", (int)xD, (int)yD, (int)zD);
-        putText3D("E", (int)xE, (int)yE, (int)zE);
-        putText3D("F", (int)xF, (int)yF, (int)zF);
-        putText3D("G", (int)xG, (int)yG, (int)zG); 
+        putText3D("O", xO, yO, zO); 
+        putText3D("A", xA, yA, zA);        
+        putText3D("B", xB, yB, zB);   
+        putText3D("C", xC, yC, zC); 
+        putText3D("D", xD, yD, zD);
+        putText3D("E", xE, yE, zE);
+        putText3D("F", xF, yF, zF);
+        putText3D("G", xG, yG, zG); 
         
         drawDDAWithCondition(xA1, yA1, xB1, yB1, "Straight"); // AB
         drawDDAWithCondition(xA1, yA1, xD1, yD1, "Straight"); // AD
@@ -1403,14 +1403,14 @@ public class Project extends javax.swing.JFrame{
         putPixel3D(xF1, yF1);
         putPixel3D(xG1, yG1);
         
-        putText3D("O", (int)xO, (int)yO, (int)zO); 
-        putText3D("A", (int)xA, (int)yA, (int)zA);        
-        putText3D("B", (int)xB, (int)yB, (int)zB);   
-        putText3D("C", (int)xC, (int)yC, (int)zC); 
-        putText3D("D", (int)xD, (int)yD, (int)zD);
-        putText3D("E", (int)xE, (int)yE, (int)zE);
-        putText3D("F", (int)xF, (int)yF, (int)zF);
-        putText3D("G", (int)xG, (int)yG, (int)zG); 
+        putText3D("O", xO, yO, zO); 
+        putText3D("A", xA, yA, zA);        
+        putText3D("B", xB, yB, zB);   
+        putText3D("C", xC, yC, zC); 
+        putText3D("D", xD, yD, zD);
+        putText3D("E", xE, yE, zE);
+        putText3D("F", xF, yF, zF);
+        putText3D("G", xG, yG, zG); 
         
         drawDDAWithCondition(xA1, yA1, xB1, yB1, "Straight"); // AB
         drawDDAWithCondition(xA1, yA1, xD1, yD1, "Straight"); // AD
@@ -1540,7 +1540,7 @@ public class Project extends javax.swing.JFrame{
         double r = Double.valueOf(r_TF.getText());
 
         putPixel3D(xO1, yO1);
-        putText3D("O", (int)xO, (int)yO, (int)zO);
+        putText3D("O", xO, yO, zO);
         
         drawCircleMidPoint(xO1, yO1, r);
         
@@ -1558,8 +1558,7 @@ public class Project extends javax.swing.JFrame{
         pt2.setY(height/2 - pt2.getY()*step); 
         
         // Dung cho ma tran tinh tien tro ve vi tri cu
-        double xO = pt2.getX();
-        double yO = pt2.getY();
+        Point originalPosition = new Point(pt2.getX(), pt2.getY());
         
         double array[] = new double[3];
         
@@ -1581,12 +1580,10 @@ public class Project extends javax.swing.JFrame{
         // Nhan ma tran nay voi ma tran quay, thu duoc 1 diem moi
         Point tempPoint2 = Matrix.multiplyMatrix(array, rotationMatrix);
         
-        // Ma tran tinh tien tro lai ve vi tri cu theo pt2
-        double[][] retranslationMatrix = new double[3][3];
-        retranslationMatrix[0][0] = 1; retranslationMatrix[0][1] = 0; retranslationMatrix[0][2] = 0;
-        retranslationMatrix[1][0] = 0; retranslationMatrix[1][1] = 1; retranslationMatrix[1][2] = 0;
-        retranslationMatrix[2][0] = xO; retranslationMatrix[2][1] = yO; retranslationMatrix[2][2] = 1;        
-    
+        // Ma tran tinh tien tro lai ve vi tri cu theo pt2 (pt2 = originalPosition)
+        double[][] retranslationMatrix = new double[3][3];      
+        retranslationMatrix = Matrix.initializeTranslationMatrix(retranslationMatrix, originalPosition);
+
         // Chuyen diem tempPoint2 thu duoc tu phep nhan ma tran o tren sang ma tran [1,3]
         array = Matrix.convertPointToMatrix(tempPoint2);
         // Nhan ma tran nay voi ma tran tinh tien ve vi tru cu, thu duoc 1 diem moi => Diem can tim
@@ -1601,4 +1598,63 @@ public class Project extends javax.swing.JFrame{
                 +(double)Math.round((tempPoint3.getY() - height/2)/-step * 100)/100 + ")",
                 (int)tempPoint3.getX(),(int)tempPoint3.getY() + 20);        
     }
+    
+    public void translate(Point pt, Point displacement)
+    {
+//        pt.setX(pt.getX()*buocNhay + chieuDai/2);
+//        pt.setY(chieuRong/2 - pt.getY()*buocNhay);         
+//        replacement.setX(replacement.getX()*buocNhay + chieuDai/2);
+//        replacement.setY(chieuRong/2 - replacement.getY()*buocNhay);  
+        
+        double[] array = new double[3];
+        double[][] matrix2D = new double[3][3];
+        
+        // Chuyen diem goc ve ma tran [1,3]
+        array = Matrix.convertPointToMatrix(pt);
+        
+        // Ma tran tinh tien (displacement: do doi)
+        matrix2D = Matrix.initializeTranslationMatrix(matrix2D, displacement);
+        
+        // Nhan ma tran cua diem goc voi ma tran tinh tien, thu duoc 1 diem moi => Ket qua
+        Point newPoint = Matrix.multiplyMatrix(array, matrix2D);
+               
+        newPoint.setX(newPoint.getX()*step + width/2);
+        newPoint.setY(height/2 - newPoint.getY()*step); 
+        
+        putPixel(newPoint.getX(), newPoint.getY());
+              
+        Graphics2D g1 = (Graphics2D) g2D.create();
+        g1.setColor(Color.black);
+        g1.drawString("A1 (" + (double)Math.round((newPoint.getX() - width/2)/step *100)/100 
+                + "," 
+                +(double)Math.round((newPoint.getY() - height/2)/-step * 100)/100 + ")",
+                (int)newPoint.getX(),(int)newPoint.getY() + 20);           
+    }
+
+    public void scale(Point pt, Point ratio)
+    {
+        double[] array = new double[3];
+        double[][] matrix2D = new double[3][3];
+        
+        // Chuyen diem goc ve ma tran [1,3]
+        array = Matrix.convertPointToMatrix(pt);
+        
+        // Ma tran bien doi ti le
+        matrix2D = Matrix.initializeScalingMatrix(matrix2D, ratio);
+        
+        // Nhan ma tran cua diem goc voi ma tran bien doi ti le, thu duoc 1 diem moi => Ket qua
+        Point newPoint = Matrix.multiplyMatrix(array, matrix2D);
+        
+        newPoint.setX(newPoint.getX()*step + width/2);
+        newPoint.setY(height/2 - newPoint.getY()*step); 
+        
+        putPixel(newPoint.getX(), newPoint.getY());
+               
+        Graphics2D g1 = (Graphics2D) g2D.create();
+        g1.setColor(Color.black);
+        g1.drawString("A1 (" + (double)Math.round((newPoint.getX() - width/2)/step *100)/100 
+                + "," 
+                +(double)Math.round((newPoint.getY() - height/2)/-step * 100)/100 + ")",
+                (int)newPoint.getX(),(int)newPoint.getY() + 20);           
+    }    
 }
