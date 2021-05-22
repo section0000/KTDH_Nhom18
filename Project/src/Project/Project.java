@@ -1488,7 +1488,7 @@ public class Project extends javax.swing.JFrame {
                 (int) newPoint.getX(), (int) newPoint.getY() + 20);
     }
 
-    public Point quaPhai(Point x, float i) {
+    public Point quaPhai(Point x, double i) {
         x.setX(x.getX() + i);
         x.setY(x.getY());
         return x;
@@ -1496,6 +1496,7 @@ public class Project extends javax.swing.JFrame {
 
     // Vẽ Xe 
     public void veXe() throws InterruptedException {
+        draw2DCoordinate();
         Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2;
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setPaint(Color.BLACK);
@@ -1512,29 +1513,31 @@ public class Project extends javax.swing.JFrame {
         thanXe4 = new Point(-4.5, 2);
         //Bánh Xe
         banhXe1 = new Point();
-        banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
-        banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
         banhXe2 = new Point();
-        banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
-        banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
 
-        for (float i = 0; i < 5;) {
-            i =  (float) (i+ 0.5);
+        for (float j = 0; j < 7;) {
+            j = (float) (j + 0.1);
+            double i = 0.05;
             System.out.println(i);
+            Thread.sleep(50);
             clear();
+
+            translate(muiXe1, quaPhai(muiXe1, i));
+            translate(muiXe2, quaPhai(muiXe2, i));
+            translate(muiXe3, quaPhai(muiXe3, i));
+            translate(muiXe4, quaPhai(muiXe4, i));
+            translate(thanXe1, quaPhai(thanXe1, i));
+            translate(thanXe3, quaPhai(thanXe3, i));
+            translate(thanXe2, quaPhai(thanXe2, i));
+            translate(thanXe4, quaPhai(thanXe4, i));
             
-            quaPhai(muiXe1, i);
-            quaPhai(muiXe2, i);
-            quaPhai(muiXe3, i);
-            quaPhai(muiXe4, i);
-            quaPhai(thanXe1, i);
-            quaPhai(thanXe2, i);
-            quaPhai(thanXe3, i);
-            quaPhai(thanXe4, i);
-            quaPhai(banhXe1, i);
-            quaPhai(banhXe2, i);
+            banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
+            banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
             
-            Thread.sleep(1000);
+            banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
+            banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
+
+            
             // Vẽ Mui Xe
             drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
             drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
@@ -1545,8 +1548,8 @@ public class Project extends javax.swing.JFrame {
             drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
             drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
             //Bánh Xe
-            g1.fillOval((int) banhXe1.getX(), (int) banhXe1.getY(), (int) ((0.8) * step), (int) ((0.8) * step));
-            g1.fillOval((int) banhXe2.getX(), (int) banhXe2.getY(), (int) ((0.8) * step), (int) ((0.8) * step));
+            g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+            g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
         }
     }
 }
