@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
@@ -690,12 +692,17 @@ public class Project extends javax.swing.JFrame {
     }//GEN-LAST:event_panel2DAncestorAdded
 
     private void HHCN_Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HHCN_Btn1ActionPerformed
-        // TODO add your handling code here:
-        veXe();
+        try {
+            // TODO add your handling code here:
+            veXe();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_HHCN_Btn1ActionPerformed
 
     private void HHCN_Btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HHCN_Btn2ActionPerformed
         // TODO add your handling code here:
+        clear();
     }//GEN-LAST:event_HHCN_Btn2ActionPerformed
 
     private void HHCN_Btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HHCN_Btn3ActionPerformed
@@ -1400,7 +1407,7 @@ public class Project extends javax.swing.JFrame {
                 (int) tempPoint3.getX(), (int) tempPoint3.getY() + 20);
     }
 
-    public void translate(Point pt, Point displacement) {
+    public Point translate(Point pt, Point displacement) {
         double[] array = new double[3];
         double[][] matrix2D = new double[3][3];
 
@@ -1413,17 +1420,18 @@ public class Project extends javax.swing.JFrame {
         // Nhan ma tran cua diem goc voi ma tran tinh tien, thu duoc 1 diem moi => Ket qua
         Point newPoint = Matrix.multiplyMatrix(array, matrix2D);
 
-        newPoint.setX(newPoint.getX() * step + width / 2);
-        newPoint.setY(height / 2 - newPoint.getY() * step);
+        return newPoint;
+//        newPoint.setX(newPoint.getX() * step + width / 2);
+//        newPoint.setY(height / 2 - newPoint.getY() * step);
 
-        putPixel(newPoint.getX(), newPoint.getY());
-
-        Graphics2D g1 = (Graphics2D) g2D.create();
-        g1.setColor(Color.black);
-        g1.drawString("A1 (" + (double) Math.round((newPoint.getX() - width / 2) / step * 100) / 100
-                + ","
-                + (double) Math.round((newPoint.getY() - height / 2) / -step * 100) / 100 + ")",
-                (int) newPoint.getX(), (int) newPoint.getY() + 20);
+//        putPixel(newPoint.getX(), newPoint.getY());
+//
+//        Graphics2D g1 = (Graphics2D) g2D.create();
+//        g1.setColor(Color.black);
+//        g1.drawString("A1 (" + (double) Math.round((newPoint.getX() - width / 2) / step * 100) / 100
+//                + ","
+//                + (double) Math.round((newPoint.getY() - height / 2) / -step * 100) / 100 + ")",
+//                (int) newPoint.getX(), (int) newPoint.getY() + 20);
     }
 
     public void scale(Point pt, Point ratio) {
@@ -1480,72 +1488,65 @@ public class Project extends javax.swing.JFrame {
                 (int) newPoint.getX(), (int) newPoint.getY() + 20);
     }
 
+    public Point quaPhai(Point x, float i) {
+        x.setX(x.getX() + i);
+        x.setY(x.getY());
+        return x;
+    }
+
     // Vẽ Xe 
-    public void veXe() {
+    public void veXe() throws InterruptedException {
         Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2;
-
-        // Vẽ Mui Xe
-        muiXe1 = new Point();
-        muiXe1.setX(-8);
-        muiXe1.setY(3);
-
-        muiXe2 = new Point();
-        muiXe2.setX(-8);
-        muiXe2.setY(4);
-
-        muiXe3 = new Point();
-        muiXe3.setX(-6);
-        muiXe3.setY(4);
-
-        muiXe4 = new Point();
-        muiXe4.setX(-6);
-        muiXe4.setY(3);
-
-        drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
-        drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
-        drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
-
-        // Vẽ Thân Xe
-        thanXe1 = new Point();
-        thanXe1.setX(-9.5);
-        thanXe1.setY(2);
-
-        thanXe2 = new Point();
-        thanXe2.setX(-9.5);
-        thanXe2.setY(3);
-
-        thanXe3 = new Point();
-        thanXe3.setX(-4.5);
-        thanXe3.setY(3);
-
-        thanXe4 = new Point();
-        thanXe4.setX(-4.5);
-        thanXe4.setY(2);
-
-        drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
-        drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
-        drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
-        drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
-
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setPaint(Color.BLACK);
-        
+
+        // Vẽ Mui Xe
+        muiXe1 = new Point(-8, 3);
+        muiXe2 = new Point(-8, 4);
+        muiXe3 = new Point(-6, 4);
+        muiXe4 = new Point(-6, 3);
+        // Vẽ Thân Xe
+        thanXe1 = new Point(-9.5, 2);
+        thanXe2 = new Point(-9.5, 3);
+        thanXe3 = new Point(-4.5, 3);
+        thanXe4 = new Point(-4.5, 2);
+        //Bánh Xe
         banhXe1 = new Point();
-        banhXe1.setX((thanXe1.getX()+0.5) * this.step + width / 2);
-        banhXe1.setY(height / 2 - (thanXe1.getY()+0.3) * this.step);
-        
+        banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
+        banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
         banhXe2 = new Point();
-        banhXe2.setX((thanXe4.getX()-1) * this.step + width / 2);
-        banhXe2.setY(height / 2 - (thanXe4.getY()+0.3) * this.step);
-        
-        g1.fillOval((int) banhXe1.getX(), (int) banhXe1.getY(), (int) ((0.8)*step), (int) ((0.8)*step));
-        g1.fillOval((int) banhXe2.getX(), (int) banhXe2.getY(), (int) ((0.8)*step), (int) ((0.8)*step));
-        
-        
-        // Tịnh Tuyến Xe
-        Point x1 = new Point();
-        x1.setX(3);
-        x1.setY(2);
-        translate(muiXe1, x1);
+        banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
+        banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
+
+        for (float i = 0; i < 5;) {
+            i =  (float) (i+ 0.5);
+            System.out.println(i);
+            clear();
+            
+            quaPhai(muiXe1, i);
+            quaPhai(muiXe2, i);
+            quaPhai(muiXe3, i);
+            quaPhai(muiXe4, i);
+            quaPhai(thanXe1, i);
+            quaPhai(thanXe2, i);
+            quaPhai(thanXe3, i);
+            quaPhai(thanXe4, i);
+            quaPhai(banhXe1, i);
+            quaPhai(banhXe2, i);
+            
+            Thread.sleep(1000);
+            // Vẽ Mui Xe
+            drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
+            drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
+            drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
+            // Vẽ Thân Xe
+            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
+            drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
+            drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
+            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
+            //Bánh Xe
+            g1.fillOval((int) banhXe1.getX(), (int) banhXe1.getY(), (int) ((0.8) * step), (int) ((0.8) * step));
+            g1.fillOval((int) banhXe2.getX(), (int) banhXe2.getY(), (int) ((0.8) * step), (int) ((0.8) * step));
+        }
     }
 }
