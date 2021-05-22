@@ -822,6 +822,15 @@ public class Project extends javax.swing.JFrame {
         draw3DCoordinate();
         //drawGrid();
     }
+    
+    public void clear2D() {
+        Graphics2D g1 = (Graphics2D) g3D.create();
+        g1.clearRect(0, 0, width, height);
+//        panel3D.setBackground(Color.white);
+        g3D = panel3D.getGraphics();
+        draw2DCoordinate();
+        //drawGrid();
+    }
 
     public void draw2DCoordinate() {
         height = panel3D.getBounds().height; // Lay chieu cao cua Panel
@@ -1496,7 +1505,6 @@ public class Project extends javax.swing.JFrame {
 
     // Vẽ Xe 
     public void veXe() throws InterruptedException {
-        draw2DCoordinate();
         Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2;
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setPaint(Color.BLACK);
@@ -1513,14 +1521,16 @@ public class Project extends javax.swing.JFrame {
         thanXe4 = new Point(-4.5, 2);
         //Bánh Xe
         banhXe1 = new Point();
+        banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
+        banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
         banhXe2 = new Point();
-
-        for (float j = 0; j < 7;) {
-            j = (float) (j + 0.1);
-            double i = 0.05;
-            System.out.println(i);
-            Thread.sleep(50);
-            clear();
+        banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
+        banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
+        
+        for (float j = 0; j < 12 ;j = (float) (j + 0.1)) {
+            double i = 0.1;    // khoản cách tịnh tuyến
+            Thread.sleep(20);
+            clear2D();
 
             translate(muiXe1, quaPhai(muiXe1, i));
             translate(muiXe2, quaPhai(muiXe2, i));
@@ -1530,14 +1540,9 @@ public class Project extends javax.swing.JFrame {
             translate(thanXe3, quaPhai(thanXe3, i));
             translate(thanXe2, quaPhai(thanXe2, i));
             translate(thanXe4, quaPhai(thanXe4, i));
-            
-            banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
-            banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
-            
-            banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
-            banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
+            translate(banhXe1, quaPhai(banhXe1, i * step));
+            translate(banhXe2, quaPhai(banhXe2, i * step));
 
-            
             // Vẽ Mui Xe
             drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
             drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
