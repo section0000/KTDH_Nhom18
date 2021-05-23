@@ -14,6 +14,7 @@ import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -28,6 +29,7 @@ public class Project extends javax.swing.JFrame {
     private int height; // Chieu cao cua Panel
     private int width; // Chieu dai cua Panel
 
+    int bkDongHo = 1;
     Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2;
 
     public void khoiTaoXe() {
@@ -121,13 +123,13 @@ public class Project extends javax.swing.JFrame {
         HHCN_Btn1 = new javax.swing.JButton();
         HHCN_Btn2 = new javax.swing.JButton();
         dongHo = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        YDongHo = new javax.swing.JTextField();
+        XDongHo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        DongHoLon = new javax.swing.JButton();
         Phai = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        DongHoBe = new javax.swing.JButton();
         Len = new javax.swing.JButton();
         Trai = new javax.swing.JButton();
         Xuong = new javax.swing.JButton();
@@ -629,11 +631,25 @@ public class Project extends javax.swing.JFrame {
             }
         });
 
+        YDongHo.setText("0");
+
+        XDongHo.setText("0");
+        XDongHo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XDongHoActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("X");
 
         jLabel2.setText("Y");
 
-        jButton1.setText("+");
+        DongHoLon.setText("+");
+        DongHoLon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DongHoLonMouseClicked(evt);
+            }
+        });
 
         Phai.setText("Phải");
         Phai.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -647,7 +663,12 @@ public class Project extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("-");
+        DongHoBe.setText("-");
+        DongHoBe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DongHoBeMouseClicked(evt);
+            }
+        });
 
         Len.setText("Lên");
         Len.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -761,9 +782,9 @@ public class Project extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton3)
+                                .addComponent(DongHoBe)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)
+                                .addComponent(DongHoLon)
                                 .addGap(18, 18, 18))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(dongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -795,11 +816,11 @@ public class Project extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(YDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(XDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -895,16 +916,16 @@ public class Project extends javax.swing.JFrame {
                         .addComponent(dongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(XDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(YDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton1))
+                            .addComponent(DongHoBe)
+                            .addComponent(DongHoLon))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(HHCN_Btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(panel2D, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
@@ -1075,7 +1096,8 @@ public class Project extends javax.swing.JFrame {
 
     private void dongHoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dongHoMouseClicked
         // TODO add your handling code here:
-        veDongHo();
+        clear2D();
+        veDongHo(2);
     }//GEN-LAST:event_dongHoMouseClicked
 
     private void LenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LenMouseClicked
@@ -1131,6 +1153,24 @@ public class Project extends javax.swing.JFrame {
         toaDoXe();
     }//GEN-LAST:event_panel2DCaretPositionChanged
 
+    private void DongHoBeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DongHoBeMouseClicked
+        // TODO add your handling code here:
+        if(bkDongHo > 1){
+            veDongHo(bkDongHo - 1);
+        }else{
+            JOptionPane.showMessageDialog(this, "Không Được Nhỏ Hơn Nữa");
+        }
+    }//GEN-LAST:event_DongHoBeMouseClicked
+
+    private void XDongHoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XDongHoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_XDongHoActionPerformed
+
+    private void DongHoLonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DongHoLonMouseClicked
+        // TODO add your handling code here:
+        veDongHo(bkDongHo+1);
+    }//GEN-LAST:event_DongHoLonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1173,6 +1213,8 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JLabel B;
     private javax.swing.JLabel C;
     private javax.swing.JLabel D;
+    private javax.swing.JButton DongHoBe;
+    private javax.swing.JButton DongHoLon;
     private javax.swing.JLabel E;
     private javax.swing.JLabel F;
     private javax.swing.JLabel G;
@@ -1188,7 +1230,9 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JButton Len;
     private javax.swing.JButton Phai;
     private javax.swing.JButton Trai;
+    private javax.swing.JTextField XDongHo;
     private javax.swing.JButton Xuong;
+    private javax.swing.JTextField YDongHo;
     private javax.swing.JLabel cao_Lbl;
     private javax.swing.JTextField cao_TF;
     private javax.swing.JLabel dai_Lbl;
@@ -1198,8 +1242,6 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JLabel doDaiCanhHLP_Lbl;
     private javax.swing.JTextField doDaiCanhHLP_TF;
     private javax.swing.JButton dongHo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1214,8 +1256,6 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField khoanCachTT;
     private javax.swing.JPanel panel2D;
     private javax.swing.JPanel panel3D;
@@ -1985,7 +2025,7 @@ public class Project extends javax.swing.JFrame {
 
     public void toaDoXe() {
         DecimalFormat format = new DecimalFormat("0.#");
-        A.setText("(" + format.format((float) muiXe2.getX()) + " ; " + format.format((muiXe2.getY())) + ")");
+        A.setText("(" + format.format(muiXe2.getX()) + " ; " + format.format((muiXe2.getY())) + ")");
         B.setText("(" + format.format(muiXe3.getX()) + " ; " + format.format((muiXe3.getY())) + ")");
         C.setText("(" + format.format((thanXe2.getX())) + " ; " + format.format((thanXe2.getY())) + ")");
         D.setText("(" + format.format((muiXe1.getX())) + " ; " + format.format((muiXe1.getY())) + ")");
@@ -1993,6 +2033,7 @@ public class Project extends javax.swing.JFrame {
         F.setText("(" + format.format((thanXe3.getX())) + " ; " + format.format((thanXe3.getY())) + ")");
         G.setText("(" + format.format((thanXe1.getX())) + " ; " + format.format((thanXe1.getY())) + ")");
         H.setText("(" + format.format((thanXe4.getX())) + " ; " + format.format((thanXe4.getY())) + ")");
+        System.out.println(format.format((float) muiXe2.getX()) + "   " +  format.format((muiXe2.getY())));
     }
 
     // Vẽ Xe 
@@ -2000,7 +2041,7 @@ public class Project extends javax.swing.JFrame {
         if (huongDi.equals("Phải")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
                 double i = 0.1;    // khoản cách tịnh tuyến
-                Thread.sleep(1000);
+                Thread.sleep(20);
                 clear2D();
                 translate(muiXe1, quaPhai(muiXe1, i));
                 translate(muiXe2, quaPhai(muiXe2, i));
@@ -2068,7 +2109,9 @@ public class Project extends javax.swing.JFrame {
         }
     }
 
-    public void veDongHo() {
-
+    public void veDongHo(int i) {
+        clear2D();
+        bkDongHo = i;
+        drawCircleMidPoint(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()), bkDongHo);
     }
 }
