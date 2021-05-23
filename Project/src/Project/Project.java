@@ -27,12 +27,34 @@ public class Project extends javax.swing.JFrame {
     private int height; // Chieu cao cua Panel
     private int width; // Chieu dai cua Panel
 
+    Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2;
+
+    public void khoiTaoXe() {
+        // Vẽ Mui Xe
+        muiXe1 = new Point(-8, 3);
+        muiXe2 = new Point(-8, 4);
+        muiXe3 = new Point(-6, 4);
+        muiXe4 = new Point(-6, 3);
+        // Vẽ Thân Xe
+        thanXe1 = new Point(-9.5, 2);
+        thanXe2 = new Point(-9.5, 3);
+        thanXe3 = new Point(-4.5, 3);
+        thanXe4 = new Point(-4.5, 2);
+        //Bánh Xe
+        banhXe1 = new Point();
+        banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
+        banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
+        banhXe2 = new Point();
+        banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
+        banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
+    }
+
     public Project() {
         initComponents();
         this.setLocationRelativeTo(null);
         height = panel3D.getBounds().height;
         width = panel3D.getBounds().width;
-
+        khoiTaoXe();
         g3D = panel3D.getGraphics();
     }
 
@@ -98,7 +120,19 @@ public class Project extends javax.swing.JFrame {
         panel2D = new javax.swing.JPanel();
         HHCN_Btn1 = new javax.swing.JButton();
         HHCN_Btn2 = new javax.swing.JButton();
-        HHCN_Btn3 = new javax.swing.JButton();
+        dongHo = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        Phai = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        Len = new javax.swing.JButton();
+        Trai = new javax.swing.JButton();
+        Xuong = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        khoanCachTT = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -568,7 +602,7 @@ public class Project extends javax.swing.JFrame {
         );
 
         HHCN_Btn1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        HHCN_Btn1.setText("Hình Xe");
+        HHCN_Btn1.setText("Hình Xe - Tịnh Tuyến");
         HHCN_Btn1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HHCN_Btn1MouseClicked(evt);
@@ -588,25 +622,126 @@ public class Project extends javax.swing.JFrame {
             }
         });
 
-        HHCN_Btn3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        HHCN_Btn3.setText("Hình hộp chữ nhật");
-        HHCN_Btn3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HHCN_Btn3ActionPerformed(evt);
+        dongHo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        dongHo.setText("Đồng Hồ - Quay + Tỉ Lệ");
+        dongHo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dongHoMouseClicked(evt);
             }
         });
+        dongHo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dongHoActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("X");
+
+        jLabel2.setText("Y");
+
+        jButton1.setText("+");
+
+        Phai.setText("Phải");
+        Phai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PhaiMouseClicked(evt);
+            }
+        });
+
+        jButton3.setText("-");
+
+        Len.setText("Lên");
+        Len.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LenMouseClicked(evt);
+            }
+        });
+        Len.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LenActionPerformed(evt);
+            }
+        });
+
+        Trai.setText("Trái");
+        Trai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TraiMouseClicked(evt);
+            }
+        });
+        Trai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TraiActionPerformed(evt);
+            }
+        });
+
+        Xuong.setText("Xuống");
+        Xuong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                XuongMouseClicked(evt);
+            }
+        });
+        Xuong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XuongActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Khoản Cách Tịnh Tuyến :");
+
+        khoanCachTT.setText("0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HHCN_Btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(HHCN_Btn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(HHCN_Btn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(HHCN_Btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(Trai)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Phai)
+                                .addGap(28, 28, 28))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(dongHo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(HHCN_Btn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTextField1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(27, 27, 27))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTextField2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Xuong)
+                                    .addComponent(Len, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(khoanCachTT, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(panel2D, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -614,13 +749,37 @@ public class Project extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panel2D, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addContainerGap()
                 .addComponent(HHCN_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(HHCN_Btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Len)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Phai)
+                    .addComponent(Trai))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Xuong)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(khoanCachTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton1))
+                .addGap(27, 27, 27)
                 .addComponent(HHCN_Btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addGap(67, 67, 67))
         );
 
         jTabbedPane1.addTab("2D", jPanel2);
@@ -692,12 +851,6 @@ public class Project extends javax.swing.JFrame {
     }//GEN-LAST:event_panel2DAncestorAdded
 
     private void HHCN_Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HHCN_Btn1ActionPerformed
-        try {
-            // TODO add your handling code here:
-            veXe();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_HHCN_Btn1ActionPerformed
 
     private void HHCN_Btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HHCN_Btn2ActionPerformed
@@ -705,13 +858,84 @@ public class Project extends javax.swing.JFrame {
         clear();
     }//GEN-LAST:event_HHCN_Btn2ActionPerformed
 
-    private void HHCN_Btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HHCN_Btn3ActionPerformed
+    private void dongHoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dongHoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_HHCN_Btn3ActionPerformed
+    }//GEN-LAST:event_dongHoActionPerformed
 
     private void HHCN_Btn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HHCN_Btn1MouseClicked
         // TODO add your handling code here:
+        Graphics2D g1 = (Graphics2D) g3D.create();
+        g1.setColor(Color.BLACK);
+        // Vẽ Mui Xe
+        drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
+        drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
+        drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
+        // Vẽ Thân Xe
+        drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
+        drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
+        drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
+        drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
+        //Bánh Xe
+        g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+        g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+
     }//GEN-LAST:event_HHCN_Btn1MouseClicked
+
+    private void LenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LenActionPerformed
+
+    private void TraiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TraiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TraiActionPerformed
+
+    private void XuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XuongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_XuongActionPerformed
+
+    private void dongHoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dongHoMouseClicked
+        // TODO add your handling code here:
+        veDongHo();
+    }//GEN-LAST:event_dongHoMouseClicked
+
+    private void LenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LenMouseClicked
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            veXe(Len.getText(), Integer.parseInt(khoanCachTT.getText()));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_LenMouseClicked
+
+    private void PhaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PhaiMouseClicked
+        try {
+            // TODO add your handling code here:
+            veXe(Phai.getText(), Integer.parseInt(khoanCachTT.getText()));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_PhaiMouseClicked
+
+    private void XuongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XuongMouseClicked
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            veXe(Xuong.getText(), Integer.parseInt(khoanCachTT.getText()));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_XuongMouseClicked
+
+    private void TraiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TraiMouseClicked
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            veXe(Trai.getText(), Integer.parseInt(khoanCachTT.getText()));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_TraiMouseClicked
 
     /**
      * @param args the command line arguments
@@ -755,11 +979,14 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JButton HHCN_Btn;
     private javax.swing.JButton HHCN_Btn1;
     private javax.swing.JButton HHCN_Btn2;
-    private javax.swing.JButton HHCN_Btn3;
     private javax.swing.JPanel HHCN_Pn;
     private javax.swing.JButton HLP_Btn;
     private javax.swing.JButton HLP_Btn1;
     private javax.swing.JPanel HLP_Pn;
+    private javax.swing.JButton Len;
+    private javax.swing.JButton Phai;
+    private javax.swing.JButton Trai;
+    private javax.swing.JButton Xuong;
     private javax.swing.JLabel cao_Lbl;
     private javax.swing.JTextField cao_TF;
     private javax.swing.JLabel dai_Lbl;
@@ -768,9 +995,18 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JLabel diemGocHLP_Lbl;
     private javax.swing.JLabel doDaiCanhHLP_Lbl;
     private javax.swing.JTextField doDaiCanhHLP_TF;
+    private javax.swing.JButton dongHo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField khoanCachTT;
     private javax.swing.JPanel panel2D;
     private javax.swing.JPanel panel3D;
     private javax.swing.JButton quayLaiHC_Btn;
@@ -822,7 +1058,7 @@ public class Project extends javax.swing.JFrame {
         draw3DCoordinate();
         //drawGrid();
     }
-    
+
     public void clear2D() {
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.clearRect(0, 0, width, height);
@@ -1500,19 +1736,19 @@ public class Project extends javax.swing.JFrame {
         x.setY(x.getY());
         return x;
     }
-    
+
     public Point quaTrai(Point x, double i) {
         x.setX(x.getX() - i);
         x.setY(x.getY());
         return x;
     }
-    
+
     public Point diXuong(Point x, double i) {
         x.setX(x.getX());
         x.setY(x.getY() - i);
         return x;
     }
-    
+
     public Point diLen(Point x, double i) {
         x.setX(x.getX());
         x.setY(x.getY() + i);
@@ -1520,139 +1756,130 @@ public class Project extends javax.swing.JFrame {
     }
 
     // Vẽ Xe 
-    public void veXe() throws InterruptedException {
-        Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2;
+    public void veXe(String huongDi, int khoanCach) throws InterruptedException {
+
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setPaint(Color.BLACK);
 
-        // Vẽ Mui Xe
-        muiXe1 = new Point(-8, 3);
-        muiXe2 = new Point(-8, 4);
-        muiXe3 = new Point(-6, 4);
-        muiXe4 = new Point(-6, 3);
-        // Vẽ Thân Xe
-        thanXe1 = new Point(-9.5, 2);
-        thanXe2 = new Point(-9.5, 3);
-        thanXe3 = new Point(-4.5, 3);
-        thanXe4 = new Point(-4.5, 2);
-        //Bánh Xe
-        banhXe1 = new Point();
-        banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
-        banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
-        banhXe2 = new Point();
-        banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
-        banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
-        
-        for (float j = 0; j < 12 ;j = (float) (j + 0.1)) {
-            double i = 0.1;    // khoản cách tịnh tuyến
-            Thread.sleep(20);
-            clear2D();
-            translate(muiXe1, quaPhai(muiXe1, i));
-            translate(muiXe2, quaPhai(muiXe2, i));
-            translate(muiXe3, quaPhai(muiXe3, i));
-            translate(muiXe4, quaPhai(muiXe4, i));
-            translate(thanXe1, quaPhai(thanXe1, i));
-            translate(thanXe3, quaPhai(thanXe3, i));
-            translate(thanXe2, quaPhai(thanXe2, i));
-            translate(thanXe4, quaPhai(thanXe4, i));
-            translate(banhXe1, quaPhai(banhXe1, i * step));
-            translate(banhXe2, quaPhai(banhXe2, i * step));
-            // Vẽ Mui Xe
-            drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
-            drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
-            drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
-            // Vẽ Thân Xe
-            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
-            drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
-            drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
-            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
-            //Bánh Xe
-            g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
-            g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+        if (huongDi.equals("Phải")) {
+            System.out.println((khoanCach / 0.1));
+            for (float j = 0; j < (khoanCach / 0.1); j++) {
+                double i = 0.1;    // khoản cách tịnh tuyến
+                System.out.println(j);
+                
+                Thread.sleep(20);
+                clear2D();
+                translate(muiXe1, quaPhai(muiXe1, i));
+                translate(muiXe2, quaPhai(muiXe2, i));
+                translate(muiXe3, quaPhai(muiXe3, i));
+                translate(muiXe4, quaPhai(muiXe4, i));
+                translate(thanXe1, quaPhai(thanXe1, i));
+                translate(thanXe3, quaPhai(thanXe3, i));
+                translate(thanXe2, quaPhai(thanXe2, i));
+                translate(thanXe4, quaPhai(thanXe4, i));
+                translate(banhXe1, quaPhai(banhXe1, (i * step)));
+                translate(banhXe2, quaPhai(banhXe2, (i * step)));
+                // Vẽ Mui Xe
+                drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
+                drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
+                drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
+                // Vẽ Thân Xe
+                drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
+                drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
+                drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
+                drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
+                //Bánh Xe
+                g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+                g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+            }
+        } else if (huongDi.equals("Trái")) {
+            for (float j = 0; j < (khoanCach / 0.1); j++) {
+                double i = 0.1;    // khoản cách tịnh tuyến
+                Thread.sleep(20);
+                clear2D();
+                translate(muiXe1, quaTrai(muiXe1, i));
+                translate(muiXe2, quaTrai(muiXe2, i));
+                translate(muiXe3, quaTrai(muiXe3, i));
+                translate(muiXe4, quaTrai(muiXe4, i));
+                translate(thanXe1, quaTrai(thanXe1, i));
+                translate(thanXe3, quaTrai(thanXe3, i));
+                translate(thanXe2, quaTrai(thanXe2, i));
+                translate(thanXe4, quaTrai(thanXe4, i));
+                translate(banhXe1, quaTrai(banhXe1, i * step));
+                translate(banhXe2, quaTrai(banhXe2, i * step));
+                // Vẽ Mui Xe
+                drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
+                drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
+                drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
+                // Vẽ Thân Xe
+                drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
+                drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
+                drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
+                drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
+                //Bánh Xe
+                g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+                g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+            }
+        } else if (huongDi.equals("Lên")) {
+            for (float j = 0; j < (khoanCach / 0.1); j++) {
+                double i = 0.1;    // khoản cách tịnh tuyến
+                Thread.sleep(20);
+                clear2D();
+                translate(muiXe1, diLen(muiXe1, i));
+                translate(muiXe2, diLen(muiXe2, i));
+                translate(muiXe3, diLen(muiXe3, i));
+                translate(muiXe4, diLen(muiXe4, i));
+                translate(thanXe1, diLen(thanXe1, i));
+                translate(thanXe3, diLen(thanXe3, i));
+                translate(thanXe2, diLen(thanXe2, i));
+                translate(thanXe4, diLen(thanXe4, i));
+                translate(banhXe1, diLen(banhXe1, -(i * step)));
+                translate(banhXe2, diLen(banhXe2, -(i * step)));
+                // Vẽ Mui Xe
+                drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
+                drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
+                drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
+                // Vẽ Thân Xe
+                drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
+                drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
+                drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
+                drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
+                //Bánh Xe
+                g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+                g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+            }
+        } else if (huongDi.equals("Xuống")) {
+            for (float j = 0; j < (khoanCach / 0.1); j++) {
+                double i = 0.1;    // khoản cách tịnh tuyến
+                Thread.sleep(20);
+                clear2D();
+                translate(muiXe1, diXuong(muiXe1, i));
+                translate(muiXe2, diXuong(muiXe2, i));
+                translate(muiXe3, diXuong(muiXe3, i));
+                translate(muiXe4, diXuong(muiXe4, i));
+                translate(thanXe1, diXuong(thanXe1, i));
+                translate(thanXe3, diXuong(thanXe3, i));
+                translate(thanXe2, diXuong(thanXe2, i));
+                translate(thanXe4, diXuong(thanXe4, i));
+                translate(banhXe1, diXuong(banhXe1, -(i * step)));
+                translate(banhXe2, diXuong(banhXe2, -(i * step)));
+                // Vẽ Mui Xe
+                drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
+                drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
+                drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
+                // Vẽ Thân Xe
+                drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
+                drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
+                drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
+                drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
+                //Bánh Xe
+                g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+                g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+            }
         }
-        
-        for (float j = 0; j < 5 ;j = (float) (j + 0.1)) {
-            double i = 0.1;    // khoản cách tịnh tuyến
-            Thread.sleep(20);
-            clear2D();
-            translate(muiXe1, diXuong(muiXe1, i));
-            translate(muiXe2, diXuong(muiXe2, i));
-            translate(muiXe3, diXuong(muiXe3, i));
-            translate(muiXe4, diXuong(muiXe4, i));
-            translate(thanXe1, diXuong(thanXe1, i));
-            translate(thanXe3, diXuong(thanXe3, i));
-            translate(thanXe2, diXuong(thanXe2, i));
-            translate(thanXe4, diXuong(thanXe4, i));
-            translate(banhXe1, diXuong(banhXe1, -(i * step)));
-            translate(banhXe2, diXuong(banhXe2, -(i * step)));
-            // Vẽ Mui Xe
-            drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
-            drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
-            drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
-            // Vẽ Thân Xe
-            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
-            drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
-            drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
-            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
-            //Bánh Xe
-            g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
-            g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
-        }
-        
-        for (float j = 0; j < 12 ;j = (float) (j + 0.1)) {
-            double i = 0.1;    // khoản cách tịnh tuyến
-            Thread.sleep(20);
-            clear2D();
-            translate(muiXe1, quaTrai(muiXe1, i));
-            translate(muiXe2, quaTrai(muiXe2, i));
-            translate(muiXe3, quaTrai(muiXe3, i));
-            translate(muiXe4, quaTrai(muiXe4, i));
-            translate(thanXe1, quaTrai(thanXe1, i));
-            translate(thanXe3, quaTrai(thanXe3, i));
-            translate(thanXe2, quaTrai(thanXe2, i));
-            translate(thanXe4, quaTrai(thanXe4, i));
-            translate(banhXe1, quaTrai(banhXe1, i * step));
-            translate(banhXe2, quaTrai(banhXe2, i * step));
-            // Vẽ Mui Xe
-            drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
-            drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
-            drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
-            // Vẽ Thân Xe
-            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
-            drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
-            drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
-            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
-            //Bánh Xe
-            g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
-            g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
-        }
-        
-        for (float j = 0; j < 5 ;j = (float) (j + 0.1)) {
-            double i = 0.1;    // khoản cách tịnh tuyến
-            Thread.sleep(20);
-            clear2D();
-            translate(muiXe1, diLen(muiXe1, i));
-            translate(muiXe2, diLen(muiXe2, i));
-            translate(muiXe3, diLen(muiXe3, i));
-            translate(muiXe4, diLen(muiXe4, i));
-            translate(thanXe1, diLen(thanXe1, i));
-            translate(thanXe3, diLen(thanXe3, i));
-            translate(thanXe2, diLen(thanXe2, i));
-            translate(thanXe4, diLen(thanXe4, i));
-            translate(banhXe1, diLen(banhXe1, -(i * step)));
-            translate(banhXe2, diLen(banhXe2, -(i * step)));
-            // Vẽ Mui Xe
-            drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
-            drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
-            drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
-            // Vẽ Thân Xe
-            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
-            drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
-            drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
-            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
-            //Bánh Xe
-            g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
-            g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
-        }
+    }
+
+    public void veDongHo() {
+
     }
 }
