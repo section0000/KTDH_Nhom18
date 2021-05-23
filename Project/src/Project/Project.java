@@ -826,10 +826,8 @@ public class Project extends javax.swing.JFrame {
     public void clear2D() {
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.clearRect(0, 0, width, height);
-//        panel3D.setBackground(Color.white);
         g3D = panel3D.getGraphics();
         draw2DCoordinate();
-        //drawGrid();
     }
 
     public void draw2DCoordinate() {
@@ -1502,6 +1500,24 @@ public class Project extends javax.swing.JFrame {
         x.setY(x.getY());
         return x;
     }
+    
+    public Point quaTrai(Point x, double i) {
+        x.setX(x.getX() - i);
+        x.setY(x.getY());
+        return x;
+    }
+    
+    public Point diXuong(Point x, double i) {
+        x.setX(x.getX());
+        x.setY(x.getY() - i);
+        return x;
+    }
+    
+    public Point diLen(Point x, double i) {
+        x.setX(x.getX());
+        x.setY(x.getY() + i);
+        return x;
+    }
 
     // Vẽ Xe 
     public void veXe() throws InterruptedException {
@@ -1531,7 +1547,6 @@ public class Project extends javax.swing.JFrame {
             double i = 0.1;    // khoản cách tịnh tuyến
             Thread.sleep(20);
             clear2D();
-
             translate(muiXe1, quaPhai(muiXe1, i));
             translate(muiXe2, quaPhai(muiXe2, i));
             translate(muiXe3, quaPhai(muiXe3, i));
@@ -1542,7 +1557,90 @@ public class Project extends javax.swing.JFrame {
             translate(thanXe4, quaPhai(thanXe4, i));
             translate(banhXe1, quaPhai(banhXe1, i * step));
             translate(banhXe2, quaPhai(banhXe2, i * step));
-
+            // Vẽ Mui Xe
+            drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
+            drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
+            drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
+            // Vẽ Thân Xe
+            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
+            drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
+            drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
+            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
+            //Bánh Xe
+            g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+            g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+        }
+        
+        for (float j = 0; j < 5 ;j = (float) (j + 0.1)) {
+            double i = 0.1;    // khoản cách tịnh tuyến
+            Thread.sleep(20);
+            clear2D();
+            translate(muiXe1, diXuong(muiXe1, i));
+            translate(muiXe2, diXuong(muiXe2, i));
+            translate(muiXe3, diXuong(muiXe3, i));
+            translate(muiXe4, diXuong(muiXe4, i));
+            translate(thanXe1, diXuong(thanXe1, i));
+            translate(thanXe3, diXuong(thanXe3, i));
+            translate(thanXe2, diXuong(thanXe2, i));
+            translate(thanXe4, diXuong(thanXe4, i));
+            translate(banhXe1, diXuong(banhXe1, -(i * step)));
+            translate(banhXe2, diXuong(banhXe2, -(i * step)));
+            // Vẽ Mui Xe
+            drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
+            drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
+            drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
+            // Vẽ Thân Xe
+            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
+            drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
+            drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
+            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
+            //Bánh Xe
+            g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+            g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+        }
+        
+        for (float j = 0; j < 12 ;j = (float) (j + 0.1)) {
+            double i = 0.1;    // khoản cách tịnh tuyến
+            Thread.sleep(20);
+            clear2D();
+            translate(muiXe1, quaTrai(muiXe1, i));
+            translate(muiXe2, quaTrai(muiXe2, i));
+            translate(muiXe3, quaTrai(muiXe3, i));
+            translate(muiXe4, quaTrai(muiXe4, i));
+            translate(thanXe1, quaTrai(thanXe1, i));
+            translate(thanXe3, quaTrai(thanXe3, i));
+            translate(thanXe2, quaTrai(thanXe2, i));
+            translate(thanXe4, quaTrai(thanXe4, i));
+            translate(banhXe1, quaTrai(banhXe1, i * step));
+            translate(banhXe2, quaTrai(banhXe2, i * step));
+            // Vẽ Mui Xe
+            drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
+            drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
+            drawLineDDA(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY());
+            // Vẽ Thân Xe
+            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY());
+            drawLineDDA(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY());
+            drawLineDDA(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY());
+            drawLineDDA(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY());
+            //Bánh Xe
+            g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+            g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+        }
+        
+        for (float j = 0; j < 5 ;j = (float) (j + 0.1)) {
+            double i = 0.1;    // khoản cách tịnh tuyến
+            Thread.sleep(20);
+            clear2D();
+            translate(muiXe1, diLen(muiXe1, i));
+            translate(muiXe2, diLen(muiXe2, i));
+            translate(muiXe3, diLen(muiXe3, i));
+            translate(muiXe4, diLen(muiXe4, i));
+            translate(thanXe1, diLen(thanXe1, i));
+            translate(thanXe3, diLen(thanXe3, i));
+            translate(thanXe2, diLen(thanXe2, i));
+            translate(thanXe4, diLen(thanXe4, i));
+            translate(banhXe1, diLen(banhXe1, -(i * step)));
+            translate(banhXe2, diLen(banhXe2, -(i * step)));
             // Vẽ Mui Xe
             drawLineDDA(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY());
             drawLineDDA(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY());
