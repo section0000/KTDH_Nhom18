@@ -36,6 +36,7 @@ public class Project extends javax.swing.JFrame {
 
     int bkDongHo = 1;
     Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2, tamXe;
+    double banhXeX = 0.8, banhXeY = 0.8;
     boolean dx = true, dh = false, dxdh = false;
     String dxdhString = "";
 
@@ -200,6 +201,10 @@ public class Project extends javax.swing.JFrame {
         YTT = new javax.swing.JTextField();
         XTT = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        TLXEY = new javax.swing.JTextField();
+        TLXEX = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
         DongHoPanel = new javax.swing.JPanel();
         XDongHo = new javax.swing.JTextField();
         YDongHo = new javax.swing.JTextField();
@@ -740,7 +745,7 @@ public class Project extends javax.swing.JFrame {
                 .addComponent(HinhXe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(dongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(478, Short.MAX_VALUE))
+                .addContainerGap(571, Short.MAX_VALUE))
         );
 
         TuyChon.add(Menu, "card2");
@@ -772,10 +777,10 @@ public class Project extends javax.swing.JFrame {
         HinhXePanel.add(XeDXOx, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
 
         H.setText("(0;0)");
-        HinhXePanel.add(H, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
+        HinhXePanel.add(H, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, -1, -1));
 
         DH.setText("H");
-        HinhXePanel.add(DH, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
+        HinhXePanel.add(DH, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, -1));
 
         G.setText("(0;0)");
         HinhXePanel.add(G, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
@@ -790,22 +795,22 @@ public class Project extends javax.swing.JFrame {
         HinhXePanel.add(E, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         F.setText("(0;0)");
-        HinhXePanel.add(F, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
+        HinhXePanel.add(F, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
 
         DF.setText("F");
-        HinhXePanel.add(DF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
+        HinhXePanel.add(DF, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
         D.setText("(0;0)");
-        HinhXePanel.add(D, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
+        HinhXePanel.add(D, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
 
         DD.setText("D");
-        HinhXePanel.add(DD, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, -1, -1));
+        HinhXePanel.add(DD, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
 
         B.setText("(0;0)");
-        HinhXePanel.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+        HinhXePanel.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
 
         DB.setText("B");
-        HinhXePanel.add(DB, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+        HinhXePanel.add(DB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, -1));
 
         A.setText("(0;0)");
         HinhXePanel.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
@@ -883,7 +888,7 @@ public class Project extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        HinhXePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 570, -1, -1));
+        HinhXePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, -1, -1));
 
         btnQuayXe.setText("Quay Quanh O 1 Góc");
         btnQuayXe.addActionListener(new java.awt.event.ActionListener() {
@@ -938,6 +943,23 @@ public class Project extends javax.swing.JFrame {
             }
         });
         HinhXePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+
+        jLabel8.setText("Điểm Tỉ Lệ : ");
+        HinhXePanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, -1, -1));
+
+        TLXEY.setText("1");
+        HinhXePanel.add(TLXEY, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 580, 20, -1));
+
+        TLXEX.setText("1");
+        HinhXePanel.add(TLXEX, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, 20, -1));
+
+        jButton4.setText("Tỉ Lệ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        HinhXePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, 70, -1));
 
         TuyChon.add(HinhXePanel, "card3");
 
@@ -1134,11 +1156,11 @@ public class Project extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(panel2D, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
+                        .addComponent(panel2D, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(TuyChon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TuyChon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(xoaManHinh_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30))))
         );
@@ -1545,6 +1567,11 @@ public class Project extends javax.swing.JFrame {
         scaleDongHo();
     }//GEN-LAST:event_TLActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        scaleXe();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1623,6 +1650,8 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JButton Phai;
     private javax.swing.JButton Phai1;
     private javax.swing.JButton TL;
+    private javax.swing.JTextField TLXEX;
+    private javax.swing.JTextField TLXEY;
     private javax.swing.JLabel TamXe;
     private javax.swing.JLabel Timeee;
     private javax.swing.JButton Trai;
@@ -1651,6 +1680,7 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1658,6 +1688,7 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -2432,8 +2463,8 @@ public class Project extends javax.swing.JFrame {
         drawLineDDAText(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY(), "F", "H");
         drawLineDDAText(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY(), "G", "H");
         //Bánh Xe
-        g1.fillOval((int) ((banhXe1.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe1.getY() * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
-        g1.fillOval((int) ((banhXe2.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe2.getY() * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
+        g1.fillOval((int) ((banhXe1.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe1.getY() * this.step), (int) (((banhXeX) * step)), (int) ((banhXeY) * step));
+        g1.fillOval((int) ((banhXe2.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe2.getY() * this.step), (int) (((banhXeX) * step)), (int) ((banhXeY) * step));
         toaDoXe();
     }
 
@@ -2531,6 +2562,25 @@ public class Project extends javax.swing.JFrame {
         thanXe4 = translate(thanXe4, TT);
         banhXe1 = translate(banhXe1, TT);
         banhXe2 = translate(banhXe2, TT);
+        veChiecXe();
+    }
+    
+    // Scale Xe
+    public void scaleXe(){
+        Point TT = new Point(Double.valueOf(TLXEX.getText()), Double.valueOf(TLXEY.getText()));
+        tamXe = scale(tamXe, TT);
+        muiXe1 = scale(muiXe1, TT);
+        muiXe2 = scale(muiXe2, TT);
+        muiXe3 = scale(muiXe3, TT);
+        muiXe4 = scale(muiXe4, TT);
+        thanXe1 = scale(thanXe1, TT);
+        thanXe3 = scale(thanXe3, TT);
+        thanXe2 = scale(thanXe2, TT);
+        thanXe4 = scale(thanXe4, TT);
+        banhXe1 = scale(banhXe1, TT);
+        banhXe2 = scale(banhXe2, TT);
+        banhXeX = banhXeX * Double.valueOf(TLXEX.getText());
+        banhXeY = banhXeY * Double.valueOf(TLXEY.getText());
         veChiecXe();
     }
 
