@@ -35,7 +35,7 @@ public class Project extends javax.swing.JFrame {
     private int width; // Chieu dai cua Panel
 
     int bkDongHo = 1;
-    Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2;
+    Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2, tamXe;
     boolean dx = true, dh = false, dxdh = false;
     String dxdhString = "";
 
@@ -53,19 +53,21 @@ public class Project extends javax.swing.JFrame {
     }
 
     public void khoiTaoXe() {
+        // Tâm Xe
+        tamXe = new Point(-7, 2.5);
         // Vẽ Mui Xe
-        muiXe1 = new Point(-8, 3);
-        muiXe2 = new Point(-8, 4);
-        muiXe3 = new Point(-6, 4);
-        muiXe4 = new Point(-6, 3);
+        muiXe1 = new Point(tamXe.getX() - 1, tamXe.getY() + 0.5);
+        muiXe2 = new Point(tamXe.getX() - 1, tamXe.getY() + 1.5);
+        muiXe3 = new Point(tamXe.getX() + 1, tamXe.getY() + 1.5);
+        muiXe4 = new Point(tamXe.getX() + 1, tamXe.getY() + 0.5);
         // Vẽ Thân Xe
-        thanXe1 = new Point(-9.5, 2);
-        thanXe2 = new Point(-9.5, 3);
-        thanXe3 = new Point(-4.5, 3);
-        thanXe4 = new Point(-4.5, 2);
+        thanXe1 = new Point(tamXe.getX() - 2.5, tamXe.getY() - 0.5);
+        thanXe2 = new Point(tamXe.getX() - 2.5, tamXe.getY() + 0.5);
+        thanXe3 = new Point(tamXe.getX() + 2.5, tamXe.getY() + 0.5);
+        thanXe4 = new Point(tamXe.getX() + 2.5, tamXe.getY() - 0.5);
         //Bánh Xe
-        banhXe1 = new Point(-9, 2.3);
-        banhXe2 = new Point(-5.7, 2.3);
+        banhXe1 = new Point(tamXe.getX() - 2, tamXe.getY() - 0.2);
+        banhXe2 = new Point(tamXe.getX() + 1.3, tamXe.getY() - 0.2);
     }
 
     public Project() {
@@ -192,6 +194,12 @@ public class Project extends javax.swing.JFrame {
         btnQuayXe = new javax.swing.JButton();
         GocQuayXe = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        Jlable123 = new javax.swing.JLabel();
+        TamXe = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        YTT = new javax.swing.JTextField();
+        XTT = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
         DongHoPanel = new javax.swing.JPanel();
         XDongHo = new javax.swing.JTextField();
         YDongHo = new javax.swing.JTextField();
@@ -728,7 +736,7 @@ public class Project extends javax.swing.JFrame {
                 .addComponent(HinhXe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(dongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(448, Short.MAX_VALUE))
+                .addContainerGap(478, Short.MAX_VALUE))
         );
 
         TuyChon.add(Menu, "card2");
@@ -741,7 +749,7 @@ public class Project extends javax.swing.JFrame {
                 XeDXOActionPerformed(evt);
             }
         });
-        HinhXePanel.add(XeDXO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 131, -1));
+        HinhXePanel.add(XeDXO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 131, -1));
 
         XeDXOy.setText("Đối Xứng Qua Oy");
         XeDXOy.addActionListener(new java.awt.event.ActionListener() {
@@ -749,7 +757,7 @@ public class Project extends javax.swing.JFrame {
                 XeDXOyActionPerformed(evt);
             }
         });
-        HinhXePanel.add(XeDXOy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+        HinhXePanel.add(XeDXOy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
 
         XeDXOx.setText("Đối Xứng Qua Ox");
         XeDXOx.addActionListener(new java.awt.event.ActionListener() {
@@ -757,61 +765,61 @@ public class Project extends javax.swing.JFrame {
                 XeDXOxActionPerformed(evt);
             }
         });
-        HinhXePanel.add(XeDXOx, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+        HinhXePanel.add(XeDXOx, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
 
         H.setText("(0;0)");
-        HinhXePanel.add(H, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 253, -1, -1));
+        HinhXePanel.add(H, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
 
         DH.setText("H");
-        HinhXePanel.add(DH, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 253, -1, -1));
+        HinhXePanel.add(DH, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
 
         G.setText("(0;0)");
-        HinhXePanel.add(G, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 253, -1, -1));
+        HinhXePanel.add(G, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
         DG.setText("G");
-        HinhXePanel.add(DG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 253, -1, -1));
+        HinhXePanel.add(DG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, -1));
 
         DE.setText("E");
-        HinhXePanel.add(DE, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 219, -1, -1));
+        HinhXePanel.add(DE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
 
         E.setText("(0;0)");
-        HinhXePanel.add(E, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 219, -1, -1));
+        HinhXePanel.add(E, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         F.setText("(0;0)");
-        HinhXePanel.add(F, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 219, -1, -1));
+        HinhXePanel.add(F, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
 
         DF.setText("F");
-        HinhXePanel.add(DF, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 219, -1, -1));
+        HinhXePanel.add(DF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
 
         D.setText("(0;0)");
-        HinhXePanel.add(D, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 185, -1, -1));
+        HinhXePanel.add(D, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
 
         DD.setText("D");
-        HinhXePanel.add(DD, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 185, -1, -1));
+        HinhXePanel.add(DD, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, -1, -1));
 
         B.setText("(0;0)");
-        HinhXePanel.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 156, -1, -1));
+        HinhXePanel.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
 
         DB.setText("B");
-        HinhXePanel.add(DB, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 156, -1, -1));
+        HinhXePanel.add(DB, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
         A.setText("(0;0)");
-        HinhXePanel.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 156, -1, -1));
+        HinhXePanel.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         C.setText("(0;0)");
-        HinhXePanel.add(C, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 185, -1, -1));
+        HinhXePanel.add(C, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         DC.setText("C");
-        HinhXePanel.add(DC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 185, -1, -1));
+        HinhXePanel.add(DC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, -1, -1));
 
         DA.setText("A");
-        HinhXePanel.add(DA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 156, -1, -1));
+        HinhXePanel.add(DA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
 
         khoanCachTT.setText("0");
         HinhXePanel.add(khoanCachTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 132, 77, -1));
 
-        jLabel3.setText("Khoản Cách Tịnh Tuyến :");
-        HinhXePanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 109, -1, -1));
+        jLabel3.setText("Tịnh Tuyến Với 1 Điểm :");
+        HinhXePanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, -1, -1));
 
         Xuong.setText("Xuống");
         Xuong.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -871,7 +879,7 @@ public class Project extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        HinhXePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
+        HinhXePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 570, -1, -1));
 
         btnQuayXe.setText("Quay Quanh O 1 Góc");
         btnQuayXe.addActionListener(new java.awt.event.ActionListener() {
@@ -879,7 +887,7 @@ public class Project extends javax.swing.JFrame {
                 btnQuayXeActionPerformed(evt);
             }
         });
-        HinhXePanel.add(btnQuayXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 160, 30));
+        HinhXePanel.add(btnQuayXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 160, 30));
 
         GocQuayXe.setText("0");
         GocQuayXe.addActionListener(new java.awt.event.ActionListener() {
@@ -887,11 +895,45 @@ public class Project extends javax.swing.JFrame {
                 GocQuayXeActionPerformed(evt);
             }
         });
-        HinhXePanel.add(GocQuayXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 90, -1));
+        HinhXePanel.add(GocQuayXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 90, -1));
 
         jLabel4.setForeground(new java.awt.Color(204, 0, 0));
         jLabel4.setText("Theo Chiều Kim Đồng Hồ");
-        HinhXePanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, -1, -1));
+        HinhXePanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, -1, -1));
+
+        Jlable123.setText("Tâm Xe :");
+        HinhXePanel.add(Jlable123, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, -1));
+
+        TamXe.setForeground(new java.awt.Color(255, 0, 0));
+        TamXe.setText("(0;0)");
+        HinhXePanel.add(TamXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, -1));
+
+        jLabel6.setText("Khoản Cách Tịnh Tuyến :");
+        HinhXePanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 109, -1, -1));
+
+        YTT.setText("0");
+        YTT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                YTTActionPerformed(evt);
+            }
+        });
+        HinhXePanel.add(YTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 20, 20));
+
+        XTT.setText("0");
+        XTT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XTTActionPerformed(evt);
+            }
+        });
+        HinhXePanel.add(XTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 20, 20));
+
+        jButton3.setText("Tịnh Tuyến");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        HinhXePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
         TuyChon.add(HinhXePanel, "card3");
 
@@ -978,11 +1020,11 @@ public class Project extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        DongHoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+        DongHoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
 
         Timeee.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Timeee.setForeground(new java.awt.Color(255, 0, 0));
-        DongHoPanel.add(Timeee, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 110, 30));
+        DongHoPanel.add(Timeee, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 110, 30));
 
         VeDongHo.setText("Vẽ");
         VeDongHo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1003,7 +1045,7 @@ public class Project extends javax.swing.JFrame {
                 Len1ActionPerformed(evt);
             }
         });
-        DongHoPanel.add(Len1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 68, -1));
+        DongHoPanel.add(Len1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 68, -1));
 
         Trai1.setText("Trái");
         Trai1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1016,7 +1058,7 @@ public class Project extends javax.swing.JFrame {
                 Trai1ActionPerformed(evt);
             }
         });
-        DongHoPanel.add(Trai1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, -1, -1));
+        DongHoPanel.add(Trai1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
 
         Phai1.setText("Phải");
         Phai1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1029,7 +1071,7 @@ public class Project extends javax.swing.JFrame {
                 Phai1ActionPerformed(evt);
             }
         });
-        DongHoPanel.add(Phai1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, -1));
+        DongHoPanel.add(Phai1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, -1, -1));
 
         Xuong1.setText("Xuống");
         Xuong1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1042,13 +1084,13 @@ public class Project extends javax.swing.JFrame {
                 Xuong1ActionPerformed(evt);
             }
         });
-        DongHoPanel.add(Xuong1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
+        DongHoPanel.add(Xuong1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
 
         jLabel5.setText("Khoản Cách Tịnh Tuyến :");
-        DongHoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, -1, -1));
+        DongHoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, -1, -1));
 
         khoanCachTT1.setText("0");
-        DongHoPanel.add(khoanCachTT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 77, -1));
+        DongHoPanel.add(khoanCachTT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 77, -1));
 
         TuyChon.add(DongHoPanel, "card2");
 
@@ -1464,6 +1506,19 @@ public class Project extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Xuong1ActionPerformed
 
+    private void YTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YTTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_YTTActionPerformed
+
+    private void XTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XTTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_XTTActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        TTXE();
+    }//GEN-LAST:event_jButton3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1533,23 +1588,27 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JButton HTDXOy;
     private javax.swing.JButton HinhXe;
     private javax.swing.JPanel HinhXePanel;
+    private javax.swing.JLabel Jlable123;
     private javax.swing.JButton Len;
     private javax.swing.JButton Len1;
     private javax.swing.JPanel Menu;
     private javax.swing.JButton Phai;
     private javax.swing.JButton Phai1;
+    private javax.swing.JLabel TamXe;
     private javax.swing.JLabel Timeee;
     private javax.swing.JButton Trai;
     private javax.swing.JButton Trai1;
     private javax.swing.JLayeredPane TuyChon;
     private javax.swing.JButton VeDongHo;
     private javax.swing.JTextField XDongHo;
+    private javax.swing.JTextField XTT;
     private javax.swing.JButton XeDXO;
     private javax.swing.JButton XeDXOx;
     private javax.swing.JButton XeDXOy;
     private javax.swing.JButton Xuong;
     private javax.swing.JButton Xuong1;
     private javax.swing.JTextField YDongHo;
+    private javax.swing.JTextField YTT;
     private javax.swing.JButton btnQuayXe;
     private javax.swing.JLabel cao_Lbl;
     private javax.swing.JTextField cao_TF;
@@ -1562,11 +1621,13 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JButton dongHo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -2329,6 +2390,8 @@ public class Project extends javax.swing.JFrame {
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setPaint(Color.BLACK);
         DecimalFormat format = new DecimalFormat("0.#");
+        // Vẽ Tâm Xe
+        drawLineDDAText(tamXe.getX(), tamXe.getY(), tamXe.getX(), tamXe.getY(), "Z", "Z");
         // Vẽ Mui Xe
         drawLineDDAText(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY(), "D", "A");
         drawLineDDAText(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY(), "A", "B");
@@ -2421,6 +2484,24 @@ public class Project extends javax.swing.JFrame {
         F.setText("(" + format.format((thanXe3.getX())) + " ; " + format.format((thanXe3.getY())) + ")");
         G.setText("(" + format.format((thanXe1.getX())) + " ; " + format.format((thanXe1.getY())) + ")");
         H.setText("(" + format.format((thanXe4.getX())) + " ; " + format.format((thanXe4.getY())) + ")");
+        TamXe.setText("(" + format.format((tamXe.getX())) + " ; " + format.format((tamXe.getY())) + ")");
+    }
+
+    // Tịnh Tuyến Xe Theo 1 Điểm
+    public void TTXE() {
+        Point TT = new Point(Double.valueOf(XTT.getText()), Double.valueOf(YTT.getText()));
+        tamXe = translate(tamXe, TT);
+        muiXe1 = translate(muiXe1, TT);
+        muiXe2 = translate(muiXe2, TT);
+        muiXe3 = translate(muiXe3, TT);
+        muiXe4 = translate(muiXe4, TT);
+        thanXe1 = translate(thanXe1, TT);
+        thanXe3 = translate(thanXe3, TT);
+        thanXe2 = translate(thanXe2, TT);
+        thanXe4 = translate(thanXe4, TT);
+        banhXe1 = translate(banhXe1, TT);
+        banhXe2 = translate(banhXe2, TT);
+        veChiecXe();
     }
 
     // Vẽ Xe 
@@ -2428,8 +2509,9 @@ public class Project extends javax.swing.JFrame {
         double i = 0.1;    // khoản cách tịnh tuyến
         if (huongDi.equals("Phải")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
-                
+
                 Thread.sleep(20);
+                translate(tamXe, quaPhai(tamXe, i));
                 translate(muiXe1, quaPhai(muiXe1, i));
                 translate(muiXe2, quaPhai(muiXe2, i));
                 translate(muiXe3, quaPhai(muiXe3, i));
@@ -2445,6 +2527,7 @@ public class Project extends javax.swing.JFrame {
         } else if (huongDi.equals("Trái")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
                 Thread.sleep(20);
+                translate(tamXe, quaTrai(tamXe, i));
                 translate(muiXe1, quaTrai(muiXe1, i));
                 translate(muiXe2, quaTrai(muiXe2, i));
                 translate(muiXe3, quaTrai(muiXe3, i));
@@ -2460,6 +2543,7 @@ public class Project extends javax.swing.JFrame {
         } else if (huongDi.equals("Lên")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
                 Thread.sleep(20);
+                translate(tamXe, diLen(tamXe, i));
                 translate(muiXe1, diLen(muiXe1, i));
                 translate(muiXe2, diLen(muiXe2, i));
                 translate(muiXe3, diLen(muiXe3, i));
@@ -2468,13 +2552,14 @@ public class Project extends javax.swing.JFrame {
                 translate(thanXe3, diLen(thanXe3, i));
                 translate(thanXe2, diLen(thanXe2, i));
                 translate(thanXe4, diLen(thanXe4, i));
-                translate(banhXe1, diLen(banhXe1, -(i)));
-                translate(banhXe2, diLen(banhXe2, -(i)));
+                translate(banhXe1, diLen(banhXe1, +(i)));
+                translate(banhXe2, diLen(banhXe2, +(i)));
                 veChiecXe();
             }
         } else if (huongDi.equals("Xuống")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
                 Thread.sleep(20);
+                translate(tamXe, diXuong(tamXe, i));
                 translate(muiXe1, diXuong(muiXe1, i));
                 translate(muiXe2, diXuong(muiXe2, i));
                 translate(muiXe3, diXuong(muiXe3, i));
@@ -2483,8 +2568,8 @@ public class Project extends javax.swing.JFrame {
                 translate(thanXe3, diXuong(thanXe3, i));
                 translate(thanXe2, diXuong(thanXe2, i));
                 translate(thanXe4, diXuong(thanXe4, i));
-                translate(banhXe1, diXuong(banhXe1, -(i)));
-                translate(banhXe2, diXuong(banhXe2, -(i)));
+                translate(banhXe1, diXuong(banhXe1, +(i)));
+                translate(banhXe2, diXuong(banhXe2, +(i)));
                 veChiecXe();
             }
         }
