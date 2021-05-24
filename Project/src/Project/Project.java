@@ -219,6 +219,10 @@ public class Project extends javax.swing.JFrame {
         Xuong1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         khoanCachTT1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        DTLY = new javax.swing.JTextField();
+        DTLX = new javax.swing.JTextField();
+        TL = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1020,7 +1024,7 @@ public class Project extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        DongHoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
+        DongHoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, -1, -1));
 
         Timeee.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Timeee.setForeground(new java.awt.Color(255, 0, 0));
@@ -1091,6 +1095,23 @@ public class Project extends javax.swing.JFrame {
 
         khoanCachTT1.setText("0");
         DongHoPanel.add(khoanCachTT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 77, -1));
+
+        jLabel7.setText("Điểm Tỉ Lệ :");
+        DongHoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, -1, -1));
+
+        DTLY.setText("1");
+        DongHoPanel.add(DTLY, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 20, -1));
+
+        DTLX.setText("1");
+        DongHoPanel.add(DTLX, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 20, -1));
+
+        TL.setText("Tỉ Lệ");
+        TL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TLActionPerformed(evt);
+            }
+        });
+        DongHoPanel.add(TL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
 
         TuyChon.add(DongHoPanel, "card2");
 
@@ -1519,6 +1540,11 @@ public class Project extends javax.swing.JFrame {
         TTXE();
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void TLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TLActionPerformed
+        // TODO add your handling code here:
+        scaleDongHo();
+    }//GEN-LAST:event_TLActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1569,6 +1595,8 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JLabel DF;
     private javax.swing.JLabel DG;
     private javax.swing.JLabel DH;
+    private javax.swing.JTextField DTLX;
+    private javax.swing.JTextField DTLY;
     private javax.swing.JButton DongHoBe;
     private javax.swing.JButton DongHoLon;
     private javax.swing.JPanel DongHoPanel;
@@ -1594,6 +1622,7 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JPanel Menu;
     private javax.swing.JButton Phai;
     private javax.swing.JButton Phai1;
+    private javax.swing.JButton TL;
     private javax.swing.JLabel TamXe;
     private javax.swing.JLabel Timeee;
     private javax.swing.JButton Trai;
@@ -1628,6 +1657,7 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -2417,7 +2447,7 @@ public class Project extends javax.swing.JFrame {
         thanXe2 = symmetricWithRespectTo(thanXe2, O);
         thanXe3 = symmetricWithRespectTo(thanXe3, O);
         thanXe4 = symmetricWithRespectTo(thanXe4, O);
-
+        tamXe = symmetricWithRespectTo(tamXe, O);
 //        banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
 //        banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
 //
@@ -2672,5 +2702,14 @@ public class Project extends javax.swing.JFrame {
             }
             YDongHo.setText(String.valueOf(Math.round(Double.valueOf(YDongHo.getText()) - i)));
         }
+    }
+    
+    // Scale Đồng Hồ
+    public void scaleDongHo(){
+        Point Z = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo);
+        Point SC = new Point(Double.valueOf(DTLX.getText()),Double.valueOf(DTLY.getText()));
+        Z = scale(Z, SC);
+        double newbk = Math.sqrt(Math.pow((Z.getX() - Double.valueOf(XDongHo.getText())), 2) + Math.pow((Z.getY() - Double.valueOf(YDongHo.getText())), 2));
+        veDongHo((int)newbk);
     }
 }
