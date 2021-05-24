@@ -228,6 +228,11 @@ public class Project extends javax.swing.JFrame {
         DTLY = new javax.swing.JTextField();
         DTLX = new javax.swing.JTextField();
         TL = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        GocDongHo = new javax.swing.JTextField();
+        QuayDongHo = new javax.swing.JButton();
+        QuayY = new javax.swing.JTextField();
+        QuayX = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1046,7 +1051,7 @@ public class Project extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        DongHoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, -1, -1));
+        DongHoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, -1, -1));
 
         Timeee.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Timeee.setForeground(new java.awt.Color(255, 0, 0));
@@ -1134,6 +1139,26 @@ public class Project extends javax.swing.JFrame {
             }
         });
         DongHoPanel.add(TL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
+
+        jLabel9.setText("Quay Quanh Điểm 1 Góc :");
+        DongHoPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, -1, -1));
+
+        GocDongHo.setText("0");
+        DongHoPanel.add(GocDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 50, -1));
+
+        QuayDongHo.setText("Quay");
+        QuayDongHo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuayDongHoActionPerformed(evt);
+            }
+        });
+        DongHoPanel.add(QuayDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 70, -1));
+
+        QuayY.setText("0");
+        DongHoPanel.add(QuayY, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 20, -1));
+
+        QuayX.setText("0");
+        DongHoPanel.add(QuayX, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 20, -1));
 
         TuyChon.add(DongHoPanel, "card2");
 
@@ -1572,6 +1597,11 @@ public class Project extends javax.swing.JFrame {
         scaleXe();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void QuayDongHoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuayDongHoActionPerformed
+        // TODO add your handling code here:
+        QuayDongHo(Double.valueOf(GocDongHo.getText()));
+    }//GEN-LAST:event_QuayDongHoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1630,6 +1660,7 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JLabel E;
     private javax.swing.JLabel F;
     private javax.swing.JLabel G;
+    private javax.swing.JTextField GocDongHo;
     private javax.swing.JTextField GocQuayXe;
     private javax.swing.JLabel H;
     private javax.swing.JPanel HC_Pn;
@@ -1649,6 +1680,9 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JPanel Menu;
     private javax.swing.JButton Phai;
     private javax.swing.JButton Phai1;
+    private javax.swing.JButton QuayDongHo;
+    private javax.swing.JTextField QuayX;
+    private javax.swing.JTextField QuayY;
     private javax.swing.JButton TL;
     private javax.swing.JTextField TLXEX;
     private javax.swing.JTextField TLXEY;
@@ -1689,6 +1723,7 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -2517,7 +2552,8 @@ public class Project extends javax.swing.JFrame {
         thanXe2 = rotate(thanXe2, Z, O);
         thanXe3 = rotate(thanXe3, Z, O);
         thanXe4 = rotate(thanXe4, Z, O);
-
+        
+        tamXe = rotate(tamXe, Z, O);
         double A = 0.12;
         if (O > 0) {
             banhXe1.setX(banhXe1.getX() - A);
@@ -2690,6 +2726,16 @@ public class Project extends javax.swing.JFrame {
         drawLineDDA(kimGio1.getX(), kimGio1.getY(), rotate(kimGio2, kimGio1, gio).getX(), rotate(kimGio2, kimGio1, gio).getY());
     }
 
+    //Quay Đồng Hồ
+    public void QuayDongHo(Double O){
+        Point Z = new Point(Double.valueOf(QuayX.getText()), Double.valueOf(QuayY.getText()));
+        Point temp = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()));
+        temp = rotate(temp, Z, O);
+        XDongHo.setText(String.valueOf(temp.getX()));
+        YDongHo.setText(String.valueOf(temp.getY()));
+        veDongHo(bkDongHo);
+    }
+    
     // Đối Xứng Đồng Hồ
     public void doiXungDongHo(String O) {
         Point z = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()));
