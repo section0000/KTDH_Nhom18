@@ -10,12 +10,17 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
@@ -31,7 +36,20 @@ public class Project extends javax.swing.JFrame {
 
     int bkDongHo = 1;
     Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2;
-    boolean dx = true;
+    boolean dx = true, dh = false;
+
+    Point kimGiay1, kimGiay2, kimPhut1, kimPhut2, kimGio1, kimGio2;
+
+    public void khoiTaoDongHo() {
+        kimGiay1 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(XDongHo.getText()));
+        kimGiay2 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo - 0.1);
+
+        kimPhut1 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(XDongHo.getText()));
+        kimPhut2 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo - 0.2);
+
+        kimGio1 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(XDongHo.getText()));
+        kimGio2 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo - 0.3);
+    }
 
     public void khoiTaoXe() {
         // Vẽ Mui Xe
@@ -50,6 +68,17 @@ public class Project extends javax.swing.JFrame {
     }
 
     public Project() {
+        this.timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date current = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                Timeee.setText(sdf.format(current));
+                if (dh == true) {
+                    veDongHo(bkDongHo);
+                }
+            }
+        });
         initComponents();
         this.setLocationRelativeTo(null);
         height = panel3D.getBounds().height;
@@ -58,7 +87,11 @@ public class Project extends javax.swing.JFrame {
         DongHoPanel.setVisible(false);
         HinhXePanel.setVisible(false);
         g3D = panel3D.getGraphics();
+        khoiTaoDongHo();
+        timer.start();
     }
+
+    Timer timer;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,6 +199,8 @@ public class Project extends javax.swing.JFrame {
         HTDXOy = new javax.swing.JButton();
         HTDXO = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        Timeee = new javax.swing.JLabel();
+        VeDongHo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -861,6 +896,11 @@ public class Project extends javax.swing.JFrame {
         DongHoPanel.add(XDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 13, 130, -1));
 
         YDongHo.setText("0");
+        YDongHo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                YDongHoActionPerformed(evt);
+            }
+        });
         DongHoPanel.add(YDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 42, 130, -1));
 
         DongHoLon.setText("+");
@@ -869,7 +909,7 @@ public class Project extends javax.swing.JFrame {
                 DongHoLonMouseClicked(evt);
             }
         });
-        DongHoPanel.add(DongHoLon, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 71, -1, -1));
+        DongHoPanel.add(DongHoLon, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
 
         DongHoBe.setText("-");
         DongHoBe.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -908,12 +948,26 @@ public class Project extends javax.swing.JFrame {
         DongHoPanel.add(HTDXO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 131, -1));
 
         jButton2.setText("Quay Lại");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         DongHoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+        DongHoPanel.add(Timeee, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 30));
+
+        VeDongHo.setText("Vẽ");
+        VeDongHo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VeDongHoMouseClicked(evt);
+            }
+        });
+        DongHoPanel.add(VeDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 90, -1));
 
         TuyChon.add(DongHoPanel, "card2");
 
@@ -1167,6 +1221,7 @@ public class Project extends javax.swing.JFrame {
 
     private void XDongHoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XDongHoActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_XDongHoActionPerformed
 
     private void DongHoLonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DongHoLonMouseClicked
@@ -1177,6 +1232,7 @@ public class Project extends javax.swing.JFrame {
     private void dongHoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dongHoActionPerformed
         // TODO add your handling code here:
         veDongHo(bkDongHo);
+        dh = true;
         changePanel(TuyChon, DongHoPanel);
     }//GEN-LAST:event_dongHoActionPerformed
 
@@ -1195,6 +1251,7 @@ public class Project extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        dh = false;
         changePanel(TuyChon, Menu);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1238,6 +1295,20 @@ public class Project extends javax.swing.JFrame {
         // TODO add your handling code here:
         QuayXe(Double.valueOf(GocQuayXe.getText()));
     }//GEN-LAST:event_btnQuayXeActionPerformed
+
+    private void YDongHoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YDongHoActionPerformed
+    }//GEN-LAST:event_YDongHoActionPerformed
+
+    private void VeDongHoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VeDongHoMouseClicked
+        // TODO add your handling code here:
+
+        veDongHo(bkDongHo);
+        dh = true;
+    }//GEN-LAST:event_VeDongHoMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1311,8 +1382,10 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JButton Len;
     private javax.swing.JPanel Menu;
     private javax.swing.JButton Phai;
+    private javax.swing.JLabel Timeee;
     private javax.swing.JButton Trai;
     private javax.swing.JLayeredPane TuyChon;
+    private javax.swing.JButton VeDongHo;
     private javax.swing.JTextField XDongHo;
     private javax.swing.JButton XeDXO;
     private javax.swing.JButton XeDXOx;
@@ -2161,7 +2234,7 @@ public class Project extends javax.swing.JFrame {
         thanXe3 = rotate(thanXe3, Z, O);
         thanXe4 = rotate(thanXe4, Z, O);
 
-        double A = 0.1;
+        double A = 0.12;
         if (O > 0) {
             banhXe1.setX(banhXe1.getX() - A);
             banhXe1.setY(banhXe1.getY() - A);
@@ -2169,9 +2242,9 @@ public class Project extends javax.swing.JFrame {
             banhXe2.setY(banhXe2.getY() - A);
         } else {
             banhXe1.setX(banhXe1.getX() + A);
-            banhXe1.setY(banhXe1.getY() + A);
-            banhXe2.setX(banhXe2.getX() + A);
-            banhXe2.setY(banhXe2.getY() + A);
+            banhXe1.setY(banhXe1.getY() + 0.12);
+            banhXe2.setX(banhXe2.getX() + 0.12);
+            banhXe2.setY(banhXe2.getY() + 0.12);
         }
         banhXe1 = rotate(banhXe1, Z, O);
         banhXe2 = rotate(banhXe2, Z, O);
@@ -2263,5 +2336,34 @@ public class Project extends javax.swing.JFrame {
         clear2D();
         bkDongHo = i;
         drawCircleMidPoint(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()), bkDongHo);
+
+        kimGiay1.setX(Double.valueOf(XDongHo.getText()));
+        kimGiay1.setY(Double.valueOf(YDongHo.getText()));
+        kimGiay2.setX(Double.valueOf(XDongHo.getText()));
+        kimGiay2.setY(Double.valueOf(YDongHo.getText()) + bkDongHo - 0.1);
+
+        kimPhut1.setX(Double.valueOf(XDongHo.getText()));
+        kimPhut1.setY(Double.valueOf(YDongHo.getText()));
+        kimPhut2.setX(Double.valueOf(XDongHo.getText()));
+        kimPhut2.setY(Double.valueOf(YDongHo.getText()) + bkDongHo - 0.2);
+
+        kimGio1.setX(Double.valueOf(XDongHo.getText()));
+        kimGio1.setY(Double.valueOf(YDongHo.getText()));
+        kimGio2.setX(Double.valueOf(XDongHo.getText()));
+        kimGio2.setY(Double.valueOf(YDongHo.getText()) + bkDongHo - 0.35);
+
+        double giay, phut, gio;
+
+        giay = (Double.valueOf(Timeee.getText().substring(6, 8))) * (360 / 60);
+        phut = Double.valueOf(Timeee.getText().substring(3, 5)) * (360 / 60);
+        gio = Double.valueOf(Timeee.getText().substring(0, 2)) * (360 / 12);
+
+//        rotate(kimGiay2, kimGiay1, giay);
+//        rotate(kimPhut2, kimPhut1, phut);
+//        rotate(kimGio2, kimGio1, gio);
+
+        drawLineDDA(kimGiay1.getX(), kimGiay1.getY(), rotate(kimGiay2, kimGiay1, giay).getX(), rotate(kimGiay2, kimGiay1, giay).getY());
+        drawLineDDA(kimPhut1.getX(), kimPhut1.getY(), rotate(kimPhut2, kimPhut1, phut).getX(), rotate(kimPhut2, kimPhut1, phut).getY());
+        drawLineDDA(kimGio1.getX(), kimGio1.getY(), rotate(kimGio2, kimGio1, gio).getX(), rotate(kimGio2, kimGio1, gio).getY());
     }
 }
