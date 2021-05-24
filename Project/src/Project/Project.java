@@ -31,6 +31,7 @@ public class Project extends javax.swing.JFrame {
 
     int bkDongHo = 1;
     Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2;
+    boolean dx = true;
 
     public void khoiTaoXe() {
         // Vẽ Mui Xe
@@ -159,6 +160,7 @@ public class Project extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnQuayXe = new javax.swing.JButton();
         GocQuayXe = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         DongHoPanel = new javax.swing.JPanel();
         XDongHo = new javax.swing.JTextField();
         YDongHo = new javax.swing.JTextField();
@@ -833,7 +835,12 @@ public class Project extends javax.swing.JFrame {
         HinhXePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
 
         btnQuayXe.setText("Quay Quanh O 1 Góc");
-        HinhXePanel.add(btnQuayXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, -1, -1));
+        btnQuayXe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuayXeActionPerformed(evt);
+            }
+        });
+        HinhXePanel.add(btnQuayXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 160, 30));
 
         GocQuayXe.setText("0");
         GocQuayXe.addActionListener(new java.awt.event.ActionListener() {
@@ -841,7 +848,11 @@ public class Project extends javax.swing.JFrame {
                 GocQuayXeActionPerformed(evt);
             }
         });
-        HinhXePanel.add(GocQuayXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 90, -1));
+        HinhXePanel.add(GocQuayXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 90, -1));
+
+        jLabel4.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel4.setText("Theo Chiều Kim Đồng Hồ");
+        HinhXePanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, -1, -1));
 
         TuyChon.add(HinhXePanel, "card3");
 
@@ -1229,6 +1240,11 @@ public class Project extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_GocQuayXeActionPerformed
 
+    private void btnQuayXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayXeActionPerformed
+        // TODO add your handling code here:
+        QuayXe(Double.valueOf(GocQuayXe.getText()));
+    }//GEN-LAST:event_btnQuayXeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1324,6 +1340,7 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -2080,6 +2097,7 @@ public class Project extends javax.swing.JFrame {
 
     //Hàm Vẽ Chiếc Xe
     public void veChiecXe() {
+        clear2D();
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setPaint(Color.BLACK);
         DecimalFormat format = new DecimalFormat("0.#");
@@ -2099,31 +2117,59 @@ public class Project extends javax.swing.JFrame {
     }
 
     public void XeDoiXung(String O) {
+        muiXe1 = symmetricWithRespectTo(muiXe1, O);
+        muiXe2 = symmetricWithRespectTo(muiXe2, O);
+        muiXe3 = symmetricWithRespectTo(muiXe3, O);
+        muiXe4 = symmetricWithRespectTo(muiXe4, O);
+
+        thanXe1 = symmetricWithRespectTo(thanXe1, O);
+        thanXe2 = symmetricWithRespectTo(thanXe2, O);
+        thanXe3 = symmetricWithRespectTo(thanXe3, O);
+        thanXe4 = symmetricWithRespectTo(thanXe4, O);
+
+//        banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
+//        banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
+//
+//        banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
+//        banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
+        if ((O.equals("Oy") || O.equals("O")) && dx == true) {
+            banhXe1.setX((thanXe1.getX() - 1) * this.step + width / 2);
+            banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
+            banhXe2.setX((thanXe4.getX() + 0.5) * this.step + width / 2);
+            banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
+            
+            dx = false;
+        } else if((O.equals("Oy") || O.equals("O")) && dx == false){
+            banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
+            banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
+            banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
+            banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
+            dx = true;
+        }else{
+            banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
+            banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
+            banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
+            banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
+        }
+        veChiecXe();
+    }
+
+    public void QuayXe(Double A) {
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setPaint(Color.BLACK);
-        drawLineDDAText(symmetricWithRespectTo(muiXe1, O).getX(), symmetricWithRespectTo(muiXe1, O).getY(), symmetricWithRespectTo(muiXe2, O).getX(), symmetricWithRespectTo(muiXe2, O).getY(), "D'", "A'");
-        drawLineDDAText(symmetricWithRespectTo(muiXe2, O).getX(), symmetricWithRespectTo(muiXe2, O).getY(), symmetricWithRespectTo(muiXe3, O).getX(), symmetricWithRespectTo(muiXe3, O).getY(), "A'", "B'");
-        drawLineDDAText(symmetricWithRespectTo(muiXe3, O).getX(), symmetricWithRespectTo(muiXe3, O).getY(), symmetricWithRespectTo(muiXe4, O).getX(), symmetricWithRespectTo(muiXe4, O).getY(), "B'", "E'");
-
-        drawLineDDAText(symmetricWithRespectTo(thanXe1, O).getX(), symmetricWithRespectTo(thanXe1, O).getY(), symmetricWithRespectTo(thanXe2, O).getX(), symmetricWithRespectTo(thanXe2, O).getY(), "G'", "C'");
-        drawLineDDAText(symmetricWithRespectTo(thanXe2, O).getX(), symmetricWithRespectTo(thanXe2, O).getY(), symmetricWithRespectTo(thanXe3, O).getX(), symmetricWithRespectTo(thanXe3, O).getY(), "C'", "F'");
-        drawLineDDAText(symmetricWithRespectTo(thanXe3, O).getX(), symmetricWithRespectTo(thanXe3, O).getY(), symmetricWithRespectTo(thanXe4, O).getX(), symmetricWithRespectTo(thanXe4, O).getY(), "F'", "H'");
-        drawLineDDAText(symmetricWithRespectTo(thanXe1, O).getX(), symmetricWithRespectTo(thanXe1, O).getY(), symmetricWithRespectTo(thanXe4, O).getX(), symmetricWithRespectTo(thanXe4, O).getY(), "G'", "H'");
-        System.out.println(symmetricWithRespectTo(banhXe1, O).getX());
-        System.out.println(symmetricWithRespectTo(thanXe1, O).getX());
-
-//        banhXe1.setX((symmetricWithRespectTo(thanXe1, O).getX() + 0.5) * this.step + width / 2);
-//        banhXe1.setY(height / 2 - (symmetricWithRespectTo(thanXe1, O).getY() + 0.3) * this.step);
-//        
-//        banhXe2.setX((symmetricWithRespectTo(thanXe4, O).getX() - 1) * this.step + width / 2);
-//        banhXe2.setY(height / 2 - (symmetricWithRespectTo(thanXe4, O).getY() + 0.3) * this.step);
-        if (O.equals("Oy") || O.equals("O")) {
-            g1.fillOval((int) ((symmetricWithRespectTo(thanXe1, O).getX() - 1) * this.step + width / 2), (int) (height / 2 - (symmetricWithRespectTo(thanXe1, O).getY() + 0.3) * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
-            g1.fillOval((int) ((symmetricWithRespectTo(thanXe4, O).getX() + 0.5) * this.step + width / 2), (int) (height / 2 - (symmetricWithRespectTo(thanXe4, O).getY() + 0.3) * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
-        } else {
-            g1.fillOval((int) ((symmetricWithRespectTo(thanXe1, O).getX() + 0.5) * this.step + width / 2), (int) (height / 2 - (symmetricWithRespectTo(thanXe1, O).getY() + 0.3) * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
-            g1.fillOval((int) ((symmetricWithRespectTo(thanXe4, O).getX() - 1) * this.step + width / 2), (int) (height / 2 - (symmetricWithRespectTo(thanXe4, O).getY() + 0.3) * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
-        }
+        // Vẽ Mui Xe
+        drawLineDDAText(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY(), "D", "A");
+        drawLineDDAText(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY(), "A", "B");
+        drawLineDDAText(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY(), "B", "E");
+        // Vẽ Thân Xe
+        drawLineDDAText(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY(), "G", "C");
+        drawLineDDAText(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY(), "C", "F");
+        drawLineDDAText(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY(), "F", "H");
+        drawLineDDAText(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY(), "G", "H");
+        //Bánh Xe
+        g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+        g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+        toaDoXe();
     }
 
     public void toaDoXe() {
