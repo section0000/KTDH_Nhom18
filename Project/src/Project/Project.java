@@ -157,6 +157,8 @@ public class Project extends javax.swing.JFrame {
         Len = new javax.swing.JButton();
         Trai = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnQuayXe = new javax.swing.JButton();
+        GocQuayXe = new javax.swing.JTextField();
         DongHoPanel = new javax.swing.JPanel();
         XDongHo = new javax.swing.JTextField();
         YDongHo = new javax.swing.JTextField();
@@ -698,7 +700,7 @@ public class Project extends javax.swing.JFrame {
                 XeDXOActionPerformed(evt);
             }
         });
-        HinhXePanel.add(XeDXO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 131, -1));
+        HinhXePanel.add(XeDXO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 131, -1));
 
         XeDXOy.setText("Đối Xứng Qua Oy");
         XeDXOy.addActionListener(new java.awt.event.ActionListener() {
@@ -706,7 +708,7 @@ public class Project extends javax.swing.JFrame {
                 XeDXOyActionPerformed(evt);
             }
         });
-        HinhXePanel.add(XeDXOy, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 308, -1, -1));
+        HinhXePanel.add(XeDXOy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
         XeDXOx.setText("Đối Xứng Qua Ox");
         XeDXOx.addActionListener(new java.awt.event.ActionListener() {
@@ -714,7 +716,7 @@ public class Project extends javax.swing.JFrame {
                 XeDXOxActionPerformed(evt);
             }
         });
-        HinhXePanel.add(XeDXOx, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 276, -1, -1));
+        HinhXePanel.add(XeDXOx, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
 
         H.setText("(0;0)");
         HinhXePanel.add(H, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 253, -1, -1));
@@ -828,7 +830,18 @@ public class Project extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        HinhXePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+        HinhXePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
+
+        btnQuayXe.setText("Quay Quanh O 1 Góc");
+        HinhXePanel.add(btnQuayXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, -1, -1));
+
+        GocQuayXe.setText("0");
+        GocQuayXe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GocQuayXeActionPerformed(evt);
+            }
+        });
+        HinhXePanel.add(GocQuayXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 90, -1));
 
         TuyChon.add(HinhXePanel, "card3");
 
@@ -1212,6 +1225,10 @@ public class Project extends javax.swing.JFrame {
         XeDoiXung("O");
     }//GEN-LAST:event_XeDXOActionPerformed
 
+    private void GocQuayXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GocQuayXeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GocQuayXeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1268,6 +1285,7 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JLabel E;
     private javax.swing.JLabel F;
     private javax.swing.JLabel G;
+    private javax.swing.JTextField GocQuayXe;
     private javax.swing.JLabel H;
     private javax.swing.JPanel HC_Pn;
     private javax.swing.JButton HHCN_Btn;
@@ -1291,6 +1309,7 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JButton XeDXOy;
     private javax.swing.JButton Xuong;
     private javax.swing.JTextField YDongHo;
+    private javax.swing.JButton btnQuayXe;
     private javax.swing.JLabel cao_Lbl;
     private javax.swing.JTextField cao_TF;
     private javax.swing.JLabel dai_Lbl;
@@ -2098,8 +2117,13 @@ public class Project extends javax.swing.JFrame {
 //        
 //        banhXe2.setX((symmetricWithRespectTo(thanXe4, O).getX() - 1) * this.step + width / 2);
 //        banhXe2.setY(height / 2 - (symmetricWithRespectTo(thanXe4, O).getY() + 0.3) * this.step);
-        g1.fillOval((int) ((symmetricWithRespectTo(thanXe1, O).getX() + 0.5) * this.step + width / 2), (int) (height / 2 - (symmetricWithRespectTo(thanXe1, O).getY() + 0.3) * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
-        g1.fillOval((int) ((symmetricWithRespectTo(thanXe4, O).getX() - 1) * this.step + width / 2), (int) (height / 2 - (symmetricWithRespectTo(thanXe4, O).getY() + 0.3) * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
+        if (O.equals("Oy") || O.equals("O")) {
+            g1.fillOval((int) ((symmetricWithRespectTo(thanXe1, O).getX() - 1) * this.step + width / 2), (int) (height / 2 - (symmetricWithRespectTo(thanXe1, O).getY() + 0.3) * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
+            g1.fillOval((int) ((symmetricWithRespectTo(thanXe4, O).getX() + 0.5) * this.step + width / 2), (int) (height / 2 - (symmetricWithRespectTo(thanXe4, O).getY() + 0.3) * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
+        } else {
+            g1.fillOval((int) ((symmetricWithRespectTo(thanXe1, O).getX() + 0.5) * this.step + width / 2), (int) (height / 2 - (symmetricWithRespectTo(thanXe1, O).getY() + 0.3) * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
+            g1.fillOval((int) ((symmetricWithRespectTo(thanXe4, O).getX() - 1) * this.step + width / 2), (int) (height / 2 - (symmetricWithRespectTo(thanXe4, O).getY() + 0.3) * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
+        }
     }
 
     public void toaDoXe() {
