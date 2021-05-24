@@ -36,6 +36,8 @@ public class Project extends javax.swing.JFrame {
 
     int bkDongHo = 1;
     Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2, tamXe;
+    Point tam, As, Bs, Cs, Ds, Es, As1, Bs1, Cs1, Ds1, Es1;
+    double doDaiCanh = 0.5;
     double banhXeX = 0.8, banhXeY = 0.8;
     boolean dx = true, dh = false, dxdh = false;
     String dxdhString = "";
@@ -53,6 +55,22 @@ public class Project extends javax.swing.JFrame {
         kimGio2 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo - 0.3);
     }
 
+    public void khoiTaoNgoiSao() {
+        tam = new Point(-7, 2.5);
+        
+        As = new Point(tam.getX(), tam.getY() + doDaiCanh);
+        Bs = new Point(tam.getX() + doDaiCanh, tam.getY() + (doDaiCanh / 3));
+        Cs = new Point(tam.getX() + (doDaiCanh / 2), tam.getY() - doDaiCanh);
+        Ds = new Point(tam.getX() - (doDaiCanh / 2), tam.getY() - doDaiCanh);
+        Es = new Point(tam.getX() - doDaiCanh, tam.getY() + (doDaiCanh / 3));
+
+        As1 = new Point(tam.getX() + (doDaiCanh / 3), tam.getY() + (doDaiCanh / 3));
+        Bs1 = new Point(tam.getX() + (doDaiCanh / 3), tam.getY() - (doDaiCanh / 3));
+        Cs1 = new Point(tam.getX(), tam.getY() - (doDaiCanh/2));
+        Ds1 = new Point(tam.getX() - (doDaiCanh / 3), tam.getY() - (doDaiCanh / 3));
+        Es1 = new Point(tam.getX() - (doDaiCanh / 3), tam.getY() + (doDaiCanh / 3));
+    }
+
     public void khoiTaoXe() {
         // Tâm Xe
         tamXe = new Point(-7, 2.5);
@@ -62,10 +80,10 @@ public class Project extends javax.swing.JFrame {
         muiXe3 = new Point(tamXe.getX() + 1, tamXe.getY() + 1.5);
         muiXe4 = new Point(tamXe.getX() + 1, tamXe.getY() + 0.5);
         // Vẽ Thân Xe
-        thanXe1 = new Point(tamXe.getX() - 2.5, tamXe.getY() - 0.5);
+        thanXe1 = new Point(tamXe.getX() - 3, tamXe.getY() - 0.5);
         thanXe2 = new Point(tamXe.getX() - 2.5, tamXe.getY() + 0.5);
         thanXe3 = new Point(tamXe.getX() + 2.5, tamXe.getY() + 0.5);
-        thanXe4 = new Point(tamXe.getX() + 2.5, tamXe.getY() - 0.5);
+        thanXe4 = new Point(tamXe.getX() + 3, tamXe.getY() - 0.5);
         //Bánh Xe
         banhXe1 = new Point(tamXe.getX() - 2, tamXe.getY() - 0.2);
         banhXe2 = new Point(tamXe.getX() + 1.3, tamXe.getY() - 0.2);
@@ -95,6 +113,7 @@ public class Project extends javax.swing.JFrame {
         HinhXePanel.setVisible(false);
         g3D = panel3D.getGraphics();
         khoiTaoDongHo();
+        khoiTaoNgoiSao();
         timer.start();
     }
 
@@ -915,12 +934,12 @@ public class Project extends javax.swing.JFrame {
         jLabel4.setText("Theo Chiều Kim Đồng Hồ");
         HinhXePanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, -1, -1));
 
-        Jlable123.setText("Tâm Xe :");
+        Jlable123.setText("Tâm Xe Z :");
         HinhXePanel.add(Jlable123, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, -1));
 
         TamXe.setForeground(new java.awt.Color(255, 0, 0));
         TamXe.setText("(0;0)");
-        HinhXePanel.add(TamXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, -1));
+        HinhXePanel.add(TamXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, -1, -1));
 
         jLabel6.setText("Khoản Cách Tịnh Tuyến :");
         HinhXePanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 109, -1, -1));
@@ -1773,6 +1792,19 @@ public class Project extends javax.swing.JFrame {
         jLayeredPane.revalidate();
     }
 
+    public void drawStar() {
+        drawLineDDA(As.getX(), As.getY(), As1.getX(), As1.getY());
+        drawLineDDA(As1.getX(), As1.getY(), Bs.getX(), Bs.getY());
+        drawLineDDA(Bs.getX(), Bs.getY(), Bs1.getX(), Bs1.getY());
+        drawLineDDA(Bs1.getX(), Bs1.getY(), Cs.getX(), Cs.getY());
+        drawLineDDA(Cs.getX(), Cs.getY(), Cs1.getX(), Cs1.getY());
+        drawLineDDA(Cs1.getX(), Cs1.getY(), Ds.getX(), Ds.getY());
+        drawLineDDA(Ds.getX(), Ds.getY(), Ds1.getX(), Ds1.getY());
+        drawLineDDA(Ds1.getX(), Ds1.getY(), Es.getX(), Es.getY());
+        drawLineDDA(Es.getX(), Es.getY(), Es1.getX(), Es1.getY());
+        drawLineDDA(Es1.getX(), Es1.getY(), As.getX(), As.getY());
+    }
+
     public void clear() {
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.clearRect(0, 0, width, height);
@@ -1925,7 +1957,7 @@ public class Project extends javax.swing.JFrame {
         // Chieu len truc Oxz
         return a - b * (1 - Math.sqrt(2) / 2);
     }
-
+    
     public void drawGrid() {
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setColor(Color.black);
@@ -2486,8 +2518,6 @@ public class Project extends javax.swing.JFrame {
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setPaint(Color.BLACK);
         DecimalFormat format = new DecimalFormat("0.#");
-        // Vẽ Tâm Xe
-        drawLineDDAText(tamXe.getX(), tamXe.getY(), tamXe.getX(), tamXe.getY(), "Z", "Z");
         // Vẽ Mui Xe
         drawLineDDAText(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY(), "D", "A");
         drawLineDDAText(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY(), "A", "B");
@@ -2500,6 +2530,8 @@ public class Project extends javax.swing.JFrame {
         //Bánh Xe
         g1.fillOval((int) ((banhXe1.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe1.getY() * this.step), (int) (((banhXeX) * step)), (int) ((banhXeY) * step));
         g1.fillOval((int) ((banhXe2.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe2.getY() * this.step), (int) (((banhXeX) * step)), (int) ((banhXeY) * step));
+        
+        //drawStar();
         toaDoXe();
     }
 
@@ -2552,7 +2584,7 @@ public class Project extends javax.swing.JFrame {
         thanXe2 = rotate(thanXe2, Z, O);
         thanXe3 = rotate(thanXe3, Z, O);
         thanXe4 = rotate(thanXe4, Z, O);
-        
+
         tamXe = rotate(tamXe, Z, O);
         double A = 0.12;
         if (O > 0) {
@@ -2562,9 +2594,9 @@ public class Project extends javax.swing.JFrame {
             banhXe2.setY(banhXe2.getY() - A);
         } else {
             banhXe1.setX(banhXe1.getX() + A);
-            banhXe1.setY(banhXe1.getY() + 0.12);
-            banhXe2.setX(banhXe2.getX() + 0.12);
-            banhXe2.setY(banhXe2.getY() + 0.12);
+            banhXe1.setY(banhXe1.getY() + A);
+            banhXe2.setX(banhXe2.getX() + A);
+            banhXe2.setY(banhXe2.getY() + A);
         }
         banhXe1 = rotate(banhXe1, Z, O);
         banhXe2 = rotate(banhXe2, Z, O);
@@ -2600,9 +2632,9 @@ public class Project extends javax.swing.JFrame {
         banhXe2 = translate(banhXe2, TT);
         veChiecXe();
     }
-    
+
     // Scale Xe
-    public void scaleXe(){
+    public void scaleXe() {
         Point TT = new Point(Double.valueOf(TLXEX.getText()), Double.valueOf(TLXEY.getText()));
         tamXe = scale(tamXe, TT);
         muiXe1 = scale(muiXe1, TT);
@@ -2727,7 +2759,7 @@ public class Project extends javax.swing.JFrame {
     }
 
     //Quay Đồng Hồ
-    public void QuayDongHo(Double O){
+    public void QuayDongHo(Double O) {
         Point Z = new Point(Double.valueOf(QuayX.getText()), Double.valueOf(QuayY.getText()));
         Point temp = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()));
         temp = rotate(temp, Z, O);
@@ -2735,7 +2767,7 @@ public class Project extends javax.swing.JFrame {
         YDongHo.setText(String.valueOf(temp.getY()));
         veDongHo(bkDongHo);
     }
-    
+
     // Đối Xứng Đồng Hồ
     public void doiXungDongHo(String O) {
         Point z = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()));
@@ -2799,13 +2831,13 @@ public class Project extends javax.swing.JFrame {
             YDongHo.setText(String.valueOf(Math.round(Double.valueOf(YDongHo.getText()) - i)));
         }
     }
-    
+
     // Scale Đồng Hồ
-    public void scaleDongHo(){
+    public void scaleDongHo() {
         Point Z = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo);
-        Point SC = new Point(Double.valueOf(DTLX.getText()),Double.valueOf(DTLY.getText()));
+        Point SC = new Point(Double.valueOf(DTLX.getText()), Double.valueOf(DTLY.getText()));
         Z = scale(Z, SC);
         double newbk = Math.sqrt(Math.pow((Z.getX() - Double.valueOf(XDongHo.getText())), 2) + Math.pow((Z.getY() - Double.valueOf(YDongHo.getText())), 2));
-        veDongHo((int)newbk);
+        veDongHo((int) newbk);
     }
 }
