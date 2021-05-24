@@ -45,14 +45,8 @@ public class Project extends javax.swing.JFrame {
         thanXe3 = new Point(-4.5, 3);
         thanXe4 = new Point(-4.5, 2);
         //Bánh Xe
-        banhXe1 = new Point();
-        banhXe2 = new Point();
-
-        banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
-        banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
-
-        banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
-        banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
+        banhXe1 = new Point(-9, 2.3);
+        banhXe2 = new Point(-5.7, 2.3);
     }
 
     public Project() {
@@ -1941,11 +1935,11 @@ public class Project extends javax.swing.JFrame {
         drawEllipseMidPoint(xO1, yO1, a, b);
     }
 
-    public void rotate(Point pt1, Point pt2, double alpha) {
-        pt1.setX(pt1.getX() * step + width / 2);
-        pt1.setY(height / 2 - pt1.getY() * step);
-        pt2.setX(pt2.getX() * step + width / 2);
-        pt2.setY(height / 2 - pt2.getY() * step);
+    public Point rotate(Point pt1, Point pt2, double alpha) {
+//        pt1.setX(pt1.getX() * step + width / 2);
+//        pt1.setY(height / 2 - pt1.getY() * step);
+//        pt2.setX(pt2.getX() * step + width / 2);
+//        pt2.setY(height / 2 - pt2.getY() * step);
 
         // Dung cho ma tran tinh tien tro ve vi tri cu
         Point originalPosition = new Point(pt2.getX(), pt2.getY());
@@ -1979,14 +1973,15 @@ public class Project extends javax.swing.JFrame {
         // Nhan ma tran nay voi ma tran tinh tien ve vi tru cu, thu duoc 1 diem moi => Diem can tim
         Point tempPoint3 = Matrix.multiplyMatrix(array, retranslationMatrix);
 
-        putPixel(tempPoint3.getX(), tempPoint3.getY());
-
-        Graphics2D g1 = (Graphics2D) g2D.create();
-        g1.setColor(Color.black);
-        g1.drawString("A1 (" + (double) Math.round((tempPoint3.getX() - width / 2) / step * 100) / 100
-                + ","
-                + (double) Math.round((tempPoint3.getY() - height / 2) / -step * 100) / 100 + ")",
-                (int) tempPoint3.getX(), (int) tempPoint3.getY() + 20);
+        return tempPoint3;
+//        putPixel(tempPoint3.getX(), tempPoint3.getY());
+//
+//        Graphics2D g1 = (Graphics2D) g2D.create();
+//        g1.setColor(Color.black);
+//        g1.drawString("A1 (" + (double) Math.round((tempPoint3.getX() - width / 2) / step * 100) / 100
+//                + ","
+//                + (double) Math.round((tempPoint3.getY() - height / 2) / -step * 100) / 100 + ")",
+//                (int) tempPoint3.getX(), (int) tempPoint3.getY() + 20);
     }
 
     public Point translate(Point pt, Point displacement) {
@@ -2111,8 +2106,8 @@ public class Project extends javax.swing.JFrame {
         drawLineDDAText(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY(), "F", "H");
         drawLineDDAText(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY(), "G", "H");
         //Bánh Xe
-        g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
-        g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
+        g1.fillOval((int) ((banhXe1.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe1.getY() * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
+        g1.fillOval((int) ((banhXe2.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe2.getY() * this.step), (int) (((0.8) * step)), (int) ((0.8) * step));
         toaDoXe();
     }
 
@@ -2137,15 +2132,15 @@ public class Project extends javax.swing.JFrame {
             banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
             banhXe2.setX((thanXe4.getX() + 0.5) * this.step + width / 2);
             banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
-            
+
             dx = false;
-        } else if((O.equals("Oy") || O.equals("O")) && dx == false){
+        } else if ((O.equals("Oy") || O.equals("O")) && dx == false) {
             banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
             banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
             banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
             banhXe2.setY(height / 2 - (thanXe4.getY() + 0.3) * this.step);
             dx = true;
-        }else{
+        } else {
             banhXe1.setX((thanXe1.getX() + 0.5) * this.step + width / 2);
             banhXe1.setY(height / 2 - (thanXe1.getY() + 0.3) * this.step);
             banhXe2.setX((thanXe4.getX() - 1) * this.step + width / 2);
@@ -2154,22 +2149,33 @@ public class Project extends javax.swing.JFrame {
         veChiecXe();
     }
 
-    public void QuayXe(Double A) {
-        Graphics2D g1 = (Graphics2D) g3D.create();
-        g1.setPaint(Color.BLACK);
-        // Vẽ Mui Xe
-        drawLineDDAText(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY(), "D", "A");
-        drawLineDDAText(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY(), "A", "B");
-        drawLineDDAText(muiXe3.getX(), muiXe3.getY(), muiXe4.getX(), muiXe4.getY(), "B", "E");
-        // Vẽ Thân Xe
-        drawLineDDAText(thanXe1.getX(), thanXe1.getY(), thanXe2.getX(), thanXe2.getY(), "G", "C");
-        drawLineDDAText(thanXe2.getX(), thanXe2.getY(), thanXe3.getX(), thanXe3.getY(), "C", "F");
-        drawLineDDAText(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY(), "F", "H");
-        drawLineDDAText(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY(), "G", "H");
-        //Bánh Xe
-        g1.fillOval((int) (banhXe1.getX()), (int) banhXe1.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
-        g1.fillOval((int) (banhXe2.getX()), (int) banhXe2.getY(), (int) (((0.8) * step)), (int) ((0.8) * step));
-        toaDoXe();
+    public void QuayXe(Double O) {
+        Point Z = new Point(0, 0);
+        muiXe1 = rotate(muiXe1, Z, O);
+        muiXe2 = rotate(muiXe2, Z, O);
+        muiXe3 = rotate(muiXe3, Z, O);
+        muiXe4 = rotate(muiXe4, Z, O);
+
+        thanXe1 = rotate(thanXe1, Z, O);
+        thanXe2 = rotate(thanXe2, Z, O);
+        thanXe3 = rotate(thanXe3, Z, O);
+        thanXe4 = rotate(thanXe4, Z, O);
+
+        double A = 0.1;
+        if (O > 0) {
+            banhXe1.setX(banhXe1.getX() - A);
+            banhXe1.setY(banhXe1.getY() - A);
+            banhXe2.setX(banhXe2.getX() - A);
+            banhXe2.setY(banhXe2.getY() - A);
+        } else {
+            banhXe1.setX(banhXe1.getX() + A);
+            banhXe1.setY(banhXe1.getY() + A);
+            banhXe2.setX(banhXe2.getX() + A);
+            banhXe2.setY(banhXe2.getY() + A);
+        }
+        banhXe1 = rotate(banhXe1, Z, O);
+        banhXe2 = rotate(banhXe2, Z, O);
+        veChiecXe();
     }
 
     public void toaDoXe() {
@@ -2190,7 +2196,6 @@ public class Project extends javax.swing.JFrame {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
                 double i = 0.1;    // khoản cách tịnh tuyến
                 Thread.sleep(20);
-                clear2D();
                 translate(muiXe1, quaPhai(muiXe1, i));
                 translate(muiXe2, quaPhai(muiXe2, i));
                 translate(muiXe3, quaPhai(muiXe3, i));
@@ -2199,15 +2204,14 @@ public class Project extends javax.swing.JFrame {
                 translate(thanXe3, quaPhai(thanXe3, i));
                 translate(thanXe2, quaPhai(thanXe2, i));
                 translate(thanXe4, quaPhai(thanXe4, i));
-                translate(banhXe1, quaPhai(banhXe1, (i * step)));
-                translate(banhXe2, quaPhai(banhXe2, (i * step)));
+                translate(banhXe1, quaPhai(banhXe1, (i)));
+                translate(banhXe2, quaPhai(banhXe2, (i)));
                 veChiecXe();
             }
         } else if (huongDi.equals("Trái")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
                 double i = 0.1;    // khoản cách tịnh tuyến
                 Thread.sleep(20);
-                clear2D();
                 translate(muiXe1, quaTrai(muiXe1, i));
                 translate(muiXe2, quaTrai(muiXe2, i));
                 translate(muiXe3, quaTrai(muiXe3, i));
@@ -2216,15 +2220,14 @@ public class Project extends javax.swing.JFrame {
                 translate(thanXe3, quaTrai(thanXe3, i));
                 translate(thanXe2, quaTrai(thanXe2, i));
                 translate(thanXe4, quaTrai(thanXe4, i));
-                translate(banhXe1, quaTrai(banhXe1, i * step));
-                translate(banhXe2, quaTrai(banhXe2, i * step));
+                translate(banhXe1, quaTrai(banhXe1, i));
+                translate(banhXe2, quaTrai(banhXe2, i));
                 veChiecXe();
             }
         } else if (huongDi.equals("Lên")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
                 double i = 0.1;    // khoản cách tịnh tuyến
                 Thread.sleep(20);
-                clear2D();
                 translate(muiXe1, diLen(muiXe1, i));
                 translate(muiXe2, diLen(muiXe2, i));
                 translate(muiXe3, diLen(muiXe3, i));
@@ -2233,15 +2236,14 @@ public class Project extends javax.swing.JFrame {
                 translate(thanXe3, diLen(thanXe3, i));
                 translate(thanXe2, diLen(thanXe2, i));
                 translate(thanXe4, diLen(thanXe4, i));
-                translate(banhXe1, diLen(banhXe1, -(i * step)));
-                translate(banhXe2, diLen(banhXe2, -(i * step)));
+                translate(banhXe1, diLen(banhXe1, -(i)));
+                translate(banhXe2, diLen(banhXe2, -(i)));
                 veChiecXe();
             }
         } else if (huongDi.equals("Xuống")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
                 double i = 0.1;    // khoản cách tịnh tuyến
                 Thread.sleep(20);
-                clear2D();
                 translate(muiXe1, diXuong(muiXe1, i));
                 translate(muiXe2, diXuong(muiXe2, i));
                 translate(muiXe3, diXuong(muiXe3, i));
@@ -2250,8 +2252,8 @@ public class Project extends javax.swing.JFrame {
                 translate(thanXe3, diXuong(thanXe3, i));
                 translate(thanXe2, diXuong(thanXe2, i));
                 translate(thanXe4, diXuong(thanXe4, i));
-                translate(banhXe1, diXuong(banhXe1, -(i * step)));
-                translate(banhXe2, diXuong(banhXe2, -(i * step)));
+                translate(banhXe1, diXuong(banhXe1, -(i)));
+                translate(banhXe2, diXuong(banhXe2, -(i)));
                 veChiecXe();
             }
         }
