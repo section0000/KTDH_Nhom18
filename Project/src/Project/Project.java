@@ -205,6 +205,12 @@ public class Project extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         Timeee = new javax.swing.JLabel();
         VeDongHo = new javax.swing.JButton();
+        Len1 = new javax.swing.JButton();
+        Trai1 = new javax.swing.JButton();
+        Phai1 = new javax.swing.JButton();
+        Xuong1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        khoanCachTT1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -973,7 +979,10 @@ public class Project extends javax.swing.JFrame {
             }
         });
         DongHoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
-        DongHoPanel.add(Timeee, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 30));
+
+        Timeee.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        Timeee.setForeground(new java.awt.Color(255, 0, 0));
+        DongHoPanel.add(Timeee, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 110, 30));
 
         VeDongHo.setText("Vẽ");
         VeDongHo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -982,6 +991,64 @@ public class Project extends javax.swing.JFrame {
             }
         });
         DongHoPanel.add(VeDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 90, -1));
+
+        Len1.setText("Lên");
+        Len1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Len1MouseClicked(evt);
+            }
+        });
+        Len1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Len1ActionPerformed(evt);
+            }
+        });
+        DongHoPanel.add(Len1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 68, -1));
+
+        Trai1.setText("Trái");
+        Trai1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Trai1MouseClicked(evt);
+            }
+        });
+        Trai1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Trai1ActionPerformed(evt);
+            }
+        });
+        DongHoPanel.add(Trai1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, -1, -1));
+
+        Phai1.setText("Phải");
+        Phai1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Phai1MouseClicked(evt);
+            }
+        });
+        Phai1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Phai1ActionPerformed(evt);
+            }
+        });
+        DongHoPanel.add(Phai1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, -1));
+
+        Xuong1.setText("Xuống");
+        Xuong1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Xuong1MouseClicked(evt);
+            }
+        });
+        Xuong1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Xuong1ActionPerformed(evt);
+            }
+        });
+        DongHoPanel.add(Xuong1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
+
+        jLabel5.setText("Khoản Cách Tịnh Tuyến :");
+        DongHoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, -1, -1));
+
+        khoanCachTT1.setText("0");
+        DongHoPanel.add(khoanCachTT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 77, -1));
 
         TuyChon.add(DongHoPanel, "card2");
 
@@ -1342,6 +1409,61 @@ public class Project extends javax.swing.JFrame {
        dxdh = true;
     }//GEN-LAST:event_HTDXOActionPerformed
 
+    private void Len1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Len1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Len1MouseClicked
+
+    private void Len1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Len1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            tinhTuyenDongHo(Len1.getText(), Integer.parseInt(khoanCachTT1.getText()));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Len1ActionPerformed
+
+    private void Trai1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Trai1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Trai1MouseClicked
+
+    private void Trai1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Trai1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            tinhTuyenDongHo(Trai1.getText(), Integer.parseInt(khoanCachTT1.getText()));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Trai1ActionPerformed
+
+    private void Phai1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Phai1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Phai1MouseClicked
+
+    private void Phai1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Phai1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            tinhTuyenDongHo(Phai1.getText(), Integer.parseInt(khoanCachTT1.getText()));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Phai1ActionPerformed
+
+    private void Xuong1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Xuong1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Xuong1MouseClicked
+
+    private void Xuong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Xuong1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            tinhTuyenDongHo(Xuong1.getText(), Integer.parseInt(khoanCachTT1.getText()));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Xuong1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1412,10 +1534,13 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JButton HinhXe;
     private javax.swing.JPanel HinhXePanel;
     private javax.swing.JButton Len;
+    private javax.swing.JButton Len1;
     private javax.swing.JPanel Menu;
     private javax.swing.JButton Phai;
+    private javax.swing.JButton Phai1;
     private javax.swing.JLabel Timeee;
     private javax.swing.JButton Trai;
+    private javax.swing.JButton Trai1;
     private javax.swing.JLayeredPane TuyChon;
     private javax.swing.JButton VeDongHo;
     private javax.swing.JTextField XDongHo;
@@ -1423,6 +1548,7 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JButton XeDXOx;
     private javax.swing.JButton XeDXOy;
     private javax.swing.JButton Xuong;
+    private javax.swing.JButton Xuong1;
     private javax.swing.JTextField YDongHo;
     private javax.swing.JButton btnQuayXe;
     private javax.swing.JLabel cao_Lbl;
@@ -1440,10 +1566,12 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField khoanCachTT;
+    private javax.swing.JTextField khoanCachTT1;
     private javax.swing.JPanel panel2D;
     private javax.swing.JPanel panel3D;
     private javax.swing.JButton quayLaiHC_Btn;
@@ -2430,5 +2558,46 @@ public class Project extends javax.swing.JFrame {
         drawLineDDA(kimGiay1.getX(), kimGiay1.getY(), rotate(kimGiay2, kimGiay1, giay).getX(), rotate(kimGiay2, kimGiay1, giay).getY());
         drawLineDDA(kimPhut1.getX(), kimPhut1.getY(), rotate(kimPhut2, kimPhut1, phut).getX(), rotate(kimPhut2, kimPhut1, phut).getY());
         drawLineDDA(kimGio1.getX(), kimGio1.getY(), rotate(kimGio2, kimGio1, gio).getX(), rotate(kimGio2, kimGio1, gio).getY());
+    }
+    
+    // Tinh Tuyen Dong Ho
+    public void tinhTuyenDongHo(String huongDi, int khoanCach) throws InterruptedException{
+        System.out.println((khoanCach / 0.1));
+        if (huongDi.equals("Phải")) {
+            for (float j = 0; j < (khoanCach / 0.1); j++) {
+                double i = 0.1;    // khoản cách tịnh tuyến
+                Thread.sleep(20);
+                
+                // Lỗi Dòng SetText này nè
+                //Lỗi Dòng SetText này nè
+                //Lỗi Dòng SetText này nè
+                //Lỗi Dòng SetText này nè
+                XDongHo.setText(String.valueOf((Double.valueOf(XDongHo.getText())+i)));
+                
+                veDongHo(bkDongHo);
+                System.out.println((Double.valueOf(XDongHo.getText())+i));
+            }
+        } else if (huongDi.equals("Trái")) {
+            for (float j = 0; j < (khoanCach / 0.1); j++) {
+                double i = 0.1;    // khoản cách tịnh tuyến
+                Thread.sleep(20);
+                XDongHo.setText(String.valueOf((Double.valueOf(XDongHo.getText())-i)));
+                veDongHo(bkDongHo);
+            }
+        } else if (huongDi.equals("Lên")) {
+            for (float j = 0; j < (khoanCach / 0.1); j++) {
+                double i = 0.1;    // khoản cách tịnh tuyến
+                Thread.sleep(20);
+                YDongHo.setText(String.valueOf((Double.valueOf(YDongHo.getText())+i)));
+                veDongHo(bkDongHo);
+            }
+        } else if (huongDi.equals("Xuống")) {
+            for (float j = 0; j < (khoanCach / 0.1); j++) {
+                double i = 0.1;    // khoản cách tịnh tuyến
+                Thread.sleep(20);
+                YDongHo.setText(String.valueOf((Double.valueOf(YDongHo.getText())-i)));
+                veDongHo(bkDongHo);
+            }
+        }
     }
 }
