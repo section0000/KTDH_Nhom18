@@ -77,7 +77,7 @@ public class Project extends javax.swing.JFrame {
                 Timeee.setText(sdf.format(current));
                 if (dh == true && dxdh == false) {
                     veDongHo(bkDongHo);
-                }else if(dh== true && dxdh == true){
+                } else if (dh == true && dxdh == true) {
                     veDongHo(bkDongHo);
                     doiXungDongHo(dxdhString);
                 }
@@ -1405,8 +1405,8 @@ public class Project extends javax.swing.JFrame {
 
     private void HTDXOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HTDXOActionPerformed
         // TODO add your handling code here:
-       dxdhString = "O";
-       dxdh = true;
+        dxdhString = "O";
+        dxdh = true;
     }//GEN-LAST:event_HTDXOActionPerformed
 
     private void Len1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Len1MouseClicked
@@ -2425,9 +2425,10 @@ public class Project extends javax.swing.JFrame {
 
     // Vẽ Xe 
     public void veXe(String huongDi, int khoanCach) throws InterruptedException {
+        double i = 0.1;    // khoản cách tịnh tuyến
         if (huongDi.equals("Phải")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
-                double i = 0.1;    // khoản cách tịnh tuyến
+                
                 Thread.sleep(20);
                 translate(muiXe1, quaPhai(muiXe1, i));
                 translate(muiXe2, quaPhai(muiXe2, i));
@@ -2443,7 +2444,6 @@ public class Project extends javax.swing.JFrame {
             }
         } else if (huongDi.equals("Trái")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
-                double i = 0.1;    // khoản cách tịnh tuyến
                 Thread.sleep(20);
                 translate(muiXe1, quaTrai(muiXe1, i));
                 translate(muiXe2, quaTrai(muiXe2, i));
@@ -2459,7 +2459,6 @@ public class Project extends javax.swing.JFrame {
             }
         } else if (huongDi.equals("Lên")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
-                double i = 0.1;    // khoản cách tịnh tuyến
                 Thread.sleep(20);
                 translate(muiXe1, diLen(muiXe1, i));
                 translate(muiXe2, diLen(muiXe2, i));
@@ -2475,7 +2474,6 @@ public class Project extends javax.swing.JFrame {
             }
         } else if (huongDi.equals("Xuống")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
-                double i = 0.1;    // khoản cách tịnh tuyến
                 Thread.sleep(20);
                 translate(muiXe1, diXuong(muiXe1, i));
                 translate(muiXe2, diXuong(muiXe2, i));
@@ -2492,8 +2490,6 @@ public class Project extends javax.swing.JFrame {
         }
     }
 
-    
-    
     // Vẽ Đồng Hồ
     public void veDongHo(int i) {
         clear2D();
@@ -2524,27 +2520,26 @@ public class Project extends javax.swing.JFrame {
 //        rotate(kimGiay2, kimGiay1, giay);
 //        rotate(kimPhut2, kimPhut1, phut);
 //        rotate(kimGio2, kimGio1, gio);
-
         drawLineDDA(kimGiay1.getX(), kimGiay1.getY(), rotate(kimGiay2, kimGiay1, giay).getX(), rotate(kimGiay2, kimGiay1, giay).getY());
         drawLineDDA(kimPhut1.getX(), kimPhut1.getY(), rotate(kimPhut2, kimPhut1, phut).getX(), rotate(kimPhut2, kimPhut1, phut).getY());
         drawLineDDA(kimGio1.getX(), kimGio1.getY(), rotate(kimGio2, kimGio1, gio).getX(), rotate(kimGio2, kimGio1, gio).getY());
     }
-    
+
     // Đối Xứng Đồng Hồ
-    public void doiXungDongHo(String O){
+    public void doiXungDongHo(String O) {
         Point z = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()));
         z = symmetricWithRespectTo(z, O);
         drawCircleMidPoint(z.getX(), z.getY(), bkDongHo);
-        
+
         kimGiay1 = symmetricWithRespectTo(kimGiay1, O);
         kimGiay2 = symmetricWithRespectTo(kimGiay2, O);
-        
+
         kimPhut1 = symmetricWithRespectTo(kimPhut1, O);
         kimPhut2 = symmetricWithRespectTo(kimPhut2, O);
-        
+
         kimGio1 = symmetricWithRespectTo(kimGio1, O);
         kimGio2 = symmetricWithRespectTo(kimGio2, O);
-        
+
         double giay, phut, gio;
 
         giay = (Double.valueOf(Timeee.getText().substring(6, 8))) * (360 / 60);
@@ -2554,50 +2549,43 @@ public class Project extends javax.swing.JFrame {
 //        rotate(kimGiay2, kimGiay1, giay);
 //        rotate(kimPhut2, kimPhut1, phut);
 //        rotate(kimGio2, kimGio1, gio);
-
         drawLineDDA(kimGiay1.getX(), kimGiay1.getY(), rotate(kimGiay2, kimGiay1, giay).getX(), rotate(kimGiay2, kimGiay1, giay).getY());
         drawLineDDA(kimPhut1.getX(), kimPhut1.getY(), rotate(kimPhut2, kimPhut1, phut).getX(), rotate(kimPhut2, kimPhut1, phut).getY());
         drawLineDDA(kimGio1.getX(), kimGio1.getY(), rotate(kimGio2, kimGio1, gio).getX(), rotate(kimGio2, kimGio1, gio).getY());
     }
-    
+
     // Tinh Tuyen Dong Ho
-    public void tinhTuyenDongHo(String huongDi, int khoanCach) throws InterruptedException{
-        System.out.println((khoanCach / 0.1));
+    public void tinhTuyenDongHo(String huongDi, int khoanCach) throws InterruptedException {
+        double i = 0.1;    // khoản cách tịnh tuyến
         if (huongDi.equals("Phải")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
-                double i = 0.1;    // khoản cách tịnh tuyến
+
                 Thread.sleep(20);
-                
-                // Lỗi Dòng SetText này nè
-                //Lỗi Dòng SetText này nè
-                //Lỗi Dòng SetText này nè
-                //Lỗi Dòng SetText này nè
-                XDongHo.setText(String.valueOf((Double.valueOf(XDongHo.getText())+i)));
-                
+                XDongHo.setText(String.valueOf((Double.valueOf(XDongHo.getText()) + i)));
                 veDongHo(bkDongHo);
-                System.out.println((Double.valueOf(XDongHo.getText())+i));
             }
+            XDongHo.setText(String.valueOf(Math.round(Double.valueOf(XDongHo.getText()) + i)));
         } else if (huongDi.equals("Trái")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
-                double i = 0.1;    // khoản cách tịnh tuyến
                 Thread.sleep(20);
-                XDongHo.setText(String.valueOf((Double.valueOf(XDongHo.getText())-i)));
+                XDongHo.setText(String.valueOf((Double.valueOf(XDongHo.getText()) - i)));
                 veDongHo(bkDongHo);
             }
+            XDongHo.setText(String.valueOf(Math.round(Double.valueOf(XDongHo.getText()) - i)));
         } else if (huongDi.equals("Lên")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
-                double i = 0.1;    // khoản cách tịnh tuyến
                 Thread.sleep(20);
-                YDongHo.setText(String.valueOf((Double.valueOf(YDongHo.getText())+i)));
+                YDongHo.setText(String.valueOf((Double.valueOf(YDongHo.getText()) + i)));
                 veDongHo(bkDongHo);
             }
+            YDongHo.setText(String.valueOf(Math.round(Double.valueOf(YDongHo.getText()) + i)));
         } else if (huongDi.equals("Xuống")) {
             for (float j = 0; j < (khoanCach / 0.1); j++) {
-                double i = 0.1;    // khoản cách tịnh tuyến
                 Thread.sleep(20);
-                YDongHo.setText(String.valueOf((Double.valueOf(YDongHo.getText())-i)));
+                YDongHo.setText(String.valueOf((Double.valueOf(YDongHo.getText()) - i)));
                 veDongHo(bkDongHo);
             }
+            YDongHo.setText(String.valueOf(Math.round(Double.valueOf(YDongHo.getText()) - i)));
         }
     }
 }
