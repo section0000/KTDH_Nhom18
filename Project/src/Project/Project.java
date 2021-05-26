@@ -1288,6 +1288,7 @@ public class Project extends javax.swing.JFrame {
     }//GEN-LAST:event_quayLaiHC_BtnActionPerformed
 
     private void HinhXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HinhXeActionPerformed
+        khoiTaoXe();
         veChiecXe();
         changePanel(TuyChon, HinhXePanel);
     }//GEN-LAST:event_HinhXeActionPerformed
@@ -1626,7 +1627,6 @@ public class Project extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        khoiTaoXe();
         scaleXe();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -2536,6 +2536,8 @@ public class Project extends javax.swing.JFrame {
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setPaint(Color.BLACK);
         DecimalFormat format = new DecimalFormat("0.#");
+        // Vẽ Tâm Xe
+        drawLineDDAText(tamXe.getX(), tamXe.getY(), tamXe.getX(), tamXe.getY(), "Z", "Z");
         // Vẽ Mui Xe
         drawLineDDAText(muiXe1.getX(), muiXe1.getY(), muiXe2.getX(), muiXe2.getY(), "D", "A");
         drawLineDDAText(muiXe2.getX(), muiXe2.getY(), muiXe3.getX(), muiXe3.getY(), "A", "B");
@@ -2549,6 +2551,7 @@ public class Project extends javax.swing.JFrame {
         g1.fillOval((int) ((banhXe1.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe1.getY() * this.step), (int) (((banhXeX) * step)), (int) ((banhXeY) * step));
         g1.fillOval((int) ((banhXe2.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe2.getY() * this.step), (int) (((banhXeX) * step)), (int) ((banhXeY) * step));
 
+        
         //drawStar();
         toaDoXe();
     }
@@ -2629,10 +2632,9 @@ public class Project extends javax.swing.JFrame {
         F.setText("(" + format.format((thanXe3.getX())) + " ; " + format.format((thanXe3.getY())) + ")");
         G.setText("(" + format.format((thanXe1.getX())) + " ; " + format.format((thanXe1.getY())) + ")");
         H.setText("(" + format.format((thanXe4.getX())) + " ; " + format.format((thanXe4.getY())) + ")");
-        BX1.setText("(" + format.format((tamXe.getX() - 2)) + " ; " + format.format((tamXe.getY() - 0.2)) + ")");
-        BX2.setText("(" + format.format((tamXe.getX() + 1.3)) + " ; " + format.format((tamXe.getY() - 0.2)) + ")");
+        BX1.setText("(" + format.format(banhXe1.getX()) + " ; " + format.format(banhXe1.getY()) + ")");
+        BX2.setText("(" + format.format(banhXe2.getX()) + " ; " + format.format((banhXe2.getY())) + ")");
         TamXe.setText("(" + format.format((tamXe.getX())) + " ; " + format.format((tamXe.getY())) + ")");
-
     }
 
     // Tịnh Tuyến Xe Theo 1 Điểm
@@ -2655,7 +2657,7 @@ public class Project extends javax.swing.JFrame {
     // Scale Xe
     public void scaleXe() {
         Point TT = new Point(Double.valueOf(TLXEX.getText()), Double.valueOf(TLXEY.getText()));
-        tamXe = scale(tamXe, TT);
+        
         muiXe1 = scale(muiXe1, TT);
         muiXe2 = scale(muiXe2, TT);
         muiXe3 = scale(muiXe3, TT);
@@ -2665,8 +2667,26 @@ public class Project extends javax.swing.JFrame {
         thanXe2 = scale(thanXe2, TT);
         thanXe4 = scale(thanXe4, TT);
 
+        if (tamXe.getX() < 0 && Double.valueOf(TLXEX.getText())<0) {
+            banhXe1.setX(banhXe1.getX() + 0.6);
+            banhXe2.setX(banhXe2.getX() + 0.6);
+        } else if(tamXe.getX() > 0 && Double.valueOf(TLXEX.getText())<0){
+            banhXe1.setX(banhXe1.getX() + 0.6);
+            banhXe2.setX(banhXe2.getX() + 0.6);
+        }
+        
+        if (tamXe.getX() < 0 && Double.valueOf(TLXEY.getText())<0) {
+            banhXe1.setY(banhXe1.getY() - 0.6);
+            banhXe2.setY(banhXe2.getY() - 0.6);
+        } else if(tamXe.getX() > 0 && Double.valueOf(TLXEY.getText())<0){
+            banhXe1.setY(banhXe1.getY() - 0.6);
+            banhXe2.setY(banhXe2.getY() - 0.6);
+        }
+        
         banhXe1 = scale(banhXe1, TT);
         banhXe2 = scale(banhXe2, TT);
+        
+        tamXe = scale(tamXe, TT);
         if (Double.valueOf(TLXEX.getText()) > 0) {
             banhXeX = banhXeX * Double.valueOf(TLXEX.getText());
         } else {
@@ -2678,7 +2698,8 @@ public class Project extends javax.swing.JFrame {
         } else {
             banhXeY = banhXeY * (Double.valueOf(TLXEY.getText()) * (-1));
         }
-
+        
+        
         veChiecXe();
     }
 
