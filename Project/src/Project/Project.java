@@ -1627,6 +1627,7 @@ public class Project extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        khoiTaoXe();
         scaleXe();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -2664,10 +2665,21 @@ public class Project extends javax.swing.JFrame {
         thanXe3 = scale(thanXe3, TT);
         thanXe2 = scale(thanXe2, TT);
         thanXe4 = scale(thanXe4, TT);
+        
         banhXe1 = scale(banhXe1, TT);
         banhXe2 = scale(banhXe2, TT);
-        banhXeX = banhXeX * Double.valueOf(TLXEX.getText());
-        banhXeY = banhXeY * Double.valueOf(TLXEY.getText());
+        if(Double.valueOf(TLXEX.getText()) > 0){
+            banhXeX = banhXeX * Double.valueOf(TLXEX.getText());
+        }else{
+            banhXeX = banhXeX * (Double.valueOf(TLXEX.getText())*(-1));
+        }
+        
+        if(Double.valueOf(TLXEY.getText()) > 0){
+            banhXeY = banhXeY * Double.valueOf(TLXEY.getText());
+        }else{
+            banhXeY = banhXeY * (Double.valueOf(TLXEY.getText())*(-1));
+        }
+        
         veChiecXe();
     }
 
