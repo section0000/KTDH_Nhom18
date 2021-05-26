@@ -1532,7 +1532,6 @@ public class Project extends javax.swing.JFrame {
 
     private void VeDongHoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VeDongHoMouseClicked
         // TODO add your handling code here:
-
         veDongHo(bkDongHo);
         dh = true;
     }//GEN-LAST:event_VeDongHoMouseClicked
@@ -2665,21 +2664,21 @@ public class Project extends javax.swing.JFrame {
         thanXe3 = scale(thanXe3, TT);
         thanXe2 = scale(thanXe2, TT);
         thanXe4 = scale(thanXe4, TT);
-        
+
         banhXe1 = scale(banhXe1, TT);
         banhXe2 = scale(banhXe2, TT);
-        if(Double.valueOf(TLXEX.getText()) > 0){
+        if (Double.valueOf(TLXEX.getText()) > 0) {
             banhXeX = banhXeX * Double.valueOf(TLXEX.getText());
-        }else{
-            banhXeX = banhXeX * (Double.valueOf(TLXEX.getText())*(-1));
+        } else {
+            banhXeX = banhXeX * (Double.valueOf(TLXEX.getText()) * (-1));
         }
-        
-        if(Double.valueOf(TLXEY.getText()) > 0){
+
+        if (Double.valueOf(TLXEY.getText()) > 0) {
             banhXeY = banhXeY * Double.valueOf(TLXEY.getText());
-        }else{
-            banhXeY = banhXeY * (Double.valueOf(TLXEY.getText())*(-1));
+        } else {
+            banhXeY = banhXeY * (Double.valueOf(TLXEY.getText()) * (-1));
         }
-        
+
         veChiecXe();
     }
 
@@ -2758,22 +2757,30 @@ public class Project extends javax.swing.JFrame {
     public void veDongHo(int i) {
         clear2D();
         bkDongHo = i;
-        drawCircleMidPoint(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()), bkDongHo);
+        double x = 0;
+        double y = 0;
+        if (!XDongHo.getText().equals("")) {
+            x = Double.valueOf(XDongHo.getText());
+        }
+        if (!YDongHo.getText().equals("")) {
+            y = Double.valueOf(YDongHo.getText());
+        }
+        drawCircleMidPoint(x, y, bkDongHo);
 
-        kimGiay1.setX(Double.valueOf(XDongHo.getText()));
-        kimGiay1.setY(Double.valueOf(YDongHo.getText()));
-        kimGiay2.setX(Double.valueOf(XDongHo.getText()));
-        kimGiay2.setY(Double.valueOf(YDongHo.getText()) + bkDongHo - 0.1);
+        kimGiay1.setX(x);
+        kimGiay1.setY(y);
+        kimGiay2.setX(x);
+        kimGiay2.setY(y + bkDongHo - 0.1);
 
-        kimPhut1.setX(Double.valueOf(XDongHo.getText()));
-        kimPhut1.setY(Double.valueOf(YDongHo.getText()));
-        kimPhut2.setX(Double.valueOf(XDongHo.getText()));
-        kimPhut2.setY(Double.valueOf(YDongHo.getText()) + bkDongHo - 0.2);
+        kimPhut1.setX(x);
+        kimPhut1.setY(y);
+        kimPhut2.setX(x);
+        kimPhut2.setY(y + bkDongHo - 0.2);
 
-        kimGio1.setX(Double.valueOf(XDongHo.getText()));
-        kimGio1.setY(Double.valueOf(YDongHo.getText()));
-        kimGio2.setX(Double.valueOf(XDongHo.getText()));
-        kimGio2.setY(Double.valueOf(YDongHo.getText()) + bkDongHo - 0.35);
+        kimGio1.setX(x);
+        kimGio1.setY(y);
+        kimGio2.setX(x);
+        kimGio2.setY(y + bkDongHo - 0.35);
 
         double giay, phut, gio;
 
