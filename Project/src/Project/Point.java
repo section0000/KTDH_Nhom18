@@ -39,5 +39,9 @@ public class Point {
     public void setY(double y) {
         this.y = y;
     }    
+
+    Point symmetricWithRespectTo(Point thanXe1, String O) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
