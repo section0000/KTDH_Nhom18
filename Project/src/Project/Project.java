@@ -30,64 +30,20 @@ public class Project extends javax.swing.JFrame {
 
     private Graphics g3D;
     private Graphics g2D;
-    private int step = 40; // Ti le: 1 don vi = 40 pixel 
+    private int step = 5; // Ti le: 1 don vi = 40 pixel 
     private int height; // Chieu cao cua Panel
     private int width; // Chieu dai cua Panel
 
-    int bkDongHo = 1;
+    int bkDongHo = 1*8;
     Point muiXe1, muiXe2, muiXe3, muiXe4, thanXe1, thanXe2, thanXe3, thanXe4, banhXe1, banhXe2, tamXe;
     Point tam, As, Bs, Cs, Ds, Es, As1, Bs1, Cs1, Ds1, Es1;
     double doDaiCanh = 0.5;
     double banhXeX = 0.8, banhXeY = 0.8;
     boolean dx = true, dh = false, dxdh = false;
     String dxdhString = "";
+    Timer timer;
 
     Point kimGiay1, kimGiay2, kimPhut1, kimPhut2, kimGio1, kimGio2;
-
-    public void khoiTaoDongHo() {
-        kimGiay1 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(XDongHo.getText()));
-        kimGiay2 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo - 0.1);
-
-        kimPhut1 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(XDongHo.getText()));
-        kimPhut2 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo - 0.2);
-
-        kimGio1 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(XDongHo.getText()));
-        kimGio2 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo - 0.3);
-    }
-
-    public void khoiTaoNgoiSao() {
-        tam = new Point(-7, 2.5);
-
-        As = new Point(tam.getX(), tam.getY() + doDaiCanh);
-        Bs = new Point(tam.getX() + doDaiCanh, tam.getY() + (doDaiCanh / 3));
-        Cs = new Point(tam.getX() + (doDaiCanh / 2), tam.getY() - doDaiCanh);
-        Ds = new Point(tam.getX() - (doDaiCanh / 2), tam.getY() - doDaiCanh);
-        Es = new Point(tam.getX() - doDaiCanh, tam.getY() + (doDaiCanh / 3));
-
-        As1 = new Point(tam.getX() + (doDaiCanh / 3), tam.getY() + (doDaiCanh / 3));
-        Bs1 = new Point(tam.getX() + (doDaiCanh / 3), tam.getY() - (doDaiCanh / 3));
-        Cs1 = new Point(tam.getX(), tam.getY() - (doDaiCanh / 2));
-        Ds1 = new Point(tam.getX() - (doDaiCanh / 3), tam.getY() - (doDaiCanh / 3));
-        Es1 = new Point(tam.getX() - (doDaiCanh / 3), tam.getY() + (doDaiCanh / 3));
-    }
-
-    public void khoiTaoXe() {
-        // Tâm Xe
-        tamXe = new Point(-7, 2.5);
-        // Vẽ Mui Xe
-        muiXe1 = new Point(tamXe.getX() - 1, tamXe.getY() + 0.5);
-        muiXe2 = new Point(tamXe.getX() - 1, tamXe.getY() + 1.5);
-        muiXe3 = new Point(tamXe.getX() + 1, tamXe.getY() + 1.5);
-        muiXe4 = new Point(tamXe.getX() + 1, tamXe.getY() + 0.5);
-        // Vẽ Thân Xe
-        thanXe1 = new Point(tamXe.getX() - 2.5, tamXe.getY() - 0.5);
-        thanXe2 = new Point(tamXe.getX() - 2.5, tamXe.getY() + 0.5);
-        thanXe3 = new Point(tamXe.getX() + 2.5, tamXe.getY() + 0.5);
-        thanXe4 = new Point(tamXe.getX() + 3, tamXe.getY() - 0.5);
-        //Bánh Xe
-        banhXe1 = new Point(tamXe.getX() - 2, tamXe.getY() - 0.2);
-        banhXe2 = new Point(tamXe.getX() + 1.3, tamXe.getY() - 0.2);
-    }
 
     public Project() {
         this.timer = new Timer(1000, new ActionListener() {
@@ -116,9 +72,6 @@ public class Project extends javax.swing.JFrame {
         khoiTaoNgoiSao();
         timer.start();
     }
-
-    Timer timer;
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -262,10 +215,10 @@ public class Project extends javax.swing.JFrame {
         panel3D.setBackground(new java.awt.Color(255, 255, 255));
         panel3D.setPreferredSize(new java.awt.Dimension(900, 300));
         panel3D.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 panel3DAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -275,7 +228,7 @@ public class Project extends javax.swing.JFrame {
         panel3D.setLayout(panel3DLayout);
         panel3DLayout.setHorizontalGroup(
             panel3DLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1006, Short.MAX_VALUE)
+            .addGap(0, 1080, Short.MAX_VALUE)
         );
         panel3DLayout.setVerticalGroup(
             panel3DLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,8 +275,8 @@ public class Project extends javax.swing.JFrame {
             tuyChon_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tuyChon_PnLayout.createSequentialGroup()
                 .addGroup(tuyChon_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HHCN_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                    .addComponent(HLP_Btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addComponent(HHCN_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(HLP_Btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                     .addComponent(HLP_Btn1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -336,7 +289,7 @@ public class Project extends javax.swing.JFrame {
                 .addComponent(HLP_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(HLP_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(438, Short.MAX_VALUE))
         );
 
         tuyChon_LPn.add(tuyChon_Pn, "card4");
@@ -622,7 +575,7 @@ public class Project extends javax.swing.JFrame {
             HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HC_PnLayout.createSequentialGroup()
                 .addGroup(HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(veHC_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addComponent(veHC_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                     .addGroup(HC_PnLayout.createSequentialGroup()
                         .addGroup(HC_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(HC_PnLayout.createSequentialGroup()
@@ -669,7 +622,7 @@ public class Project extends javax.swing.JFrame {
                 .addComponent(veHC_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(quayLaiHC_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(423, Short.MAX_VALUE))
         );
 
         tuyChon_LPn.add(HC_Pn, "card5");
@@ -685,8 +638,8 @@ public class Project extends javax.swing.JFrame {
                         .addComponent(xoaManHinh_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tuyChon_LPn, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel3D, javax.swing.GroupLayout.PREFERRED_SIZE, 1006, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addComponent(panel3D, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -707,10 +660,10 @@ public class Project extends javax.swing.JFrame {
         panel2D.setBackground(new java.awt.Color(255, 255, 255));
         panel2D.setPreferredSize(new java.awt.Dimension(900, 300));
         panel2D.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 panel2DAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -734,7 +687,7 @@ public class Project extends javax.swing.JFrame {
         TuyChon.setLayout(new java.awt.CardLayout());
 
         HinhXe.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        HinhXe.setText("Hình Xe - Tịnh Tuyến");
+        HinhXe.setText("Xe");
         HinhXe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HinhXeMouseClicked(evt);
@@ -747,7 +700,7 @@ public class Project extends javax.swing.JFrame {
         });
 
         dongHo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        dongHo.setText("Quay + Tỉ Lệ");
+        dongHo.setText("Đồng hồ");
         dongHo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dongHoMouseClicked(evt);
@@ -855,7 +808,7 @@ public class Project extends javax.swing.JFrame {
         khoanCachTT.setText("0");
         HinhXePanel.add(khoanCachTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 132, 77, -1));
 
-        jLabel3.setText("Tịnh Tuyến Với 1 Điểm :");
+        jLabel3.setText("Tịnh Tiến Với 1 Điểm :");
         HinhXePanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, -1, -1));
 
         Xuong.setText("Xuống");
@@ -945,7 +898,7 @@ public class Project extends javax.swing.JFrame {
         TamXe.setText("(0;0)");
         HinhXePanel.add(TamXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, -1));
 
-        jLabel6.setText("Khoản Cách Tịnh Tuyến :");
+        jLabel6.setText("Khoảng Cách Tịnh Tiến :");
         HinhXePanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 109, -1, -1));
 
         YTT.setText("0");
@@ -964,7 +917,7 @@ public class Project extends javax.swing.JFrame {
         });
         HinhXePanel.add(XTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 20, 20));
 
-        jButton3.setText("Tịnh Tuyến");
+        jButton3.setText("Tịnh Tiến");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
@@ -1152,7 +1105,7 @@ public class Project extends javax.swing.JFrame {
         });
         DongHoPanel.add(Xuong1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
 
-        jLabel5.setText("Khoản Cách Tịnh Tuyến :");
+        jLabel5.setText("Khoảng Cách Tịnh Tiến :");
         DongHoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, -1, -1));
 
         khoanCachTT1.setText("0");
@@ -1207,20 +1160,20 @@ public class Project extends javax.swing.JFrame {
                     .addComponent(xoaManHinh_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TuyChon, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel2D, javax.swing.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
-                .addGap(80, 80, 80))
+                .addComponent(panel2D, javax.swing.GroupLayout.PREFERRED_SIZE, 1060, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panel2D, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(TuyChon)
+                        .addComponent(TuyChon, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(xoaManHinh_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panel2D, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(xoaManHinh_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         jTabbedPane1.addTab("2D", jPanel2);
@@ -1229,10 +1182,7 @@ public class Project extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1560,7 +1510,7 @@ public class Project extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             // TODO add your handling code here:
-            tinhTuyenDongHo(Len1.getText(), Integer.parseInt(khoanCachTT1.getText()));
+            tinhTienDongHo(Len1.getText(), Integer.parseInt(khoanCachTT1.getText()));
         } catch (InterruptedException ex) {
             Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1574,7 +1524,7 @@ public class Project extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             // TODO add your handling code here:
-            tinhTuyenDongHo(Trai1.getText(), Integer.parseInt(khoanCachTT1.getText()));
+            tinhTienDongHo(Trai1.getText(), Integer.parseInt(khoanCachTT1.getText()));
         } catch (InterruptedException ex) {
             Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1587,7 +1537,7 @@ public class Project extends javax.swing.JFrame {
     private void Phai1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Phai1ActionPerformed
         try {
             // TODO add your handling code here:
-            tinhTuyenDongHo(Phai1.getText(), Integer.parseInt(khoanCachTT1.getText()));
+            tinhTienDongHo(Phai1.getText(), Integer.parseInt(khoanCachTT1.getText()));
         } catch (InterruptedException ex) {
             Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1601,7 +1551,7 @@ public class Project extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             // TODO add your handling code here:
-            tinhTuyenDongHo(Xuong1.getText(), Integer.parseInt(khoanCachTT1.getText()));
+            tinhTienDongHo(Xuong1.getText(), Integer.parseInt(khoanCachTT1.getText()));
         } catch (InterruptedException ex) {
             Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1809,20 +1759,7 @@ public class Project extends javax.swing.JFrame {
         jLayeredPane.repaint();
         jLayeredPane.revalidate();
     }
-
-    public void drawStar() {
-        drawLineDDA(As.getX(), As.getY(), As1.getX(), As1.getY());
-        drawLineDDA(As1.getX(), As1.getY(), Bs.getX(), Bs.getY());
-        drawLineDDA(Bs.getX(), Bs.getY(), Bs1.getX(), Bs1.getY());
-        drawLineDDA(Bs1.getX(), Bs1.getY(), Cs.getX(), Cs.getY());
-        drawLineDDA(Cs.getX(), Cs.getY(), Cs1.getX(), Cs1.getY());
-        drawLineDDA(Cs1.getX(), Cs1.getY(), Ds.getX(), Ds.getY());
-        drawLineDDA(Ds.getX(), Ds.getY(), Ds1.getX(), Ds1.getY());
-        drawLineDDA(Ds1.getX(), Ds1.getY(), Es.getX(), Es.getY());
-        drawLineDDA(Es.getX(), Es.getY(), Es1.getX(), Es1.getY());
-        drawLineDDA(Es1.getX(), Es1.getY(), As.getX(), As.getY());
-    }
-
+    
     public void clear() {
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.clearRect(0, 0, width, height);
@@ -1830,15 +1767,88 @@ public class Project extends javax.swing.JFrame {
         g3D = panel3D.getGraphics();
         draw3DCoordinate();
         //drawGrid();
-    }
-
+    }    
+    
     public void clear2D() {
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.clearRect(0, 0, width, height);
         g3D = panel2D.getGraphics();
         draw2DCoordinate();
+    }    
+
+    // De khong bi mat do thi khi zoom len hay di chuyen frame
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        draw3DCoordinate();
+        //draw2DCoordinate();
+        //drawGrid();
+    }    
+ 
+    public void putPixel(double x, double y) {
+        Graphics2D g1 = (Graphics2D) g3D.create();
+        g1.setColor(Color.BLACK);
+        g1.fillRect((int) x, (int) y, 3, 3);
     }
 
+    public void put4Pixel(double xO, double yO, double x, double y) // Ve ellipse
+    {
+        putPixel(xO + x, yO + y);
+        putPixel(xO - x, yO + y);
+        putPixel(xO + x, yO - y);
+        putPixel(xO - x, yO - y);
+    }
+
+    public void put8Pixel(double xO, double yO, double x, double y) // Ve duong tron
+    {
+        putPixel(xO + x, yO + y); // (x,y)
+        putPixel(xO - x, yO + y); // (-x, y)
+        putPixel(xO + x, yO - y); // (x, -y)
+        putPixel(xO - x, yO - y); // (-x , -y)
+        putPixel(xO + y, yO + x); // (y, x)
+        putPixel(xO - y, yO + x); // (-y, x)
+        putPixel(xO + y, yO - x); // (y, -x)
+        putPixel(xO - y, yO - x); // (-y -x)
+    }    
+
+    public void putPixel3D(double x, double y) {
+        Graphics2D g1 = (Graphics2D) g3D.create();
+        g1.setColor(Color.RED);
+
+        // Dua ve goc toa do
+        double newX = x * step + width / 2;
+        double newY = height / 2 - y * step;
+
+        g1.fillRect((int) newX, (int) newY, 4, 4);
+    }
+
+    public void putText3D(String pointName, double x, double y, double z) {
+        Graphics2D g1 = (Graphics2D) g3D.create();
+
+        double newX, newY;
+        newX = cavalierProjection(x, y) * step + width / 2;
+        newY = height / 2 - cavalierProjection(z, y) * step;
+
+        g1.setColor(Color.red);
+        g1.setFont(new Font("Arial", Font.BOLD, 18));
+        g1.drawString(pointName + "(" + x + "," + y + "," + z + ")", (float) newX + 5, (float) newY + 10);
+    }    
+    
+    public void drawGrid() {
+        Graphics2D g1 = (Graphics2D) g3D.create();
+        g1.setColor(Color.black);
+
+        // Luoi doc
+        for (int x = 0; x < width; x += step) {
+            g1.drawLine(x, 0, x, height);
+        }
+
+        // Luoi ngang
+        for (int y = 0; y < height; y += step) {
+            g1.drawLine(0, y, width, y);
+        }
+    }
+    
     public void draw2DCoordinate() {
         height = panel2D.getBounds().height; // Lay chieu cao cua Panel
         width = panel2D.getBounds().width; // Lay chieu dai cua Panel
@@ -1846,9 +1856,22 @@ public class Project extends javax.swing.JFrame {
         Graphics2D g1 = (Graphics2D) g3D.create();
         g1.setStroke(new BasicStroke(3));
         g1.setColor(Color.BLACK);
-        g1.drawLine(0, height / 2, width, height / 2); // Ve truc Ox
-        g1.drawLine(width / 2, 0, width / 2, height); // Ve truc Oy       
+        g1.drawLine(width / 2, height / 2, width, height / 2); // Ve truc Ox
+        g1.drawLine(width / 2, 0, width / 2, height / 2); // Ve truc Oy       
 
+        int x1 = 4;
+        for (int i = 0; i <= width / 2; i++) {
+            if (i % (3 * x1) == 2 * x1) {
+                g1.drawLine(i, height / 2, i - 2 * x1, height / 2); // Ox'
+            }
+        }        
+        for (int i = height + 1; i >= height / 2; i--) {
+            int x = height - i;
+            if (x % (3 * x1) == 2 * x1) {
+                g1.drawLine(width / 2, i, width / 2, i - 2 * x1); // Oy'
+            }
+        }
+        
         g1.setColor(Color.blue);
         g1.setFont(new Font("Arial", Font.BOLD, 18));
         g1.drawString("x", width - 20, height / 2 - 10);
@@ -1876,13 +1899,13 @@ public class Project extends javax.swing.JFrame {
         for (int i = height + 1; i >= height / 2; i--) {
             int x = height - i;
             if (x % (3 * x1) == 2 * x1) {
-                g1.drawLine(width / 2, i, width / 2, i - 2 * x1); // Oy'
+                g1.drawLine(width / 2, i, width / 2, i - 2 * x1); // Oz'
             }
         }
         for (int i = width / 2; i <= width; i++) {
             int x = i - width / 2;
             if (x % (3 * x1) == 2 * x1) {
-                g1.drawLine(i, height / 2 - x, i - 2 * x1, height / 2 - (x - 2 * x1)); // Oz'
+                g1.drawLine(i, height / 2 - x, i - 2 * x1, height / 2 - (x - 2 * x1)); // Oy'
             }
         }
 
@@ -1912,85 +1935,91 @@ public class Project extends javax.swing.JFrame {
         g1.drawString("z", width / 2 + 10, 0 + 10);
         g1.drawString("O", width / 2 - 18, height / 2 - 4);
         g1.drawString("y", width / 4 - 10, height - 5);
-    }
+    }    
+    
+    public void drawCircleMidPoint(double xO, double yO, double r) {
+        xO = xO * step + width / 2;
+        yO = height / 2 - yO * step;
+        r = r * step;
 
-    // De khong bi mat do thi khi zoom len hay di chuyen frame
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        draw3DCoordinate();
-        //drawGrid();
-    }
+        double x = 0;
+        double y = r;
+        double p = 1 - r;
 
-    public void putPixel(double x, double y) {
-        Graphics2D g1 = (Graphics2D) g3D.create();
-        g1.setColor(Color.BLACK);
-        g1.fillRect((int) x, (int) y, 3, 3);
-    }
+        put8Pixel(xO, yO, x, y);
 
-    public void put4Pixel(double xO, double yO, double x, double y) // Ve ellipse
-    {
-        putPixel(xO + x, yO + y);
-        putPixel(xO - x, yO + y);
-        putPixel(xO + x, yO - y);
-        putPixel(xO - x, yO - y);
-    }
-
-    public void put8Pixel(double xO, double yO, double x, double y) // Ve duong tron
-    {
-        putPixel(xO + x, yO + y); // (x,y)
-        putPixel(xO - x, yO + y); // (-x, y)
-        putPixel(xO + x, yO - y); // (x, -y)
-        putPixel(xO - x, yO - y); // (-x , -y)
-        putPixel(xO + y, yO + x); // (y, x)
-        putPixel(xO - y, yO + x); // (-y, x)
-        putPixel(xO + y, yO - x); // (y, -x)
-        putPixel(xO - y, yO - x); // (-y -x)
-    }
-
-    public void putPixel3D(double x, double y) {
-        Graphics2D g1 = (Graphics2D) g3D.create();
-        g1.setColor(Color.RED);
-
-        // Dua ve goc toa do
-        double newX = x * step + width / 2;
-        double newY = height / 2 - y * step;
-
-        g1.fillRect((int) newX, (int) newY, 4, 4);
-    }
-
-    public void putText3D(String pointName, double x, double y, double z) {
-        Graphics2D g1 = (Graphics2D) g3D.create();
-
-        double newX, newY;
-        newX = cavalierProjection(x, y) * step + width / 2;
-        newY = height / 2 - cavalierProjection(z, y) * step;
-
-        g1.setColor(Color.red);
-        g1.setFont(new Font("Arial", Font.BOLD, 18));
-        g1.drawString(pointName + "(" + x + "," + y + "," + z + ")", (float) newX + 5, (float) newY + 10);
-    }
-
-    public double cavalierProjection(double a, double b) {
-        // Chieu len truc Oxz
-        return a - b * (1 - Math.sqrt(2) / 2);
-    }
-
-    public void drawGrid() {
-        Graphics2D g1 = (Graphics2D) g3D.create();
-        g1.setColor(Color.black);
-
-        // Luoi doc
-        for (int x = 0; x < width; x += step) {
-            g1.drawLine(x, 0, x, height);
-        }
-
-        // Luoi ngang
-        for (int y = 0; y < height; y += step) {
-            g1.drawLine(0, y, width, y);
+        while (x < y) {
+            if (p < 0) {
+                p += 2 * x + 3;
+            } else {
+                p += 2 * (x - y) + 5;
+                y--;
+            }
+            x++;
+            put8Pixel(xO, yO, x, y);
         }
     }
 
+    public void drawEllipseMidPoint(double xO, double yO, double a, double b) {
+        xO = xO * step + width / 2;
+        yO = height / 2 - yO * step;
+        a = a * step;
+        b = b * step;
+
+        double x, y, fx, fy, a2, b2, p, q;
+        x = 0;
+        y = b;
+        a2 = a * a;
+        b2 = b * b;
+        fx = 0;
+        fy = 2 * a2 * y;
+        put4Pixel(xO, yO, x, y);
+        p = Math.round(b2 - a2 * b + a2 / 4);
+
+        int count = 0;
+        while (fx < fy) {
+            count++;
+            x++;
+            fx = fx + 2 * b2;
+            if (p < 0) {
+                p = p + b2 * (2 * x + 3);
+            } else {
+                y--;
+                p = p + b2 * (2 * x + 3) + a2 * (2 - 2 * y);
+                fy = fy - 2 * a2;
+            }
+            if (count >= 11 && count <= 15) {
+                if (count == 15) {
+                    count = 0;
+                }
+                continue;
+            }
+            put4Pixel(xO, yO, x, y);
+        }
+
+        int count1 = 0;
+        q = Math.round(b2 * (x + 0.5) * (x + 0.5) + a2 * (y - 1) * (y - 1) - a2 * b2);
+        while (y > 0) {
+            count1++;
+            y--;
+            fy = fy - 2 * a2;
+            if (q < 0) {
+                x++;
+                q = q + b2 * (2 * x + 2) + a2 * (3 - 2 * y);
+                fx = fx + 2 * b2;
+            } else {
+                q = q + a2 * (3 - 2 * y);
+            }
+            if (count1 >= 11 && count1 <= 15) {
+                if (count1 == 15) {
+                    count1 = 0;
+                }
+                continue;
+            }
+            put4Pixel(xO, yO, x, y);
+        }
+    }   
+    
     public void drawLineDDA(double x1, double y1, double x2, double y2) {
         // Dua ve tam toa do
         x1 = x1 * this.step + width / 2;
@@ -2073,8 +2102,8 @@ public class Project extends javax.swing.JFrame {
                 drawDashedLineDDA(x1, y1, x2, y2);
             }
         }
-    }
-
+    }    
+ 
     public void drawRectangular() {
         // Diem goc O
         double xO = Double.valueOf(xOHHCN_TF.getText());
@@ -2269,91 +2298,8 @@ public class Project extends javax.swing.JFrame {
         drawDDAWithCondition(xO1, yO1, xC1, yC1, "Dashed"); // OC
         drawDDAWithCondition(xO1, yO1, xA1, yA1, "Dashed"); // OA
         drawDDAWithCondition(xO1, yO1, xE1, yE1, "Dashed"); // EO        
-    }
-
-    public void drawCircleMidPoint(double xO, double yO, double r) {
-        xO = xO * step + width / 2;
-        yO = height / 2 - yO * step;
-        r = r * step;
-
-        double x = 0;
-        double y = r;
-        double p = 1 - r;
-
-        put8Pixel(xO, yO, x, y);
-
-        while (x < y) {
-            if (p < 0) {
-                p += 2 * x + 3;
-            } else {
-                p += 2 * (x - y) + 5;
-                y--;
-            }
-            x++;
-            put8Pixel(xO, yO, x, y);
-        }
-    }
-
-    public void drawEllipseMidPoint(double xO, double yO, double a, double b) {
-        xO = xO * step + width / 2;
-        yO = height / 2 - yO * step;
-        a = a * step;
-        b = b * step;
-
-        double x, y, fx, fy, a2, b2, p, q;
-        x = 0;
-        y = b;
-        a2 = a * a;
-        b2 = b * b;
-        fx = 0;
-        fy = 2 * a2 * y;
-        put4Pixel(xO, yO, x, y);
-        p = Math.round(b2 - a2 * b + a2 / 4);
-
-        int count = 0;
-        while (fx < fy) {
-            count++;
-            x++;
-            fx = fx + 2 * b2;
-            if (p < 0) {
-                p = p + b2 * (2 * x + 3);
-            } else {
-                y--;
-                p = p + b2 * (2 * x + 3) + a2 * (2 - 2 * y);
-                fy = fy - 2 * a2;
-            }
-            if (count >= 11 && count <= 15) {
-                if (count == 15) {
-                    count = 0;
-                }
-                continue;
-            }
-            put4Pixel(xO, yO, x, y);
-        }
-
-        int count1 = 0;
-        q = Math.round(b2 * (x + 0.5) * (x + 0.5) + a2 * (y - 1) * (y - 1) - a2 * b2);
-        while (y > 0) {
-            count1++;
-            y--;
-            fy = fy - 2 * a2;
-            if (q < 0) {
-                x++;
-                q = q + b2 * (2 * x + 2) + a2 * (3 - 2 * y);
-                fx = fx + 2 * b2;
-            } else {
-                q = q + a2 * (3 - 2 * y);
-            }
-            if (count1 >= 11 && count1 <= 15) {
-                if (count1 == 15) {
-                    count1 = 0;
-                }
-                continue;
-            }
-            put4Pixel(xO, yO, x, y);
-        }
-    }
-
+    }  
+    
     public void drawGlobular() {
         double xO = Double.valueOf(xOHC_TF.getText());
         double yO = Double.valueOf(yOHC_TF.getText());
@@ -2373,8 +2319,50 @@ public class Project extends javax.swing.JFrame {
         double b = r * (1 - Math.sqrt(2) / 2);
 
         drawEllipseMidPoint(xO1, yO1, a, b);
+    }    
+    
+    public void drawStar() {
+        drawLineDDA(As.getX(), As.getY(), As1.getX(), As1.getY());
+        drawLineDDA(As1.getX(), As1.getY(), Bs.getX(), Bs.getY());
+        drawLineDDA(Bs.getX(), Bs.getY(), Bs1.getX(), Bs1.getY());
+        drawLineDDA(Bs1.getX(), Bs1.getY(), Cs.getX(), Cs.getY());
+        drawLineDDA(Cs.getX(), Cs.getY(), Cs1.getX(), Cs1.getY());
+        drawLineDDA(Cs1.getX(), Cs1.getY(), Ds.getX(), Ds.getY());
+        drawLineDDA(Ds.getX(), Ds.getY(), Ds1.getX(), Ds1.getY());
+        drawLineDDA(Ds1.getX(), Ds1.getY(), Es.getX(), Es.getY());
+        drawLineDDA(Es.getX(), Es.getY(), Es1.getX(), Es1.getY());
+        drawLineDDA(Es1.getX(), Es1.getY(), As.getX(), As.getY());
+    }
+ 
+    public double cavalierProjection(double a, double b) {
+        // Chieu len truc Oxz
+        return a - b * (1 - Math.sqrt(2) / 2);
+    }       
+    
+    public Point quaPhai(Point x, double i) {
+        x.setX(x.getX() + i);
+        x.setY(x.getY());
+        return x;
     }
 
+    public Point quaTrai(Point x, double i) {
+        x.setX(x.getX() - i);
+        x.setY(x.getY());
+        return x;
+    }
+
+    public Point diXuong(Point x, double i) {
+        x.setX(x.getX());
+        x.setY(x.getY() - i);
+        return x;
+    }
+
+    public Point diLen(Point x, double i) {
+        x.setX(x.getX());
+        x.setY(x.getY() + i);
+        return x;
+    }
+    
     public Point rotate(Point pt1, Point pt2, double alpha) {
 //        pt1.setX(pt1.getX() * step + width / 2);
 //        pt1.setY(height / 2 - pt1.getY() * step);
@@ -2504,32 +2492,42 @@ public class Project extends javax.swing.JFrame {
 //                + ","
 //                + (double) Math.round((newPoint.getY() - height / 2) / -step * 100) / 100 + ")",
 //                (int) newPoint.getX(), (int) newPoint.getY() + 20);
+    }    
+    
+//===================================== Xe ========================================    
+    public void khoiTaoNgoiSao() {
+        tam = new Point(-7*8, 2.5*8);
+
+        As = new Point(tam.getX(), tam.getY() + doDaiCanh);
+        Bs = new Point(tam.getX() + doDaiCanh, tam.getY() + (doDaiCanh / 3));
+        Cs = new Point(tam.getX() + (doDaiCanh / 2), tam.getY() - doDaiCanh);
+        Ds = new Point(tam.getX() - (doDaiCanh / 2), tam.getY() - doDaiCanh);
+        Es = new Point(tam.getX() - doDaiCanh, tam.getY() + (doDaiCanh / 3));
+
+        As1 = new Point(tam.getX() + (doDaiCanh / 3), tam.getY() + (doDaiCanh / 3));
+        Bs1 = new Point(tam.getX() + (doDaiCanh / 3), tam.getY() - (doDaiCanh / 3));
+        Cs1 = new Point(tam.getX(), tam.getY() - (doDaiCanh / 2));
+        Ds1 = new Point(tam.getX() - (doDaiCanh / 3), tam.getY() - (doDaiCanh / 3));
+        Es1 = new Point(tam.getX() - (doDaiCanh / 3), tam.getY() + (doDaiCanh / 3));
     }
 
-    public Point quaPhai(Point x, double i) {
-        x.setX(x.getX() + i);
-        x.setY(x.getY());
-        return x;
-    }
-
-    public Point quaTrai(Point x, double i) {
-        x.setX(x.getX() - i);
-        x.setY(x.getY());
-        return x;
-    }
-
-    public Point diXuong(Point x, double i) {
-        x.setX(x.getX());
-        x.setY(x.getY() - i);
-        return x;
-    }
-
-    public Point diLen(Point x, double i) {
-        x.setX(x.getX());
-        x.setY(x.getY() + i);
-        return x;
-    }
-
+    public void khoiTaoXe() {
+        // Tâm Xe
+        tamXe = new Point(-7*8, 2.5*8);
+        // Vẽ Mui Xe
+        muiXe1 = new Point(tamXe.getX() - 1*8, tamXe.getY() + 0.5*8);
+        muiXe2 = new Point(tamXe.getX() - 1*8, tamXe.getY() + 1.5*8);
+        muiXe3 = new Point(tamXe.getX() + 1*8, tamXe.getY() + 1.5*8);
+        muiXe4 = new Point(tamXe.getX() + 1*8, tamXe.getY() + 0.5*8);
+        // Vẽ Thân Xe
+        thanXe1 = new Point(tamXe.getX() - 2.5*8, tamXe.getY() - 0.5*8);
+        thanXe2 = new Point(tamXe.getX() - 2.5*8, tamXe.getY() + 0.5*8);
+        thanXe3 = new Point(tamXe.getX() + 2.5*8, tamXe.getY() + 0.5*8);
+        thanXe4 = new Point(tamXe.getX() + 3*8, tamXe.getY() - 0.5*8);
+        //Bánh Xe
+        banhXe1 = new Point(tamXe.getX() - 2*8, tamXe.getY() - 0.2*8);
+        banhXe2 = new Point(tamXe.getX() + 1.3*8, tamXe.getY() - 0.2*8);
+    }    
     //Hàm Vẽ Chiếc Xe
     public void veChiecXe() {
         clear2D();
@@ -2548,13 +2546,13 @@ public class Project extends javax.swing.JFrame {
         drawLineDDAText(thanXe3.getX(), thanXe3.getY(), thanXe4.getX(), thanXe4.getY(), "F", "H");
         drawLineDDAText(thanXe1.getX(), thanXe1.getY(), thanXe4.getX(), thanXe4.getY(), "G", "H");
         //Bánh Xe
-        g1.fillOval((int) ((banhXe1.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe1.getY() * this.step), (int) (((banhXeX) * step)), (int) ((banhXeY) * step));
-        g1.fillOval((int) ((banhXe2.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe2.getY() * this.step), (int) (((banhXeX) * step)), (int) ((banhXeY) * step));
+        g1.fillOval((int) ((banhXe1.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe1.getY() * this.step), (int) (((banhXeX) * step))*8, (int) ((banhXeY) * step)*8);
+        g1.fillOval((int) ((banhXe2.getX()) * this.step) + width / 2, (int) (height / 2 - banhXe2.getY() * this.step), (int) (((banhXeX) * step)*8), (int) ((banhXeY) * step)*8);
 
         
         //drawStar();
         toaDoXe();
-    }
+    }    
 
     public void XeDoiXung(String O) {
         muiXe1 = symmetricWithRespectTo(muiXe1, O);
@@ -2569,22 +2567,22 @@ public class Project extends javax.swing.JFrame {
         tamXe = symmetricWithRespectTo(tamXe, O);
 
         if (O.equals("Oy")) {
-            banhXe1.setX(banhXe1.getX() + 0.6);
-            banhXe2.setX(banhXe2.getX() + 0.6);
+            banhXe1.setX(banhXe1.getX() + 0.6*8);
+            banhXe2.setX(banhXe2.getX() + 0.6*8);
 
             banhXe1 = symmetricWithRespectTo(banhXe1, O);
             banhXe2 = symmetricWithRespectTo(banhXe2, O);
         } else if (O.equals("Ox")) {
-            banhXe1.setY(banhXe1.getY() - 0.6);
-            banhXe2.setY(banhXe2.getY() - 0.6);
+            banhXe1.setY(banhXe1.getY() - 0.6*8);
+            banhXe2.setY(banhXe2.getY() - 0.6*8);
 
             banhXe1 = symmetricWithRespectTo(banhXe1, O);
             banhXe2 = symmetricWithRespectTo(banhXe2, O);
         } else {
-            banhXe1.setX(banhXe1.getX() + 0.7);
-            banhXe1.setY(banhXe1.getY() - 0.6);
-            banhXe2.setX(banhXe2.getX() + 0.7);
-            banhXe2.setY(banhXe2.getY() - 0.6);
+            banhXe1.setX(banhXe1.getX() + 0.7*8);
+            banhXe1.setY(banhXe1.getY() - 0.6*8);
+            banhXe2.setX(banhXe2.getX() + 0.7*8);
+            banhXe2.setY(banhXe2.getY() - 0.6*8);
 
             banhXe1 = symmetricWithRespectTo(banhXe1, O);
             banhXe2 = symmetricWithRespectTo(banhXe2, O);
@@ -2637,7 +2635,7 @@ public class Project extends javax.swing.JFrame {
         TamXe.setText("(" + format.format((tamXe.getX())) + " ; " + format.format((tamXe.getY())) + ")");
     }
 
-    // Tịnh Tuyến Xe Theo 1 Điểm
+    // Tịnh Tiến Xe Theo 1 Điểm
     public void TTXE() {
         Point TT = new Point(Double.valueOf(XTT.getText()), Double.valueOf(YTT.getText()));
         tamXe = translate(tamXe, TT);
@@ -2668,19 +2666,19 @@ public class Project extends javax.swing.JFrame {
         thanXe4 = scale(thanXe4, TT);
 
         if (tamXe.getX() < 0 && Double.valueOf(TLXEX.getText())<0) {
-            banhXe1.setX(banhXe1.getX() + 0.6);
-            banhXe2.setX(banhXe2.getX() + 0.6);
+            banhXe1.setX(banhXe1.getX() + 0.6*8);
+            banhXe2.setX(banhXe2.getX() + 0.6*8);
         } else if(tamXe.getX() > 0 && Double.valueOf(TLXEX.getText())<0){
-            banhXe1.setX(banhXe1.getX() + 0.6);
-            banhXe2.setX(banhXe2.getX() + 0.6);
+            banhXe1.setX(banhXe1.getX() + 0.6*8);
+            banhXe2.setX(banhXe2.getX() + 0.6*8);
         }
         
         if (tamXe.getX() < 0 && Double.valueOf(TLXEY.getText())<0) {
-            banhXe1.setY(banhXe1.getY() - 0.6);
-            banhXe2.setY(banhXe2.getY() - 0.6);
+            banhXe1.setY(banhXe1.getY() - 0.6*8);
+            banhXe2.setY(banhXe2.getY() - 0.6*8);
         } else if(tamXe.getX() > 0 && Double.valueOf(TLXEY.getText())<0){
-            banhXe1.setY(banhXe1.getY() - 0.6);
-            banhXe2.setY(banhXe2.getY() - 0.6);
+            banhXe1.setY(banhXe1.getY() - 0.6*8);
+            banhXe2.setY(banhXe2.getY() - 0.6*8);
         }
         
         banhXe1 = scale(banhXe1, TT);
@@ -2704,10 +2702,10 @@ public class Project extends javax.swing.JFrame {
     }
 
     // Vẽ Xe 
-    public void veXe(String huongDi, int khoanCach) throws InterruptedException {
+    public void veXe(String huongDi, int khoangCach) throws InterruptedException {
         double i = 0.1;    // khoản cách tịnh tuyến
         if (huongDi.equals("Phải")) {
-            for (float j = 0; j < (khoanCach / 0.1); j++) {
+            for (float j = 0; j < (khoangCach / 0.1); j++) {
 
                 Thread.sleep(20);
                 translate(tamXe, quaPhai(tamXe, i));
@@ -2724,7 +2722,7 @@ public class Project extends javax.swing.JFrame {
                 veChiecXe();
             }
         } else if (huongDi.equals("Trái")) {
-            for (float j = 0; j < (khoanCach / 0.1); j++) {
+            for (float j = 0; j < (khoangCach / 0.1); j++) {
                 Thread.sleep(20);
                 translate(tamXe, quaTrai(tamXe, i));
                 translate(muiXe1, quaTrai(muiXe1, i));
@@ -2740,7 +2738,7 @@ public class Project extends javax.swing.JFrame {
                 veChiecXe();
             }
         } else if (huongDi.equals("Lên")) {
-            for (float j = 0; j < (khoanCach / 0.1); j++) {
+            for (float j = 0; j < (khoangCach / 0.1); j++) {
                 Thread.sleep(20);
                 translate(tamXe, diLen(tamXe, i));
                 translate(muiXe1, diLen(muiXe1, i));
@@ -2756,7 +2754,7 @@ public class Project extends javax.swing.JFrame {
                 veChiecXe();
             }
         } else if (huongDi.equals("Xuống")) {
-            for (float j = 0; j < (khoanCach / 0.1); j++) {
+            for (float j = 0; j < (khoangCach / 0.1); j++) {
                 Thread.sleep(20);
                 translate(tamXe, diXuong(tamXe, i));
                 translate(muiXe1, diXuong(muiXe1, i));
@@ -2772,8 +2770,20 @@ public class Project extends javax.swing.JFrame {
                 veChiecXe();
             }
         }
-    }
+    }    
+    
+//===================================== Dong ho ========================================    
+    public void khoiTaoDongHo() {
+        kimGiay1 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(XDongHo.getText()));
+        kimGiay2 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo - 0.1*8);
 
+        kimPhut1 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(XDongHo.getText()));
+        kimPhut2 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo - 0.2*8);
+
+        kimGio1 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(XDongHo.getText()));
+        kimGio2 = new Point(Double.valueOf(XDongHo.getText()), Double.valueOf(YDongHo.getText()) + bkDongHo - 0.3*8);
+    }    
+    
     // Vẽ Đồng Hồ
     public void veDongHo(int i) {
         clear2D();
@@ -2791,17 +2801,17 @@ public class Project extends javax.swing.JFrame {
         kimGiay1.setX(x);
         kimGiay1.setY(y);
         kimGiay2.setX(x);
-        kimGiay2.setY(y + bkDongHo - 0.1);
+        kimGiay2.setY(y + bkDongHo - 0.1*8);
 
         kimPhut1.setX(x);
         kimPhut1.setY(y);
         kimPhut2.setX(x);
-        kimPhut2.setY(y + bkDongHo - 0.2);
+        kimPhut2.setY(y + bkDongHo - 0.2*8);
 
         kimGio1.setX(x);
         kimGio1.setY(y);
         kimGio2.setX(x);
-        kimGio2.setY(y + bkDongHo - 0.35);
+        kimGio2.setY(y + bkDongHo - 0.35*8);
 
         double giay, phut, gio;
 
@@ -2866,11 +2876,11 @@ public class Project extends javax.swing.JFrame {
 //        drawLineDDA(kimGio1.getX(), kimGio1.getY(), rotate(kimGio2, kimGio1, gio).getX(), rotate(kimGio2, kimGio1, gio).getY());
     }
 
-    // Tinh Tuyen Dong Ho
-    public void tinhTuyenDongHo(String huongDi, int khoanCach) throws InterruptedException {
+    // Tinh Tien Dong Ho
+    public void tinhTienDongHo(String huongDi, int khoangCach) throws InterruptedException {
         double i = 0.1;    // khoản cách tịnh tuyến
         if (huongDi.equals("Phải")) {
-            for (float j = 0; j < (khoanCach / 0.1); j++) {
+            for (float j = 0; j < (khoangCach / 0.1); j++) {
 
                 Thread.sleep(20);
                 XDongHo.setText(String.valueOf((Double.valueOf(XDongHo.getText()) + i)));
@@ -2878,21 +2888,21 @@ public class Project extends javax.swing.JFrame {
             }
             XDongHo.setText(String.valueOf(Math.round(Double.valueOf(XDongHo.getText()) + i)));
         } else if (huongDi.equals("Trái")) {
-            for (float j = 0; j < (khoanCach / 0.1); j++) {
+            for (float j = 0; j < (khoangCach / 0.1); j++) {
                 Thread.sleep(20);
                 XDongHo.setText(String.valueOf((Double.valueOf(XDongHo.getText()) - i)));
                 veDongHo(bkDongHo);
             }
             XDongHo.setText(String.valueOf(Math.round(Double.valueOf(XDongHo.getText()) - i)));
         } else if (huongDi.equals("Lên")) {
-            for (float j = 0; j < (khoanCach / 0.1); j++) {
+            for (float j = 0; j < (khoangCach / 0.1); j++) {
                 Thread.sleep(20);
                 YDongHo.setText(String.valueOf((Double.valueOf(YDongHo.getText()) + i)));
                 veDongHo(bkDongHo);
             }
             YDongHo.setText(String.valueOf(Math.round(Double.valueOf(YDongHo.getText()) + i)));
         } else if (huongDi.equals("Xuống")) {
-            for (float j = 0; j < (khoanCach / 0.1); j++) {
+            for (float j = 0; j < (khoangCach / 0.1); j++) {
                 Thread.sleep(20);
                 YDongHo.setText(String.valueOf((Double.valueOf(YDongHo.getText()) - i)));
                 veDongHo(bkDongHo);
