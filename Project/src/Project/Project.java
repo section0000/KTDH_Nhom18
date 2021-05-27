@@ -89,7 +89,7 @@ public class Project extends javax.swing.JFrame {
         tuyChon_Pn = new javax.swing.JPanel();
         HLP_Btn = new javax.swing.JButton();
         HHCN_Btn = new javax.swing.JButton();
-        HLP_Btn1 = new javax.swing.JButton();
+        HC_Btn = new javax.swing.JButton();
         HHCN_Pn = new javax.swing.JPanel();
         rong_TF = new javax.swing.JTextField();
         cao_Lbl = new javax.swing.JLabel();
@@ -228,11 +228,11 @@ public class Project extends javax.swing.JFrame {
         panel3D.setLayout(panel3DLayout);
         panel3DLayout.setHorizontalGroup(
             panel3DLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
         panel3DLayout.setVerticalGroup(
             panel3DLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 749, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         xoaManHinh_Btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -261,11 +261,11 @@ public class Project extends javax.swing.JFrame {
             }
         });
 
-        HLP_Btn1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        HLP_Btn1.setText("Hình cầu");
-        HLP_Btn1.addActionListener(new java.awt.event.ActionListener() {
+        HC_Btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        HC_Btn.setText("Hình cầu");
+        HC_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HLP_Btn1ActionPerformed(evt);
+                HC_BtnActionPerformed(evt);
             }
         });
 
@@ -277,7 +277,7 @@ public class Project extends javax.swing.JFrame {
                 .addGroup(tuyChon_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(HHCN_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                     .addComponent(HLP_Btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                    .addComponent(HLP_Btn1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(HC_Btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tuyChon_PnLayout.setVerticalGroup(
@@ -288,8 +288,8 @@ public class Project extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(HLP_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(HLP_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addComponent(HC_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         tuyChon_LPn.add(tuyChon_Pn, "card4");
@@ -345,6 +345,81 @@ public class Project extends javax.swing.JFrame {
 
         zOHHCN_TF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         zOHHCN_TF.setText("0");
+
+        javax.swing.GroupLayout HHCN_PnLayout = new javax.swing.GroupLayout(HHCN_Pn);
+        HHCN_Pn.setLayout(HHCN_PnLayout);
+        HHCN_PnLayout.setHorizontalGroup(
+            HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HHCN_PnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(veHHCN_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quayLai_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cao_Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rong_TF)
+                    .addComponent(cao_TF)
+                    .addComponent(dai_TF)
+                    .addGroup(HHCN_PnLayout.createSequentialGroup()
+                        .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(diemGocHHCN_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(dai_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rong_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(HHCN_PnLayout.createSequentialGroup()
+                                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(xOHHCN_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                                    .addComponent(xOHHCN_TF, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(yOHHCN_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(yOHHCN_TF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(zOHHCN_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(zOHHCN_TF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        HHCN_PnLayout.setVerticalGroup(
+            HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HHCN_PnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(diemGocHHCN_Lbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(HHCN_PnLayout.createSequentialGroup()
+                            .addComponent(xOHHCN_Lbl)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(xOHHCN_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(HHCN_PnLayout.createSequentialGroup()
+                            .addComponent(yOHHCN_Lbl)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(yOHHCN_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(HHCN_PnLayout.createSequentialGroup()
+                        .addComponent(zOHHCN_Lbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(zOHHCN_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dai_Lbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dai_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rong_Lbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rong_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cao_Lbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cao_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(veHHCN_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(quayLai_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tuyChon_LPn.add(HHCN_Pn, "card3");
 
         doDaiCanhHLP_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         doDaiCanhHLP_Lbl.setText("Độ dài cạnh HLP");
@@ -445,87 +520,10 @@ public class Project extends javax.swing.JFrame {
                 .addComponent(veHLP_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(quayLai_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout HHCN_PnLayout = new javax.swing.GroupLayout(HHCN_Pn);
-        HHCN_Pn.setLayout(HHCN_PnLayout);
-        HHCN_PnLayout.setHorizontalGroup(
-            HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HHCN_PnLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(veHHCN_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(quayLai_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cao_Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rong_TF)
-                    .addComponent(cao_TF)
-                    .addComponent(dai_TF)
-                    .addGroup(HHCN_PnLayout.createSequentialGroup()
-                        .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(diemGocHHCN_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(dai_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rong_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(HHCN_PnLayout.createSequentialGroup()
-                                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(xOHHCN_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                                    .addComponent(xOHHCN_TF, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(yOHHCN_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(yOHHCN_TF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(zOHHCN_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(zOHHCN_TF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(HHCN_PnLayout.createSequentialGroup()
-                .addComponent(HLP_Pn, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        HHCN_PnLayout.setVerticalGroup(
-            HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HHCN_PnLayout.createSequentialGroup()
-                .addComponent(HLP_Pn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(diemGocHHCN_Lbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(HHCN_PnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(HHCN_PnLayout.createSequentialGroup()
-                            .addComponent(xOHHCN_Lbl)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(xOHHCN_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(HHCN_PnLayout.createSequentialGroup()
-                            .addComponent(yOHHCN_Lbl)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(yOHHCN_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(HHCN_PnLayout.createSequentialGroup()
-                        .addComponent(zOHHCN_Lbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(zOHHCN_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dai_Lbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dai_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rong_Lbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rong_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cao_Lbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cao_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(veHHCN_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(quayLai_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
-        );
-
-        tuyChon_LPn.add(HHCN_Pn, "card3");
+        tuyChon_LPn.add(HLP_Pn, "card5");
 
         tam_Lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tam_Lbl.setText("Tâm");
@@ -622,7 +620,7 @@ public class Project extends javax.swing.JFrame {
                 .addComponent(veHC_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(quayLaiHC_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(423, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         tuyChon_LPn.add(HC_Pn, "card5");
@@ -1198,7 +1196,7 @@ public class Project extends javax.swing.JFrame {
     }//GEN-LAST:event_panel3DAncestorAdded
 
     private void veHHCN_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veHHCN_BtnActionPerformed
-        drawRectangular();
+        drawRectangularPrism();
     }//GEN-LAST:event_veHHCN_BtnActionPerformed
 
     private void xoaManHinh_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaManHinh_BtnActionPerformed
@@ -1225,9 +1223,9 @@ public class Project extends javax.swing.JFrame {
         changePanel(tuyChon_LPn, tuyChon_Pn);
     }//GEN-LAST:event_quayLai_Btn1ActionPerformed
 
-    private void HLP_Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HLP_Btn1ActionPerformed
+    private void HC_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HC_BtnActionPerformed
         changePanel(tuyChon_LPn, HC_Pn);
-    }//GEN-LAST:event_HLP_Btn1ActionPerformed
+    }//GEN-LAST:event_HC_BtnActionPerformed
 
     private void veHC_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veHC_BtnActionPerformed
         drawGlobular();
@@ -1648,11 +1646,11 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JTextField GocDongHo;
     private javax.swing.JTextField GocQuayXe;
     private javax.swing.JLabel H;
+    private javax.swing.JButton HC_Btn;
     private javax.swing.JPanel HC_Pn;
     private javax.swing.JButton HHCN_Btn;
     private javax.swing.JPanel HHCN_Pn;
     private javax.swing.JButton HLP_Btn;
-    private javax.swing.JButton HLP_Btn1;
     private javax.swing.JPanel HLP_Pn;
     private javax.swing.JButton HTDXO;
     private javax.swing.JButton HTDXOx;
@@ -2104,7 +2102,7 @@ public class Project extends javax.swing.JFrame {
         }
     }    
  
-    public void drawRectangular() {
+    public void drawRectangularPrism() {
         // Diem goc O
         double xO = Double.valueOf(xOHHCN_TF.getText());
         double yO = Double.valueOf(yOHHCN_TF.getText());
@@ -2316,7 +2314,7 @@ public class Project extends javax.swing.JFrame {
         drawCircleMidPoint(xO1, yO1, r);
 
         double a = r;
-        double b = r * (1 - Math.sqrt(2) / 2);
+        double b = r*(1-Math.sqrt(2)/2);
 
         drawEllipseMidPoint(xO1, yO1, a, b);
     }    
@@ -2336,7 +2334,7 @@ public class Project extends javax.swing.JFrame {
  
     public double cavalierProjection(double a, double b) {
         // Chieu len truc Oxz
-        return a - b * (1 - Math.sqrt(2) / 2);
+        return a - (b*(Math.sqrt(2)/2));
     }       
     
     public Point quaPhai(Point x, double i) {
